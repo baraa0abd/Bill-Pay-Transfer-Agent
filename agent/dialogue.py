@@ -4,6 +4,7 @@ from uuid import uuid4
 from sqlalchemy import select, func
 from sqlalchemy.orm import Session
 from .confirm import CONFIRM_TOKENS
+from .messages_ar import message
 from wallet_api.db import immediate
 from wallet_api.models import Conversation, Draft, User, Bill, UserBiller, Biller, Transaction, now
 from wallet_api.idempotency import canonical
@@ -31,6 +32,7 @@ class Dialogue:
                 result=self.confirmer.confirm(user_id,state['draft_id'])
                 out=self.advance(user_id,conversation_id,state['draft_id'],result)
                 out['result']=result
+                out['messages']=[message(result)]+out.get('messages',[])
                 return out
         with immediate(self.engine) as s:
             if not s.get(User,user_id): raise WalletError('UNKNOWN_USER')
