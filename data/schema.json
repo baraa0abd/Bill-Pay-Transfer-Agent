@@ -1,0 +1,331 @@
+{
+  "$defs": {
+    "SeedBill": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "user_biller_id": {
+          "title": "User Biller Id",
+          "type": "integer"
+        },
+        "period": {
+          "title": "Period",
+          "type": "string"
+        },
+        "amount_iqd": {
+          "exclusiveMinimum": 0,
+          "title": "Amount Iqd",
+          "type": "integer"
+        },
+        "due_date": {
+          "title": "Due Date",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "unpaid",
+            "paid"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "user_biller_id",
+        "period",
+        "amount_iqd",
+        "due_date",
+        "status"
+      ],
+      "title": "SeedBill",
+      "type": "object"
+    },
+    "SeedBiller": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name_ar": {
+          "title": "Name Ar",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "electricity_national",
+            "generator",
+            "internet",
+            "mobile_topup",
+            "water"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "provider": {
+          "title": "Provider",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name_ar",
+        "category",
+        "provider"
+      ],
+      "title": "SeedBiller",
+      "type": "object"
+    },
+    "SeedContact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "integer"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        },
+        "normalized_name": {
+          "title": "Normalized Name",
+          "type": "string"
+        },
+        "nickname": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nickname"
+        },
+        "phone": {
+          "title": "Phone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "display_name",
+        "normalized_name",
+        "phone"
+      ],
+      "title": "SeedContact",
+      "type": "object"
+    },
+    "SeedTransaction": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "transfer",
+            "bill_payment"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "payee_ref": {
+          "title": "Payee Ref",
+          "type": "string"
+        },
+        "amount_iqd": {
+          "exclusiveMinimum": 0,
+          "title": "Amount Iqd",
+          "type": "integer"
+        },
+        "fee_iqd": {
+          "minimum": 0,
+          "title": "Fee Iqd",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "integer"
+        },
+        "idempotency_key": {
+          "title": "Idempotency Key",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "type",
+        "payee_ref",
+        "amount_iqd",
+        "fee_iqd",
+        "status",
+        "created_at",
+        "idempotency_key"
+      ],
+      "title": "SeedTransaction",
+      "type": "object"
+    },
+    "SeedUser": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "phone": {
+          "title": "Phone",
+          "type": "string"
+        },
+        "balance_iqd": {
+          "minimum": 0,
+          "title": "Balance Iqd",
+          "type": "integer"
+        },
+        "daily_limit_iqd": {
+          "exclusiveMinimum": 0,
+          "title": "Daily Limit Iqd",
+          "type": "integer"
+        },
+        "pin_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pin Hash"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "phone",
+        "balance_iqd",
+        "daily_limit_iqd"
+      ],
+      "title": "SeedUser",
+      "type": "object"
+    },
+    "SeedUserBiller": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "user_id": {
+          "title": "User Id",
+          "type": "integer"
+        },
+        "biller_id": {
+          "title": "Biller Id",
+          "type": "integer"
+        },
+        "account_number": {
+          "title": "Account Number",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "biller_id",
+        "account_number",
+        "label"
+      ],
+      "title": "SeedUserBiller",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "users": {
+      "items": {
+        "$ref": "#/$defs/SeedUser"
+      },
+      "title": "Users",
+      "type": "array"
+    },
+    "contacts": {
+      "items": {
+        "$ref": "#/$defs/SeedContact"
+      },
+      "title": "Contacts",
+      "type": "array"
+    },
+    "billers": {
+      "items": {
+        "$ref": "#/$defs/SeedBiller"
+      },
+      "title": "Billers",
+      "type": "array"
+    },
+    "user_billers": {
+      "items": {
+        "$ref": "#/$defs/SeedUserBiller"
+      },
+      "title": "User Billers",
+      "type": "array"
+    },
+    "bills": {
+      "items": {
+        "$ref": "#/$defs/SeedBill"
+      },
+      "title": "Bills",
+      "type": "array"
+    },
+    "history": {
+      "items": {
+        "$ref": "#/$defs/SeedTransaction"
+      },
+      "title": "History",
+      "type": "array"
+    }
+  },
+  "required": [
+    "users",
+    "contacts",
+    "billers",
+    "user_billers",
+    "bills",
+    "history"
+  ],
+  "title": "Seed",
+  "type": "object"
+}
