@@ -2,7 +2,7 @@ import hashlib
 import json
 from sqlalchemy import select, delete
 from .db import immediate
-from .models import IdempotencyKey, Transaction, now
+from .models import IdempotencyKey, Transaction, User, now
 from .errors import WalletError
 
 
@@ -24,6 +24,7 @@ def execute_once(engine, payment, kind, key, debit, faults):
         raise WalletError('IDEMPOTENCY_REQUIRED')
     fingerprint = digest({'kind': kind, **payment.model_dump()})
     with immediate(engine) as s:
+        if not s.get(User, payment.user_id): raise WalletError('UNKNOWN_USER', status=404)
         row = s.scalar(select(IdempotencyKey).where(IdempotencyKey.user_id == payment.user_id, IdempotencyKey.key == key))
         if row:
             if row.request_fingerprint != fingerprint:

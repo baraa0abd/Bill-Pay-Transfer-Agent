@@ -14,7 +14,7 @@ function bubble(text,role='bot'){const e=el('div',text,'bubble '+role);$('chatlo
 async function api(path,body,extra={}){const r=await fetch(path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json','X-User-ID':String(user),...extra},body:body?JSON.stringify(body):undefined});if(!r.ok)throw Error('request');return r.json()}
 async function refresh(){const token=epoch;const a=await api('/account');if(token!==epoch)return;$('balance').textContent=fmt(a.balance.balance_iqd);$('transactions').replaceChildren();for(const t of a.transactions.slice(0,5)){const row=el('div',undefined,'transaction'),label=el('div',t.type==='transfer'?'تحويل':'دفع فاتورة');label.append(el('small',new Date(t.created_at*1000).toLocaleDateString('ar-IQ')));row.append(label,el('b','− '+fmt(t.amount_iqd+t.fee_iqd)+' د.ع'));$('transactions').append(row)}}
 function disableCards(){document.querySelectorAll('.confirm-card button,.choice').forEach(b=>b.disabled=true)}
-function render(r){if(r.conversation_id){cid=r.conversation_id;localStorage.setItem('conversation-'+user,cid)}for(const text of r.messages||[])bubble(text);if(r.options?.length){const box=el('div');r.options.forEach((o,i)=>{const b=el('button',`${i+1}) ${o.display_name} — ${o.masked_phone||o.account_number||''}`,'choice');b.onclick=()=>send(String(i+1));box.append(b)});$('chatlog').append(box)}if(r.card)card(r.card);if(r.result?.code==='STATUS_UNKNOWN'||r.state==='EXECUTING')startPoll(r.draft_id||r.card?.draft_id);$('chatlog').scrollTop=$('chatlog').scrollHeight}
+function render(r){if(r.conversation_id){cid=r.conversation_id;localStorage.setItem('conversation-'+user,cid)}for(const text of r.messages||[])bubble(text);if(r.options?.length){const box=el('div');r.options.forEach((o,i)=>{const b=el('button',`${i+1}) ${o.display_name} — ${o.masked_phone||o.account_number||''}`,'choice');b.onclick=()=>send(String(i+1));box.append(b)});$('chatlog').append(box)}if(r.card)card(r.card);if(r.result?.code==='STATUS_UNKNOWN'||r.state==='EXECUTING'){const id=r.draft_id||r.card?.draft_id;startPoll(id);if(id){const retry=el('button','تحقق من نفس الطلب مرة ثانية','choice');retry.onclick=()=>act('/confirm',id);$('chatlog').append(retry)}}$('chatlog').scrollTop=$('chatlog').scrollHeight}
 function card(c){const box=el('section',undefined,'confirm-card');box.setAttribute('aria-label','بطاقة تأكيد الدفع');box.append(el('h3','راجع طلبك قبل التأكيد'),el('div',fmt(c.payment.amount_iqd)+' د.ع','money'),el('div',c.amount_words,'words'));for(const [k,v] of [['العملية',c.kind==='transfer'?'تحويل فلوس':'دفع فاتورة'],['إلى',c.display.display_name],['الحساب',c.display.masked_phone||c.display.account_number],...(c.period?[['الفترة',c.period]]:[]),['العمولة',fmt(c.fee_iqd)+' د.ع'],['رصيدك قبل',fmt(c.balance_before)+' د.ع'],['رصيدك بعد',fmt(c.balance_after)+' د.ع']]){const row=el('div',undefined,'detail');row.append(el('span',k),el('b',v));box.append(row)}if(c.duplicate_warning)box.append(el('div',c.duplicate_warning,'warning'));const actions=el('div',undefined,'actions'),yes=el('button','أكّد'),no=el('button','إلغاء','secondary');yes.type=no.type='button';yes.onclick=()=>act('/confirm',c.draft_id);no.onclick=()=>act('/cancel',c.draft_id);actions.append(yes,no);box.append(actions);const timer=el('div','','countdown');box.append(timer);const tick=()=>{const left=Math.max(0,c.expires_at-Math.floor(Date.now()/1000));timer.textContent=left?`باقي ${left} ثانية للتأكيد`:'انتهت المهلة. اكتب طلبك من جديد حتى تراجعه.';if(!left){yes.disabled=true;clearInterval(interval)}};const interval=setInterval(tick,1000);tick();$('chatlog').append(box)}
 async function send(text){if(busy)return;busy=true;const token=epoch;disableCards();bubble(text,'user');$('text').value='';$('send').disabled=true;try{const r=await api('/chat',{user_id:user,conversation_id:cid,text});if(token===epoch){render(r);await refresh()}}catch{if(token===epoch)bubble('ما وصلنا رد. إذا كنت تأكّد دفعة، لا تكتب طلب جديد؛ راجع نفس البطاقة أو حدّث الصفحة حتى نتحقق.')}finally{busy=false;$('send').disabled=false}}
 async function act(path,id){if(busy)return;busy=true;const token=epoch;disableCards();try{const r=await api(path,{draft_id:id},path==='/confirm'?{'X-Fault':$('fault').value}:{});if(token===epoch){render(r);await refresh()}}catch{if(token===epoch){bubble('الرد ما وصل، بعدنا ما نعرف النتيجة. دا نتحقق من نفس الطلب.');startPoll(id)}}finally{busy=false}}
@@ -23,6 +23,7 @@ let recorder=null,stream=null,recordTimer=null;
 $('record').onclick=async()=>{
  if(recorder?.state==='recording'){recorder.stop();return}
  if(busy)return;
+ busy=true;
  try{
   stream=await navigator.mediaDevices.getUserMedia({audio:true});
   const chunks=[],token=epoch,recordUser=user,recordCid=cid;
@@ -30,7 +31,7 @@ $('record').onclick=async()=>{
   recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
   recorder.onstop=async()=>{
    clearTimeout(recordTimer);stream.getTracks().forEach(t=>t.stop());$('record').textContent='🎙';
-   if(token!==epoch)return;
+   if(token!==epoch){busy=false;return}
    busy=true;disableCards();
    const body=new FormData();body.append('audio',new Blob(chunks,{type:'audio/webm'}),'recording.webm');body.append('user_id',String(recordUser));if(recordCid)body.append('conversation_id',recordCid);
    try{const response=await fetch('/voice',{method:'POST',headers:{'X-User-ID':String(recordUser)},body});const r=await response.json();if(token===epoch){render(r);await refresh()}}
@@ -38,9 +39,9 @@ $('record').onclick=async()=>{
    finally{busy=false}
   };
   recorder.start();$('record').textContent='إيقاف ■';recordTimer=setTimeout(()=>{if(recorder.state==='recording')recorder.stop()},30000);
- }catch{stream?.getTracks().forEach(t=>t.stop());bubble('المايك مو متوفر أو ما سمحت باستخدامه. تكدر تكتب طلبك.')}
+ }catch{busy=false;stream?.getTracks().forEach(t=>t.stop());bubble('المايك مو متوفر أو ما سمحت باستخدامه. تكدر تكتب طلبك.')}
 };
 $('composer').onsubmit=e=>{e.preventDefault();send($('text').value)};document.querySelectorAll('[data-example]').forEach(b=>b.onclick=()=>send(b.dataset.example));
-$('user').onchange=async()=>{epoch++;user=Number($('user').value);cid=localStorage.getItem('conversation-'+user);clearInterval(poll);poll=null;disableCards();$('chatlog').replaceChildren();bubble('هلا بيك، هذا حسابك التجريبي.');await refresh();if(cid){try{render(await api('/conversations/'+cid))}catch{cid=null}}};
+$('user').onchange=async()=>{epoch++;user=Number($('user').value);cid=localStorage.getItem('conversation-'+user);clearInterval(poll);poll=null;disableCards();$('chatlog').replaceChildren();bubble('هلا بيك، هذا حسابك التجريبي. ما ينخصم أي مبلغ بدون تأكيدك.');const examples=el('div',undefined,'examples');for(const text of ['دز خمسين ألف لأحمد','ادفع الكهرباء','شكد رصيدي']){const b=el('button',text+' ↗');b.onclick=()=>send(text);examples.append(b)}$('chatlog').append(examples);await refresh();if(cid){try{render(await api('/conversations/'+cid))}catch{cid=null}}};
 (async()=>{try{const users=await api('/users');for(const u of users){const o=el('option',u.name);o.value=u.id;$('user').append(o)}if(!users.length){bubble('ماكو حسابات بعد. حمّل بيانات التجربة وبعدين حدّث الصفحة.');return}user=users[0].id;const config=await api('/config');if(config.demo_mode)$('fault-panel').style.display='block';$('record').disabled=!config.voice_enabled||!navigator.mediaDevices||!window.MediaRecorder;await $('user').onchange()}catch{bubble('ما كدرنا نتصل بالمحفظة. جرّب تحدّث الصفحة.')}})();
 </script></body></html>

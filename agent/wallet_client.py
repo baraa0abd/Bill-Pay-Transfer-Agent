@@ -13,7 +13,7 @@ class WalletClient:
             r = self.transport.get(f'/transactions/by-key/{key}', params={'user_id': user_id})
             if r.status_code == 200:
                 return r.json()
-        except (httpx.TransportError, TimeoutError, RuntimeError):
+        except (httpx.TransportError, TimeoutError, RuntimeError, ValueError):
             pass
         return {'code': 'STATUS_UNKNOWN'}
 
@@ -27,7 +27,7 @@ class WalletClient:
                 result = r.json()
                 if r.status_code < 500 and result.get('code') != 'IN_PROGRESS':
                     return result
-            except (httpx.TransportError, TimeoutError, RuntimeError):
+            except (httpx.TransportError, TimeoutError, RuntimeError, ValueError):
                 pass
             self.sleep(min(0.05 * 2 ** attempt + random.uniform(0, 0.02), 1))
         return self.lookup(payload['user_id'], key)

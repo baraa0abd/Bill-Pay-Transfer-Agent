@@ -78,7 +78,12 @@ def create_app(engine=None,parser=None,demo_mode=None,asr=None):
 
     @app.get('/drafts/{draft_id}/status')
     def status(draft_id:str,x_user_id:int=Header()):
-        return attach_followup(x_user_id,draft_id,confirmer.status(x_user_id,draft_id))
+        result=confirmer.status(x_user_id,draft_id)
+        if result.get('code')=='DRAFT_PENDING':
+            with Session(engine) as s:
+                draft=s.get(Draft,draft_id)
+                return {'messages':[message(result)],'result':result,'state':'DRAFT_PENDING','card':dialogue.card(draft)}
+        return attach_followup(x_user_id,draft_id,result)
 
     @app.get('/conversations/{conversation_id}')
     def conversation(conversation_id:str,x_user_id:int=Header()):

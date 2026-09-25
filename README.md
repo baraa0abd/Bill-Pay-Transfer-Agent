@@ -141,3 +141,8 @@ Real audio was not supplied, so live transcription and microphone hardware were 
 To evaluate your own recordings, put WAV/WebM files in `data/audio/` and add `manifest.jsonl` entries such as `{"file":"request.wav","testset_id":"iq-001"}`. With `ASR_API_KEY` set, `make eval` runs each through `/voice` three times and adds matched voice/text success and unsafe-execution metrics. Missing credentials/annotations are explicitly reported, never counted as a passing audio evaluation. Do not commit personal audio or credentials.
 
 Phase 11 gate: 224 offline tests pass, including 7 voice tests. Text evaluation remains 68/68 items across three runs with zero unsafe executions. No real audio or live model evaluation was performed.
+
+
+Final regression checks additionally cover concurrent different-key debits (no overdraw), daily limits including fees, invalid/oversized requests, stored-refusal reconciliation after lost responses, contact-list recovery, inquiry/payment queues, mobile-only top-ups, recovering an unreceived confirmation, and resuming a durably authorized operation after a crash.
+
+Final handoff gate: **233 tests passed**; **68/68 evaluation items passed across 204 runs**, with **0 unsafe executions**. The running local demo was refreshed after the recovery fixes. Live LLM/ASR accuracy and native-speaker review remain pending.

@@ -37,7 +37,7 @@ class RuleBasedParser:
         if re.search(r'قرض|استثمار|دولار|اشتري|اخذلي',s): return [Intent(type='unsupported')]
         if re.search(r'رصيدي|شكد عندي',s): return [Intent(type='balance_inquiry')]
         if re.search(r'حركات|معاملات|سجل',s): return [Intent(type='history_inquiry')]
-        if re.match(r'(دزله|دز|حول|ابعث)(?:\s|ل)',s):
+        if re.match(r'(دزله|دز|حول|ابعث)(?:\s|ل|$)',s):
             tail = re.sub(r'^(دزله|دز|حول|ابعث)\s*','',s)
             tail = re.split(r'\s+(?:و?ما تسالني|بدون تاكيد|تجاهل|skip)',tail)[0]
             # Recipient follows a preposition, including attached ل in لأحمد.

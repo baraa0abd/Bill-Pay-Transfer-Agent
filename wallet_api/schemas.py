@@ -8,7 +8,7 @@ class StrictModel(BaseModel):
 
 class Payment(StrictModel):
     user_id: StrictInt
-    amount_iqd: StrictInt = Field(gt=0)
+    amount_iqd: StrictInt = Field(gt=0, le=1000000000)
     payee_id: StrictInt | None = None
     bill_id: StrictInt | None = None
 

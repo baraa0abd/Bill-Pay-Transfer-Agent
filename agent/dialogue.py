@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from .confirm import CONFIRM_TOKENS
 from .messages_ar import message
 from wallet_api.db import immediate
-from wallet_api.models import Conversation, Draft, User, Bill, UserBiller, Biller, Transaction, now
+from wallet_api.models import Conversation, Draft, User, Contact, Bill, UserBiller, Biller, Transaction, now
 from wallet_api.idempotency import canonical
 from wallet_api.errors import WalletError
 from wallet_api.routes import FEE_IQD
@@ -32,6 +32,7 @@ class Dialogue:
                 result=self.confirmer.confirm(user_id,state['draft_id'])
                 out=self.advance(user_id,conversation_id,state['draft_id'],result)
                 out['result']=result
+                out['draft_id']=state['draft_id']
                 out['messages']=[message(result)]+out.get('messages',[])
                 return out
         with immediate(self.engine) as s:
@@ -46,12 +47,20 @@ class Dialogue:
             if q in CANCEL:
                 self.invalidate(s,st,'cancelled')
                 if st.get('state')=='EXECUTING':
-                    out={'messages':['الطلب قيد التحقق، ما نكدر نلغيه هسه. تابع حالته.'],'state':'EXECUTING'}
+                    out={'messages':['الطلب قيد التحقق، ما نكدر نلغيه هسه. تابع حالته.'],'state':'EXECUTING','draft_id':st.get('draft_id')}
                 else:
                     st={'state':'CANCELLED','queue':[]}
-                    out={'messages':['ألغينا الطلب، ما انخصم شي.'],'state':'CANCELLED'}
+                    out={'messages':['ألغينا الطلب الحالي والباقي. ما انخصم شي للطلبات الملغية؛ أي دفعة سابقة تبقى بالحركات.'],'state':'CANCELLED'}
             elif st['state']=='EXECUTING':
                 out={'messages':['دا نتحقق من حالة الدفع. لا تعيد الطلب هسه.'],'state':'EXECUTING','draft_id':st.get('draft_id')}
+            elif q=='عرض الاسماء':
+                options=[{'id':c.id,'display_name':c.display_name,'masked_phone':'…'+c.phone[-4:],'score':100}
+                         for c in s.scalars(select(Contact).where(Contact.user_id==user_id))]
+                if st['state']=='FAILED' and st.get('current',{}).get('type')=='transfer':
+                    st.pop('payee',None)
+                    out=self.question(st,'payee',options)
+                else:
+                    out={'messages':['جهات اتصالك:']+[o['display_name']+' '+o['masked_phone'] for o in options],'state':st['state']}
             elif re.match(r'لا خليها\s+',q) and st.get('current'):
                 self.invalidate(s,st,'superseded')
                 st['current']['amount_text']=re.sub(r'^لا خليها\s+','',q)
@@ -153,11 +162,15 @@ class Dialogue:
         intent=st['current']; kind=intent['type']; user=s.get(User,user_id)
         if kind=='balance_inquiry':
             st['state']='DONE'
-            return {'messages':[f'رصيدك {user.balance_iqd:,} د.ع.'],'state':'DONE'}
+            messages=[f'رصيدك {user.balance_iqd:,} د.ع.']
+            out=self.next(s,user_id,st) if st.get('queue') else {'messages':[],'state':'DONE'}
+            return {**out,'messages':messages+out['messages']}
         if kind=='history_inquiry':
             st['state']='DONE'
             txs=list(s.scalars(select(Transaction).where(Transaction.user_id==user_id).order_by(Transaction.created_at.desc()).limit(5)))
-            return {'messages':['آخر حركاتك:']+[f'{t.amount_iqd:,} د.ع — {t.id}' for t in txs],'state':'DONE'}
+            messages=['آخر حركاتك:']+[f'{t.amount_iqd:,} د.ع — {t.id}' for t in txs]
+            out=self.next(s,user_id,st) if st.get('queue') else {'messages':[],'state':'DONE'}
+            return {**out,'messages':messages+out['messages']}
         if kind in ['unsupported','unclear','cancel']:
             return self.refuse(st,'UNSUPPORTED' if kind=='unsupported' else 'UNCLEAR','ما أگدر أنفذ هالطلب. أگدر أساعدك بتحويل أو دفع فاتورة؛ ما انخصم شي.')
         slot='payee' if kind=='transfer' else 'biller'
@@ -169,6 +182,10 @@ class Dialogue:
                 return self.refuse(st,'UNKNOWN_PAYEE' if slot=='payee' else 'UNKNOWN_BILLER','ما لگيت هالاسم بحسابك، ما انخصم شي. اكتب الاسم الكامل أو اكتب عرض الأسماء حتى تشوف الموجود.')
             if result['status']=='many': return self.question(st,slot,result['candidates'])
             st[slot]=result['candidates'][0]
+        if kind=='topup':
+            link=s.get(UserBiller,st['biller']['id'])
+            if s.get(Biller,link.biller_id).category!='mobile_topup':
+                return self.refuse(st,'UNKNOWN_BILLER','الشحن متوفر لآسياسيل وزين وكورك. ما انخصم شي؛ اختار شبكة الموبايل.')
         if kind=='bill_payment':
             bills=list(s.scalars(select(Bill).where(Bill.user_biller_id==st['biller']['id'],Bill.status=='unpaid').order_by(Bill.period)))
             if not bills: return self.refuse(st,'BILL_ALREADY_PAID','هالفاتورة مدفوعة، ما انخصم شي مرة ثانية.')

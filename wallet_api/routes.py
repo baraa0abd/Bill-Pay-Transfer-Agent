@@ -1,9 +1,10 @@
+import json
 from uuid import uuid4
 from fastapi import FastAPI, Header
 from sqlalchemy import select, func
 from sqlalchemy.orm import Session
 from .db import Base, immediate
-from .models import User, Contact, Biller, UserBiller, Bill, Transaction, now
+from .models import User, Contact, Biller, UserBiller, Bill, Transaction, IdempotencyKey, now
 from .schemas import Payment
 from .errors import WalletError, install_errors
 from .idempotency import execute_once
@@ -90,8 +91,10 @@ def create_wallet(engine, demo_mode=False):
         with Session(engine) as s:
             row = s.scalar(select(Transaction).where(Transaction.user_id == user_id, Transaction.idempotency_key == key))
             if not row:
+                cached=s.scalar(select(IdempotencyKey).where(IdempotencyKey.user_id==user_id,IdempotencyKey.key==key))
+                if cached and cached.status=='done': return json.loads(cached.response_json)
                 raise WalletError('NOT_FOUND', status=404)
-            return {**record(row), 'balance_iqd': s.get(User, user_id).balance_iqd}
+            return json.loads(row.receipt_json) if row.receipt_json else {**record(row), 'balance_iqd': s.get(User, user_id).balance_iqd}
 
     @app.post('/transfers')
     def transfer(payment: Payment, idempotency_key: str | None = Header(default=None), x_fault: str | None = Header(default=None)):

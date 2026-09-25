@@ -68,9 +68,9 @@ class Confirmer:
             previous=json.loads(draft.result_json) if draft.result_json else None
             if previous and previous.get('code')!='STATUS_UNKNOWN': return previous
         result=self.wallet.lookup(user_id,draft_id)
-        if result.get('status')=='succeeded':
+        if result.get('code')!='STATUS_UNKNOWN':
             with immediate(self.engine) as s:
                 draft=s.get(Draft,draft_id)
-                result['payee_name']=json.loads(draft.payload_json)['display']['display_name']
+                if result.get('status')=='succeeded': result['payee_name']=json.loads(draft.payload_json)['display']['display_name']
                 draft.result_json=canonical(result)
         return result
