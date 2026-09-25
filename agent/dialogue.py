@@ -2,6 +2,8 @@ import json
 import re
 from uuid import uuid4
 from sqlalchemy import select, func
+from sqlalchemy.orm import Session
+from .confirm import CONFIRM_TOKENS
 from wallet_api.db import immediate
 from wallet_api.models import Conversation, Draft, User, Bill, UserBiller, Biller, Transaction, now
 from wallet_api.idempotency import canonical
@@ -15,10 +17,21 @@ from .drafts import create_draft
 
 
 class Dialogue:
-    def __init__(self, engine, parser=None):
+    def __init__(self, engine, parser=None, confirmer=None):
         self.engine,self.parser=engine,parser or RuleBasedParser()
+        self.confirmer=confirmer
 
-    def chat(self,user_id,text,conversation_id=None):
+    def chat(self,user_id,text,conversation_id=None,allow_confirmation=True):
+        if allow_confirmation and normalize(text).strip() in CONFIRM_TOKENS and conversation_id and self.confirmer:
+            with Session(self.engine) as s:
+                convo=s.get(Conversation,conversation_id)
+                if not convo or convo.user_id!=user_id: raise WalletError('FORBIDDEN',status=403)
+                state=json.loads(convo.state_json)
+            if state.get('draft_id') and state['state'] in ['DRAFT_PENDING','EXECUTING']:
+                result=self.confirmer.confirm(user_id,state['draft_id'])
+                out=self.advance(user_id,conversation_id,state['draft_id'],result)
+                out['result']=result
+                return out
         with immediate(self.engine) as s:
             if not s.get(User,user_id): raise WalletError('UNKNOWN_USER')
             convo=s.get(Conversation,conversation_id) if conversation_id else None

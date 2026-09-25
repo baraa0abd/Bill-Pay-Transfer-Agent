@@ -10,6 +10,6 @@ Automated against file-backed SQLite, using HTTP requests.
 | Changed amount, same key | 409 conflict, no second debit |
 | Expired lease | Safe reclaim |
 | 24-hour cache cleanup | Permanent transaction tombstone replays original receipt |
-| Double confirmation | Integration coverage is added in phase 7 |
+| Double confirmation | Two concurrent confirms return the same receipt; exactly one debit (test_confirm.py) |
 
 Run `python -m pytest tests/test_idempotency.py tests/test_faults.py -q`.
