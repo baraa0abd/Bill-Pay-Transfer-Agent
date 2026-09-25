@@ -129,3 +129,15 @@ All phase commits followed a passing offline suite using the Windows Make equiva
 | 8 — outcome messages | 203 | Ledger-truth and unresolved-then-reconciled outcomes |
 | 9 — UI/HTTP | 215 | Ten HTTP flows plus live browser card/cancel check |
 | 10 — evaluation | 217 | 68 cases × 3 runs; see generated report |
+
+## Voice stretch
+
+Set `ASR_API_KEY` (and optionally `ASR_MODEL=whisper-1`) to enable the microphone button. Click to record and click again to stop; recording stops after 30 seconds. The server accepts WAV/WebM up to 8 MiB. The hosted adapter follows the [OpenAI transcription API](https://developers.openai.com/api/docs/guides/speech-to-text). It sends audio only when the user records/submits it.
+
+Every response displays the transcript. Unknown confidence, confidence below 90/100, or any uncertain name/amount tokens force the user to type the corrected request. Hosted Whisper JSON does not supply a calibrated confidence, so the default adapter deliberately requests text review. Injected ASR providers can supply confidence/uncertain tokens, but this is not a guarantee of correctness. Even a high-confidence spoken “أكد” cannot execute; only a subsequent button click or exact typed confirmation can.
+
+Real audio was not supplied, so live transcription and microphone hardware were not tested. `MockASR` covers low confidence, misheard names, corrected text, and attempted spoken confirmation. Optional TTS is an interface only and is not enabled.
+
+To evaluate your own recordings, put WAV/WebM files in `data/audio/` and add `manifest.jsonl` entries such as `{"file":"request.wav","testset_id":"iq-001"}`. With `ASR_API_KEY` set, `make eval` runs each through `/voice` three times and adds matched voice/text success and unsafe-execution metrics. Missing credentials/annotations are explicitly reported, never counted as a passing audio evaluation. Do not commit personal audio or credentials.
+
+Phase 11 gate: 224 offline tests pass, including 7 voice tests. Text evaluation remains 68/68 items across three runs with zero unsafe executions. No real audio or live model evaluation was performed.

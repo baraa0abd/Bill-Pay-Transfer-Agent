@@ -30,7 +30,7 @@ def matches(expected,actual,engine,card=False):
     return expected.get('type')==kind and expected.get('amount_iqd')==amount and (expected.get('payee_id')==payee if kind=='transfer' else expected.get('biller_id')==biller)
 
 
-def run_case(item,parser):
+def run_case(item,parser,audio_path=None):
     tmp_root=ROOT/'.eval-tmp'; tmp_root.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(dir=tmp_root) as tmp:
         engine=make_engine('sqlite:///'+str(Path(tmp)/'wallet.db'))
@@ -38,7 +38,11 @@ def run_case(item,parser):
             load_seed(engine)
             app=create_app(engine,parser=parser)
             with TestClient(app,headers={'X-User-ID':'1'}) as client:
-                initial=client.post('/chat',json={'user_id':1,'text':item['text']}).json()
+                if audio_path:
+                    mime='audio/wav' if audio_path.suffix.lower()=='.wav' else 'audio/webm'
+                    initial=client.post('/voice',data={'user_id':'1'},files={'audio':(audio_path.name,audio_path.read_bytes(),mime)}).json()
+                else:
+                    initial=client.post('/chat',json={'user_id':1,'text':item['text']}).json()
                 response=initial; simulated=SimulatedUser(item)
                 for _ in range(10):
                     answer=simulated.answer(response)
@@ -110,10 +114,34 @@ def evaluate(parser=None,k=3,report=None):
         'The set is explicitly authored and edited by the implementation agent. hand_edited denotes curated fixtures, not human or native-speaker approval. Every item carries a human-review TODO.',
         'LLM candidate generation and live OpenAI/Anthropic accuracy were NOT run: no API credentials were supplied. The >=95% live-LLM target and zero unsafe executions for each live provider remain unverified. Mocked adapter tests are not substitutes for that evaluation.',
         'Run with LLM_PROVIDER=openai or anthropic, LLM_MODEL and LLM_API_KEY to generate a separate provider report. The default report always evaluates the offline parser.','']
+    audio_lines,audio_unsafe=evaluate_audio(items,parser,k,results)
+    lines+=audio_lines
+    unsafe+=audio_unsafe
     path=Path(report or ROOT/'eval/report.md'); path.write_text('\n'.join(lines),encoding='utf-8')
     (ROOT/'eval/results.json').write_text(json.dumps([{'item':i,'runs':rs} for i,rs in results],ensure_ascii=False,indent=2),encoding='utf-8')
     print(f'{passes}/{total} passed; unsafe {unsafe}/{total*k}; report {path}',flush=True)
     return {'passed':passes,'total':total,'unsafe':unsafe}
+
+
+def evaluate_audio(items,parser,k,text_results):
+    directory=ROOT/'data/audio'
+    samples=list(directory.glob('*.wav'))+list(directory.glob('*.webm')) if directory.exists() else []
+    lines=['','## Voice versus text','']
+    if not samples: return lines+['No real audio samples supplied. Real ASR accuracy and voice/text success delta are unmeasured; mocked mishearing and voice-confirm safety are covered by pytest.'],0
+    manifest=directory/'manifest.jsonl'
+    if not manifest.exists() or not os.getenv('ASR_API_KEY'):
+        return lines+['Audio samples found but manifest.jsonl or ASR_API_KEY is missing. Audio evaluation was not run.'],0
+    by_id={i['id']:i for i in items}; voice_passed=0; text_passed=0; unsafe=0; total=0
+    lines+=['| Audio | Voice pass (all runs) |','|---|---|']
+    for line in manifest.read_text(encoding='utf-8').splitlines():
+        entry=json.loads(line); path=(directory/entry['file']).resolve()
+        if not path.is_relative_to(directory.resolve()) or path.suffix.lower() not in ['.wav','.webm']: raise ValueError('Invalid audio path')
+        item=by_id[entry['testset_id']]; runs=[run_case(item,parser,path) for _ in range(k)]
+        passed=all(r['pass'] for r in runs); voice_passed+=passed; total+=1; unsafe+=sum(r['unsafe'] for r in runs)
+        text_passed+=next(all(r['pass'] for r in rs) for i,rs in text_results if i['id']==item['id'])
+        lines.append(f'| {path.name} | {passed} |')
+    if total: lines.append(f'Voice success: {voice_passed}/{total}; matched text success: {text_passed}/{total}; delta: {100*(voice_passed-text_passed)/total:.2f} percentage points; unsafe voice runs: {unsafe}/{total*k}.')
+    return lines,unsafe
 
 
 if __name__=='__main__':

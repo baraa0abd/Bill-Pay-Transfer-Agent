@@ -1,7 +1,9 @@
 import json
 import os
 from pathlib import Path
-from fastapi import FastAPI, Header
+from fastapi import FastAPI, Header, File, Form, UploadFile
+from starlette.concurrency import run_in_threadpool
+from voice.asr import WhisperClient
 from fastapi.responses import FileResponse, JSONResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -20,7 +22,7 @@ from agent.messages_ar import message
 ROOT=Path(__file__).resolve().parent
 
 
-def create_app(engine=None,parser=None,demo_mode=None):
+def create_app(engine=None,parser=None,demo_mode=None,asr=None):
     engine=engine or make_engine()
     Base.metadata.create_all(engine)
     demo_mode=demo_mode if demo_mode is not None else os.getenv('DEMO_MODE','false').lower()=='true'
@@ -30,6 +32,7 @@ def create_app(engine=None,parser=None,demo_mode=None):
     transport=LocalWalletTransport(wallet_app)
     confirmer=Confirmer(engine,WalletClient(transport))
     dialogue=Dialogue(engine,parser=parser or configured_parser(),confirmer=confirmer)
+    asr_client=asr or WhisperClient()
     app.state.engine=engine; app.state.dialogue=dialogue; app.state.confirmer=confirmer
     app.mount('/wallet',wallet_app)
 
@@ -42,7 +45,7 @@ def create_app(engine=None,parser=None,demo_mode=None):
             return [{'id':u.id,'name':u.name} for u in s.scalars(select(User))]
 
     @app.get('/config')
-    def config(): return {'demo_mode':demo_mode,'voice_enabled':bool(os.getenv('ASR_API_KEY'))}
+    def config(): return {'demo_mode':demo_mode,'voice_enabled':asr is not None or bool(os.getenv('ASR_API_KEY'))}
 
     @app.get('/account')
     def account(x_user_id:int=Header()):
@@ -89,6 +92,20 @@ def create_app(engine=None,parser=None,demo_mode=None):
                 if draft.status=='pending': out['card']=dialogue.card(draft)
                 elif draft.status=='confirmed': out['draft_id']=draft.id
             return out
+
+    @app.post('/voice')
+    async def voice(audio:UploadFile=File(),user_id:int=Form(),conversation_id:str|None=Form(default=None),x_user_id:int=Header()):
+        if user_id!=x_user_id: raise WalletError('FORBIDDEN',status=403)
+        if audio.content_type not in ['audio/webm','audio/wav','audio/x-wav']:
+            return JSONResponse({'code':'ASR_INVALID','messages':['صيغة الصوت مو مدعومة. استخدم تسجيل ويب أو ملف ويف؛ ما نفّذنا طلب جديد.']},status_code=400)
+        contents=await audio.read(8*1024*1024+1)
+        await audio.close()
+        if not contents or len(contents)>8*1024*1024:
+            return JSONResponse({'code':'ASR_INVALID','messages':['التسجيل فارغ أو طويل هواية. جرّب تسجيل أقصر؛ ما نفّذنا طلب جديد.']},status_code=400)
+        try: transcript=await run_in_threadpool(asr_client.transcribe,contents,audio.filename or 'recording.webm',audio.content_type)
+        except Exception:
+            return JSONResponse({'code':'ASR_UNAVAILABLE','messages':['ما كدرنا نسمع التسجيل هسه. اكتب طلبك؛ ما نفّذنا طلب جديد.']},status_code=503)
+        return await run_in_threadpool(dialogue.voice,user_id,transcript,conversation_id)
 
     return app
 

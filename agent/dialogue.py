@@ -94,6 +94,32 @@ class Dialogue:
             out['queue_remaining']=len(st.get('queue',[]))
             return out
 
+    def voice(self,user_id,transcript,conversation_id=None):
+        if transcript.confidence is not None and transcript.confidence>=90 and not transcript.uncertain_tokens:
+            out=self.chat(user_id,transcript.text,conversation_id,allow_confirmation=False)
+        else:
+            with immediate(self.engine) as s:
+                if not s.get(User,user_id): raise WalletError('UNKNOWN_USER')
+                convo=s.get(Conversation,conversation_id) if conversation_id else None
+                if conversation_id and (not convo or convo.user_id!=user_id): raise WalletError('FORBIDDEN',status=403)
+                if not convo:
+                    convo=Conversation(id=str(uuid4()),user_id=user_id,state_json=canonical({'state':'IDLE','queue':[]}))
+                    s.add(convo)
+                st=json.loads(convo.state_json)
+                self.invalidate(s,st,'superseded')
+                if st.get('state')=='EXECUTING':
+                    out={'messages':['طلبك السابق قيد التحقق؛ ننتظر نتيجته قبل طلب جديد.'],'state':'EXECUTING','draft_id':st.get('draft_id')}
+                else:
+                    st={'state':'ASR_REVIEW','queue':[],'transcript':transcript.text}
+                    out={'messages':['مو متأكد من الاسم أو المبلغ بالتسجيل. اكتب طلبك الصحيح ويّا الاسم والمبلغ حتى نراجعه. ما نفّذنا طلب جديد.'],
+                         'state':'ASR_REVIEW','ask_slot':'transcript'}
+                convo.state_json=canonical(st); convo.updated_at=now()
+                out['conversation_id']=convo.id
+        out['transcript']=transcript.text
+        out['confidence']=transcript.confidence
+        out['messages']=['هذا اللي سمعته: '+transcript.text]+out.get('messages',[])
+        return out
+
     def invalidate(self,s,st,status):
         if st.get('draft_id'):
             draft=s.get(Draft,st['draft_id'])
