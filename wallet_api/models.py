@@ -67,6 +67,8 @@ class Transaction(Base):
     status: Mapped[str]
     created_at: Mapped[int] = mapped_column(default=now)
     idempotency_key: Mapped[str]
+    request_fingerprint: Mapped[str | None]
+    receipt_json: Mapped[str | None] = mapped_column(Text)
     __table_args__ = (UniqueConstraint('user_id', 'idempotency_key'),)
 
 

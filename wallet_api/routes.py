@@ -6,6 +6,8 @@ from .db import Base, immediate
 from .models import User, Contact, Biller, UserBiller, Bill, Transaction, now
 from .schemas import Payment
 from .errors import WalletError, install_errors
+from .idempotency import execute_once
+from .faults import Faults
 
 FEE_IQD = 250
 
@@ -50,7 +52,7 @@ def debit(session, payment, kind, key):
     return {**record(transaction), 'balance_iqd': user.balance_iqd}
 
 
-def create_wallet(engine):
+def create_wallet(engine, demo_mode=False):
     app = FastAPI(title='Mock wallet')
     install_errors(app)
 
@@ -92,12 +94,10 @@ def create_wallet(engine):
             return {**record(row), 'balance_iqd': s.get(User, user_id).balance_iqd}
 
     @app.post('/transfers')
-    def transfer(payment: Payment, idempotency_key: str | None = Header(default=None)):
-        with immediate(engine) as s:
-            return debit(s, payment, 'transfer', idempotency_key or str(uuid4()))
+    def transfer(payment: Payment, idempotency_key: str | None = Header(default=None), x_fault: str | None = Header(default=None)):
+        return execute_once(engine, payment, 'transfer', idempotency_key, debit, Faults(x_fault, demo_mode))
 
     @app.post('/bill-payments')
-    def bill_payment(payment: Payment, idempotency_key: str | None = Header(default=None)):
-        with immediate(engine) as s:
-            return debit(s, payment, 'bill_payment', idempotency_key or str(uuid4()))
+    def bill_payment(payment: Payment, idempotency_key: str | None = Header(default=None), x_fault: str | None = Header(default=None)):
+        return execute_once(engine, payment, 'bill_payment', idempotency_key, debit, Faults(x_fault, demo_mode))
     return app
