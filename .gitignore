@@ -9,3 +9,4 @@ data/generated.json
 *.egg-info/
 
 .test-tmp/
+.eval-tmp/

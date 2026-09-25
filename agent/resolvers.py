@@ -9,7 +9,7 @@ def rank(candidates):
     candidates.sort(key=lambda x: (-x['score'], x['id']))
     if not candidates:
         return {'status':'none','candidates':[]}
-    certain = candidates[0]['score'] >= 90 and (len(candidates) == 1 or candidates[0]['score'] - candidates[1]['score'] >= 15)
+    certain = candidates[0].get('exact', True) and candidates[0]['score'] >= 90 and (len(candidates) == 1 or candidates[0]['score'] - candidates[1]['score'] >= 15)
     return {'status':'one' if certain else 'many','candidates':candidates[:1] if certain else candidates}
 
 
@@ -27,7 +27,7 @@ def resolve_contact(engine, user_id, text):
                 else: current = round(ratio(q,name))
                 score = max(score,current)
             if score >= 80:
-                candidates.append({'id':c.id,'display_name':c.display_name,'masked_phone':'…'+c.phone[-4:],'score':score})
+                candidates.append({'id':c.id,'display_name':c.display_name,'masked_phone':'…'+c.phone[-4:],'score':score,'exact':q in values})
     return rank(candidates)
 
 
