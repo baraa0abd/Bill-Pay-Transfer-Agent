@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from sqlalchemy import select
 from wallet_api.db import Base, make_engine, immediate
@@ -18,4 +19,5 @@ def load_seed(engine, path=None):
 
 
 if __name__ == '__main__':
-    print('Seed loaded' if load_seed(make_engine()) else 'Existing database preserved')
+    # SEED_PATH=data/heldout_seed.json seeds the demo with the LLM-generated wallet.
+    print('Seed loaded' if load_seed(make_engine(),os.getenv('SEED_PATH')) else 'Existing database preserved')

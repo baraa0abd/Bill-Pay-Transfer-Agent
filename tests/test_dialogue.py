@@ -76,3 +76,7 @@ def test_parser_outage_fails_closed(engine):
     assert r['code']=='PARSER_UNAVAILABLE'
     with Session(engine) as s:
         assert s.scalar(select(func.count()).select_from(Draft))==0
+
+
+def test_response_names_parser(dialogue):
+    assert dialogue.chat(1,'دز خمسين ألف لأحمد')['parser']=='rules'

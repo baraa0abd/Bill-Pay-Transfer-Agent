@@ -97,6 +97,7 @@ class Dialogue:
                     st={'state':'COLLECTING','queue':[i.model_dump() for i in intents]}
                     if len(intents)>1: messages.append(f'فهمت {len(intents)} طلبات: '+ '، '.join('تحويل' if i.type=='transfer' else 'دفع فاتورة' for i in intents)+' — نبدي بالأول، وكل طلب يحتاج تأكيد وحده.')
                     out=self.next(s,user_id,st)
+                out['parser']=getattr(self.parser,'last',None) or 'rules'
             convo.state_json=canonical(st); convo.updated_at=now()
             out['conversation_id']=convo.id
             out['messages']=messages+out.get('messages',[])

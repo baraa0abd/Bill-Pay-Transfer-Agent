@@ -124,10 +124,12 @@ class AnthropicClient:
 
 class FallbackParser:
     """LLM first. If the provider is down or its output is rejected, use the conservative rule parser."""
-    def __init__(self, primary): self.primary,self.fallback=primary,RuleBasedParser()
+    # ponytail: `last` is per-instance, so concurrent requests can mislabel each other; fine for a single-user demo.
+    def __init__(self, primary): self.primary,self.fallback,self.last=primary,RuleBasedParser(),None
     def parse(self,text):
-        try: return self.primary.parse(text)
-        except Exception: return self.fallback.parse(text)
+        try: result,self.last=self.primary.parse(text),'claude'
+        except Exception: result,self.last=self.fallback.parse(text),'rules_fallback'
+        return result
 
 
 MODEL=os.getenv('LLM_MODEL','claude-opus-5')

@@ -50,5 +50,5 @@ def test_claude_refusal_rejected():
 def test_fallback_to_rules_when_llm_down():
     class Down:
         def parse(self,text): raise httpx.ConnectError('down')
-    intent=FallbackParser(Down()).parse('دز خمسين ألف لأحمد')[0]
-    assert intent.type=='transfer' and intent.payee_text=='احمد'
+    p=FallbackParser(Down()); intent=p.parse('دز خمسين ألف لأحمد')[0]
+    assert intent.type=='transfer' and intent.payee_text=='احمد' and p.last=='rules_fallback'
