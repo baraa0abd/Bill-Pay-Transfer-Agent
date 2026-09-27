@@ -18,4 +18,4 @@ include = ["agent*", "wallet_api*", "voice*", "data*", "eval*"]
 testpaths = ["tests"]
 pythonpath = ["."]
 
-addopts = "--basetemp=.test-tmp"
+addopts = "--basetemp=.pytest-tmp -p no:cacheprovider"
