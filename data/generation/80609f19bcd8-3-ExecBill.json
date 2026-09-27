@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 12000 للشركة الوطنية للكهرباء",
+   "kind": "bill_payment",
+   "biller_id": 1,
+   "amount_iqd": 12000
+  },
+  {
+   "text": "ارسل 8000 للمولد الحي",
+   "kind": "bill_payment",
+   "biller_id": 2,
+   "amount_iqd": 8000
+  },
+  {
+   "text": "انطي 15000 لشركة الاتصالات العراقية",
+   "kind": "bill_payment",
+   "biller_id": 3,
+   "amount_iqd": 15000
+  },
+  {
+   "text": "دز 22000 لزين موبايل",
+   "kind": "bill_payment",
+   "biller_id": 5,
+   "amount_iqd": 22000
+  },
+  {
+   "text": "حول 9000 لآسيا موبايل",
+   "kind": "bill_payment",
+   "biller_id": 6,
+   "amount_iqd": 9000
+  },
+  {
+   "text": "ادفع 12000 للوطنية",
+   "kind": "bill_payment",
+   "biller_id": 1,
+   "amount_iqd": 12000
+  },
+  {
+   "text": "اشحن 8000 للمولد الحي",
+   "kind": "bill_payment",
+   "biller_id": 2,
+   "amount_iqd": 8000
+  },
+  {
+   "text": "دز 15000 للاتصالات",
+   "kind": "bill_payment",
+   "biller_id": 3,
+   "amount_iqd": 15000
+  },
+  {
+   "text": "ارسل 22000 لزين",
+   "kind": "bill_payment",
+   "biller_id": 5,
+   "amount_iqd": 22000
+  },
+  {
+   "text": "انطي 9000 لآسيا",
+   "kind": "bill_payment",
+   "biller_id": 6,
+   "amount_iqd": 9000
+  }
+ ]
+}

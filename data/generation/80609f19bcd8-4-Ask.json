@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز لخالو 500",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل للريم خالد عمر 200",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي لياسر حسن علي 150",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز لمنى حسين محمد 300",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "الورقة ديها 100",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز لفاطمة سارة 250",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل لهدى خالد يوسف 400",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي لطارق أحمد محمد 180",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز لجلال حسن عمر 350",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل لسعاد حسين علي 220",
+   "category": "ambiguous_amount",
+   "slot": "payee",
+   "intent": "transfer"
+  }
+ ]
+}

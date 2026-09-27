@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 500000 لـ خالد محمد يوسف خالو",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل 1000000 لـ ريم خالد عمر",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "اشحن زين موبايل بـ 200 دولار",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "topup"
+  },
+  {
+   "text": "ادفع قرض لـ الشركة الوطنية للكهرباء",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز 350000 لـ عمر حسين عبد الله",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي 10000 لـ فهد أحمد خالد",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول 500000 لـ منى حسن يوسف",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "اشحن آسيا موبايل بـ 1000 دولار",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "topup"
+  },
+  {
+   "text": "ارسل 200000 لـ جلال حسن عمر",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز قرض لـ مولد الحي",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "transfer"
+  }
+ ]
+}

@@ -68,4 +68,4 @@ def test_small_schema_answers_are_checked_against_wallet():
     assert to_item(ExecTransfer, ExecTransfer(text='t', category='happy_transfer', payee_id=999, amount_iqd=1000), wallet) is None
     bill = to_item(ExecBill, ExecBill(text='t', kind='bill_payment', biller_id=1, amount_iqd=5), wallet)
     assert bill['expected_final']['amount_iqd'] == 12000  # the recorded bill amount, not the model's guess
-    assert to_item(ExecBill, ExecBill(text='t', kind='bill_payment', biller_id=4, amount_iqd=5), wallet) is None  # nothing unpaid
+    assert to_item(ExecBill, ExecBill(text='t', kind='topup', biller_id=4, amount_iqd=5), wallet) is None  # nothing unpaid, even if the model says topup

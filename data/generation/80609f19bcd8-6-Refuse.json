@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 500 ل خالو خالد",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل 2000 ل شركة المياه العامة",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "اشحن زينة موبايل ب 100 دولار",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "topup"
+  },
+  {
+   "text": "دز 300 ل ريم خالد عمر",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي 500 ل شركة الاتصالات العراقية",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ادفع 1000 ل استثمر في الذهب",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز 250 ل شركة الكهرباء الوطنية",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ارسل 1500 ل محمد علي حسن",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "اشحن آسيا موبايل ب 2000 ريال",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "topup"
+  },
+  {
+   "text": "دز 100 ل شركة المياه العامة",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  }
+ ]
+}

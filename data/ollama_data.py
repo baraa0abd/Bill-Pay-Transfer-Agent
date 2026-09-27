@@ -144,6 +144,11 @@ BATCHES = [  # (schema, instruction); 10 requests each
              'balance (INSUFFICIENT_FUNDS), a biller with no unpaid bill (BILL_ALREADY_PAID), loans/dollars/investing '
              '(UNSUPPORTED, intent unsupported), gibberish (UNCLEAR, intent unclear).'),
     (Split, 'two requests in one message, e.g. a transfer and a bill payment joined with و or وبعدين.'),
+    # Appended after a first run came in under 50 valid items; earlier batches stay cached.
+    (ExecTransfer, 'transfers to PEOPLE from the contacts list only, never to a company, biller or mobile provider. Use a '
+                   'contact whose first name is unique, or their nickname. payee_id is that contact id.'),
+    (Refuse, 'more requests that must be refused, mixing unknown people, amounts far above the balance, and unsupported '
+             'services like قرض or دولار.'),
 ]
 
 
@@ -160,14 +165,16 @@ def to_item(kind, x, wallet):
     if kind is ExecBill:
         b = billers.get(x.biller_id)
         if not b: return None
-        if x.kind == 'bill_payment':
-            if b['category'] == 'mobile_topup' or not b['unpaid_bills_iqd']: return None
-            amount = b['unpaid_bills_iqd'][0]  # by definition a bill is paid for its recorded amount
+        # The biller decides the kind, not the model: mobile providers are top-ups for the stated amount,
+        # everything else is paid for its recorded unpaid bill.
+        if b['category'] == 'mobile_topup':
+            if x.amount_iqd <= 0: return None
+            kind, amount = 'topup', x.amount_iqd
         else:
-            if b['category'] != 'mobile_topup' or x.amount_iqd <= 0: return None
-            amount = x.amount_iqd
+            if not b['unpaid_bills_iqd']: return None
+            kind, amount = 'bill_payment', b['unpaid_bills_iqd'][0]
         return base | dict(category='happy_bill', expected_outcome='EXECUTE_AFTER_CONFIRM', expected_intent_count=1,
-                           expected_intent_types=[x.kind], expected_final=dict(type='bill_payment', biller_id=x.biller_id, amount_iqd=amount))
+                           expected_intent_types=[kind], expected_final=dict(type='bill_payment', biller_id=x.biller_id, amount_iqd=amount))
     if kind is Ask:
         return base | dict(category=x.category, expected_outcome='ASK', expected_ask_slot=x.slot,
                            expected_intent_count=1, expected_intent_types=[x.intent])

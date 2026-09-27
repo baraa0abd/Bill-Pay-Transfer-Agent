@@ -1,0 +1,140 @@
+{
+  "users": [
+    {
+      "name": "أحمد محمد علي",
+      "balance_iqd": 285000
+    },
+    {
+      "name": "سارة خالد عمر",
+      "balance_iqd": 162000
+    },
+    {
+      "name": "يوسف حسن عبد الله",
+      "balance_iqd": 398000
+    },
+    {
+      "name": "ليلى حسين محمود",
+      "balance_iqd": 154000
+    },
+    {
+      "name": "عمر أحمد سعيد",
+      "balance_iqd": 276000
+    }
+  ],
+  "contacts": [
+    {
+      "name": "أحمد محمد علي",
+      "nickname": null
+    },
+    {
+      "name": "أحمد خالد سالم",
+      "nickname": null
+    },
+    {
+      "name": "حسن عمر دياب",
+      "nickname": null
+    },
+    {
+      "name": "حسين علي حسن",
+      "nickname": null
+    },
+    {
+      "name": "خالد محمد يوسف",
+      "nickname": "خالو"
+    },
+    {
+      "name": "نور الدين أحمد",
+      "nickname": null
+    },
+    {
+      "name": "فاطمة سارة",
+      "nickname": null
+    },
+    {
+      "name": "محمد علي حسن",
+      "nickname": null
+    },
+    {
+      "name": "عمر حسين عبد الله",
+      "nickname": null
+    },
+    {
+      "name": "سعيد أحمد محمد",
+      "nickname": null
+    },
+    {
+      "name": "ريم خالد عمر",
+      "nickname": null
+    },
+    {
+      "name": "ياسر حسن علي",
+      "nickname": null
+    },
+    {
+      "name": "منى حسين محمد",
+      "nickname": null
+    },
+    {
+      "name": "كريم أحمد سعيد",
+      "nickname": null
+    },
+    {
+      "name": "هدى خالد يوسف",
+      "nickname": null
+    },
+    {
+      "name": "شادي عمر حسن",
+      "nickname": null
+    },
+    {
+      "name": "عائشة حسين علي",
+      "nickname": null
+    },
+    {
+      "name": "طارق أحمد محمد",
+      "nickname": null
+    },
+    {
+      "name": "نورة خالد سعيد",
+      "nickname": null
+    },
+    {
+      "name": "جلال حسن عمر",
+      "nickname": null
+    },
+    {
+      "name": "سعاد حسين علي",
+      "nickname": null
+    },
+    {
+      "name": "فهد أحمد خالد",
+      "nickname": null
+    },
+    {
+      "name": "منى حسن يوسف",
+      "nickname": null
+    },
+    {
+      "name": "عمر حسين محمد",
+      "nickname": null
+    }
+  ],
+  "biller_names": [
+    "الشركة الوطنية للكهرباء",
+    "مولد الحي",
+    "شركة الاتصالات العراقية",
+    "شركة المياه العامة",
+    "زain موبايل",
+    "آسيا موبايل",
+    "كوريك موبايل"
+  ],
+  "bill_amounts": [
+    12000,
+    8000,
+    15000,
+    6000,
+    22000,
+    9000,
+    35000
+  ]
+}
