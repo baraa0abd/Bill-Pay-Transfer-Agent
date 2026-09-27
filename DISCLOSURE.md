@@ -6,8 +6,8 @@ Everything used to build this project. Update this file whenever something is ad
 
 | Tool | Used for |
 |---|---|
-| OpenAI Codex (agent) | Wrote the initial codebase, tests, seed data and test set in phases 0–11 (commits authored `Codex`, 2026-09-25). Original model version: **not recorded; requires the original session settings**. This follow-up session identifies itself as GPT-6; the exact deployed model variant is not exposed in the conversation context. |
-| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, parser-outage test, Claude SDK parser and generator, rule fallback, OpenAI parser removal, held-out generator and eval mode |
+| OpenAI Codex (agent) | Wrote the initial codebase, tests, seed data and test set in phases 0–11 (commits authored `Codex`, 2026-09-25). Models recorded in the local Codex session logs (`~/.codex/sessions`): 2026-09-25 `gpt-5.6-sol` and `gpt-6-astra`, with `codex-auto-review` as the reviewer; 2026-09-27 the same three. |
+| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, parser-outage test, Claude SDK parser and generator, rule fallback, OpenAI parser removal, held-out generator and eval mode, parser badge, recovered-payment receipt, running the local generation and evaluation |
 
 Follow-up (2026-09-27): Codex added the local Ollama adapter, compact wallet-blueprint generation, per-case AI review notes, report provenance fixes and a fresh-database local demo launcher. These are AI edits, not human or native-speaker review.
 
@@ -31,7 +31,7 @@ All data is synthetic. No real customer records, phone numbers, accounts or tran
 |---|---|
 | `data/seed.json` (5 users, 24 contacts each, 7 billers, 4 months of bills) | Authored by Codex locally, **not** generated through a live LLM API. Kept as the development fixture because tests and the dev set reference its IDs; the LLM-generated wallet is the held-out one. |
 | `data/testset.jsonl` (68 requests) | Curated by Codex. **Development set, not held out**: the rule parser was developed against it. Not yet reviewed by a native speaker. |
-| `data/heldout_seed.json`, `data/heldout.jsonl` | Target provider: local Ollama `qwen3.5:4b` through `data/generate_mock_data.py`. Model-authored wallet fields are preserved in `heldout_seed.provenance.json`; identifiers and historical rows are deterministic expansion. No human editing is claimed. |
+| `data/heldout_seed.json`, `data/heldout.jsonl` | Target provider: local Ollama `qwen3.5:4b` through `data/generate_mock_data.py`. Model-authored wallet fields are preserved in `heldout_seed.provenance.json`; identifiers and historical rows are deterministic expansion. Post-generation fixes by Claude Code (not human): the model's 32 contacts were deduplicated to the first 24 distinct names; invoice amount 8,500 was rounded to 8,000; the garbled biller name «زain موبايل» was corrected to «زين موبايل». No human editing is claimed yet. |
 | `data/schema.json` | JSON Schema for the mock wallet dataset |
 
 ## Libraries

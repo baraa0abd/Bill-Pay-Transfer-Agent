@@ -22,7 +22,7 @@ class UserSpec(BaseModel):
 
 class WalletBlueprint(BaseModel):
     users: list[UserSpec] = Field(min_length=5, max_length=5)
-    contacts: list[ContactSpec] = Field(min_length=24, max_length=24)
+    contacts: list[ContactSpec] = Field(min_length=24, max_length=40)
     biller_names: list[str] = Field(min_length=7, max_length=7)
     bill_amounts: list[int] = Field(min_length=7, max_length=7)
 
@@ -31,19 +31,24 @@ def generate_local_seed():
     from .generate_mock_data import SEED, write_new
     blueprint = OllamaClient().generate(
         'Generate fictional Iraqi wallet data. Exactly 5 user names and balances between 150000 and 400000 IQD; '
-        '24 contacts with distinct full Arabic names, including two people named أحمد with different surnames, '
+        '32 contacts with distinct full Arabic names, including two people named أحمد with different surnames, '
         'two similar names حسن and حسين, and exactly one contact with nickname خالو. Other nicknames may be null. '
         'Seven Arabic biller names IN THIS ORDER: national electricity, neighbourhood generator, internet, water, '
         'Zain mobile, Asia mobile, Korek mobile. Seven invoice amounts in the same order: each integer IQD '
         'between 5000 and 40000, multiples of 1000. No real personal records.', WalletBlueprint, max_tokens=4096)
-    if len({normalize(c.name) for c in blueprint.contacts}) != 24:
-        raise ValueError('Generated contact full names must be distinct')
+    # ponytail: small local models repeat names; ask for 32 and keep the first 24 distinct instead of retrying.
+    seen, contacts = set(), []
+    for c in blueprint.contacts:
+        if normalize(c.name) not in seen: seen.add(normalize(c.name)); contacts.append(c)
+    if len(contacts) < 24: raise ValueError(f'Only {len(contacts)} distinct contact names generated')
+    blueprint.contacts = contacts[:24]
     if sum(normalize(c.name).split()[0] == 'احمد' for c in blueprint.contacts) < 2:
         raise ValueError('Need two Ahmed contacts')
     if sum(c.nickname == 'خالو' for c in blueprint.contacts) != 1:
         raise ValueError('Need one unambiguous uncle nickname')
-    if any(not 5000 <= n <= 40000 or n % 1000 for n in blueprint.bill_amounts):
-        raise ValueError('Invalid generated invoice amounts')
+    # ponytail: round/clamp model-chosen invoice amounts to 1000s in 5000-40000 rather than discarding the wallet.
+    print('Model invoice amounts:', blueprint.bill_amounts, flush=True)
+    blueprint.bill_amounts = [max(5000, min(40000, round(n / 1000) * 1000)) for n in blueprint.bill_amounts]
     categories=['electricity_national','generator','internet','water','mobile_topup','mobile_topup','mobile_topup']
     data=dict(users=[], contacts=[], billers=[], user_billers=[], bills=[], history=[])
     for index, (name, category) in enumerate(zip(blueprint.biller_names,categories), 1):
