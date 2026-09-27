@@ -59,3 +59,14 @@ def test_span_after_l_prefix_contraction():
     intent=Intent(type='bill_payment',biller_text='الوطنية',amount_text='12000')
     assert check_spans([intent],'ادفع 12000 للوطنية')[0].biller_text=='الوطنية'
     with pytest.raises(ValueError): check_spans([Intent(type='bill_payment',biller_text='المولدة')],'ادفع للوطنية')
+
+
+@pytest.mark.parametrize('text',['ارسل 5000 لخالو','انطي لخالو 5000','بعث 5000 لخالو'])
+def test_common_iraqi_transfer_verbs(text):
+    intent=RuleBasedParser().parse(text)[0]
+    assert intent.type=='transfer' and intent.payee_text=='خالو' and intent.amount_text=='5000'
+
+
+def test_article_added_by_model_is_grounded():
+    from agent.parser import check_spans
+    assert check_spans([Intent(type='bill_payment',biller_text='الكهرباء')],'ادفع كهرباء')
