@@ -11,12 +11,12 @@ class OllamaClient:
         self.base_url = os.getenv('OLLAMA_BASE_URL', 'http://127.0.0.1:11434').rstrip('/')
         self.client = client
 
-    def generate(self, prompt, schema, system=None, max_tokens=2048, temperature=0):
+    def generate(self, prompt, schema, system=None, max_tokens=2048):
         messages = ([{'role': 'system', 'content': system}] if system else [])
         messages.append({'role': 'user', 'content': prompt})
         payload = dict(model=self.model, messages=messages, stream=False, think=False,
                        format=schema.model_json_schema(),
-                       options={'temperature': temperature, 'num_ctx': 16384, 'num_predict': max_tokens})
+                       options={'temperature': 0, 'num_ctx': 16384, 'num_predict': max_tokens})
         if self.client is not None:
             response = self.client.post(self.base_url + '/api/chat', json=payload)
         else:

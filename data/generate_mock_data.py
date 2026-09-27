@@ -114,7 +114,7 @@ ambiguous, 8 refusals, 5 multi-intent and 5 injection or malformed requests.'''
         cache=HERE/'generation'; cache.mkdir(exist_ok=True)
         style=('Write short test requests a user of this mock wallet would type, in Iraqi Arabic dialect as people really type '
                'it: misspelled, mixed digits and words, varied verbs (دز، حول، ابعث، ارسل، انطي، سدد، ادفع، اشحن).')
-        items=generate_local_testset(user_view(seed), style, cache, hashlib.sha256(SEED.read_bytes()).hexdigest()[:12]+'-v2')
+        items=generate_local_testset(user_view(seed), style, cache, hashlib.sha256(SEED.read_bytes()).hexdigest()[:12])
         if len(items) < 50: raise ValueError(f'only {len(items)} valid items; the brief needs 50')
     else:
         items=ask(prompt,TestSet).items
