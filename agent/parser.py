@@ -108,6 +108,7 @@ def validate_output(raw, text):
 
 
 class AnthropicClient:
+    source = 'claude'
     def __init__(self, model, client=None):
         self.model,self.client=model,client or anthropic.Anthropic(timeout=60)
 
@@ -127,7 +128,7 @@ class FallbackParser:
     # ponytail: `last` is per-instance, so concurrent requests can mislabel each other; fine for a single-user demo.
     def __init__(self, primary): self.primary,self.fallback,self.last=primary,RuleBasedParser(),None
     def parse(self,text):
-        try: result,self.last=self.primary.parse(text),'claude'
+        try: result,self.last=self.primary.parse(text),getattr(self.primary,'source','claude')
         except Exception: result,self.last=self.fallback.parse(text),'rules_fallback'
         return result
 
@@ -137,6 +138,11 @@ MODEL=os.getenv('LLM_MODEL','claude-opus-5')
 
 def configured_parser(fallback=True):
     # Credentials: ANTHROPIC_API_KEY (or an `ant auth login` profile), resolved by the SDK.
-    if os.getenv('LLM_PROVIDER','rule')=='rule': return RuleBasedParser()
-    llm=AnthropicClient(MODEL)
+    provider=os.getenv('LLM_PROVIDER','rule')
+    if provider=='rule': return RuleBasedParser()
+    if provider=='ollama':
+        from .ollama_client import OllamaClient
+        llm=OllamaClient()
+    elif provider=='anthropic': llm=AnthropicClient(MODEL)
+    else: raise ValueError(f'Unknown LLM_PROVIDER: {provider}')
     return FallbackParser(llm) if fallback else llm

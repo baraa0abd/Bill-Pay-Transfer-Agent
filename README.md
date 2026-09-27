@@ -4,6 +4,31 @@ Type or say one sentence in Iraqi Arabic, like «ادفع الكهرباء» or 
 
 **For judges:** [Problem & users](PROBLEM.md) · [Disclosure](DISCLOSURE.md) · [Failure modes](FAILURE_MODES.md) · [Dev eval](eval/report.md) · Held-out eval: `eval/report-heldout*.md`
 
+## Verified status (2026-09-27)
+
+Offline development evaluation: **68/68 requests pass (100%), 0/204 unsafe executions** across three fresh-database runs. This is a development set, not evidence of general language accuracy. The offline suite passes **245 tests**, including the Ollama adapter contract and evaluation instrumentation.
+
+Local Ollama integration is being verified. Held-out generation, local-model scores, human editing and real-person interviews must not be inferred from the offline results. See [AI review](data/REVIEW.md).
+
+## Local LLM with Ollama
+
+Install/run Ollama, then download `qwen3.5:4b` (approximately 3.4 GB):
+
+```powershell
+ollama pull qwen3.5:4b
+$env:LLM_PROVIDER = 'ollama'
+$env:OLLAMA_MODEL = 'qwen3.5:4b'
+.\.venv\Scripts\python.exe -m data.generate_mock_data seed
+.\.venv\Scripts\python.exe -m data.generate_mock_data testset
+./make.ps1 eval
+./make.ps1 heldout
+./run-local.ps1
+```
+
+`run-local.ps1` uses Ollama, enables demo faults, and seeds a new database on every launch. Use `-DevelopmentSeed` only when deliberately demonstrating the original fixture. No Anthropic key is needed. `OLLAMA_BASE_URL` defaults to `http://127.0.0.1:11434`; `OLLAMA_TIMEOUT` defaults to 300 seconds. The header distinguishes Ollama, Claude and rule fallback. Model failures remain visible in evaluations, which disable fallback.
+
+The local wallet generator asks the model for a compact schema-defined blueprint (names, balances, biller labels and amounts), then expands IDs, mock account numbers, dates and historical ledger rows deterministically. The blueprint is saved alongside the wallet for provenance. Requests are generated in seven batches of ten. This is synthetic local-model data, not Claude output or real customer data. Human editing still requires a human.
+
 ## 60-second demo
 
 Start with `./make.ps1 run` (demo faults: set `$env:DEMO_MODE='true'` first) and open http://localhost:8000.
@@ -15,7 +40,7 @@ Start with `./make.ps1 run` (demo faults: set `$env:DEMO_MODE='true'` first) and
 | 3 | An amount above the balance, e.g. `دز نص مليون لخالو` | An honest refusal: «you need 500,250 IQD with the fee, and your balance is …». No card is offered. |
 | 4 | Pick **انقطاع الرد بعد الدفع** in the sidebar, then pay anything | The response is lost *after* the wallet committed. The agent retries with the **same** idempotency key, and the wallet replays the stored result instead of paying again. The receipt says so («…عدناها بنفس رقم الطلب — انخصم مرة وحدة بس»), and the balance drops **once**. |
 
-The badge in the header says who understood the request: **Claude**, fixed rules, or rules because Claude did not answer.
+The badge in the header says who understood the request: **Ollama**, **Claude**, fixed rules, or rules because the model did not answer.
 
 ## How the brief's must-haves are met
 
@@ -26,7 +51,7 @@ The badge in the header says who understood the request: **Claude**, fixed rules
 | Retries never double-pay | The draft UUID is the idempotency key; there is a `(user, key)` unique constraint, and the debit and ledger commit atomically | [eval/idempotency_proof.md](eval/idempotency_proof.md), 50-concurrent-request test |
 | Honest failure messages | Each failure has its own Iraqi-Arabic message. An unknown outcome says "checking", never "failed". | [FAILURE_MODES.md](FAILURE_MODES.md) |
 
-Claude only extracts text spans (who, what, how much). It has no wallet tools, and a span that isn't in the user's text is rejected. Everything that touches money is plain code.
+The configured LLM only extracts text spans (who, what, how much). It has no wallet tools, and a span that isn't in the user's text is rejected. Everything that touches money is plain code.
 
 ## Run
 
@@ -113,9 +138,9 @@ Only normalized exact tokens `أكد`, `اكد`, `تأكيد`, `نعم أكد` c
 
 Default `LLM_PROVIDER=rule` needs no credentials and never contacts an LLM. For live parsing set `LLM_PROVIDER=anthropic` and `ANTHROPIC_API_KEY` (`LLM_MODEL` defaults to `claude-opus-5`). The parser uses the official `anthropic` SDK with a Pydantic output schema, 24 examples, low effort and server-side refusal fallbacks. If the provider is down, refuses, or returns a span not in the user's text, the app falls back to the rule parser; `make eval` measures the LLM alone, without that fallback.
 
-Claude is the only parser model; OpenAI was removed to keep one LLM path. See [Anthropic structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). The adapter is contract-tested offline with a fake client; no live accuracy claim is made until `eval/report-anthropic.md` exists.
+Ollama and Claude are supported parser providers; the OpenAI parser was removed. See [Anthropic structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). The adapter is contract-tested offline with a fake client; no live accuracy claim is made until `eval/report-anthropic.md` exists.
 
-**Held-out data (generated by Claude).** `data/seed.json` and `data/testset.jsonl` are the development set: the rule parser was built against them, so their 100% is not evidence. The held-out set is generated once and frozen:
+**Held-out data (generated by the configured LLM).** `data/seed.json` and `data/testset.jsonl` are the development set: the rule parser was built against them, so their 100% is not evidence. The held-out set is generated once and frozen:
 
 1. `python -m data.generate_mock_data seed` writes a new mock wallet, `data/heldout_seed.json`.
 2. `python -m data.generate_mock_data testset` writes 60+ labelled Iraqi-dialect requests against that wallet's user 1, `data/heldout.jsonl`. Labels are schema-checked (`data/models.py::TestItem`) and every payee/biller ID is checked against the wallet.
@@ -130,7 +155,7 @@ The parser and resolvers were never tuned on the held-out wallet. `data/schema.j
 
 Only `EXECUTE_AFTER_CONFIRM` evaluation cases are auto-confirmed. ASK and SPLIT cases are not executed; full sequential execution is covered separately by confirmation and HTTP tests. Payee ID, provider ID, type and amount are all checked against fixtures. A negative-control test proves the evaluator detects an intentionally wrong payee expectation.
 
-The JSONL cases were curated by the implementation agent. `hand_edited: true` means individually edited fixtures, **not human/native-speaker approval**; every item has `human_review: TODO`. Optional live evaluation writes a separate provider report. The >=95% LLM-parser target and live-provider unsafe-execution rate are unverified without credentials. Offline success is not evidence of open-ended language accuracy.
+The JSONL cases were curated by the implementation agent. `hand_edited: true` means individually edited fixtures, **not human/native-speaker approval**; every item records AI review separately from pending native-speaker review. Optional live evaluation writes a separate provider report. The >=95% LLM-parser target and live-provider unsafe-execution rate are unverified without credentials. Offline success is not evidence of open-ended language accuracy.
 
 ## Voice stretch
 

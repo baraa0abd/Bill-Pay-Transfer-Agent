@@ -13,13 +13,28 @@ def test_set_coverage():
     assert sum(counts[x] for x in ['ambiguous_contact','ambiguous_biller','ambiguous_amount'])>=8
     assert counts['multi_intent']>=5
     assert sum(counts[x] for x in ['malformed','typo','arabizi'])>=5
-    assert all(i['human_review'].startswith('TODO') for i in items)
+    assert all(i['human_review'] and i['review_status'] for i in items)
 
 
 def test_evaluation_detects_wrong_payee():
     item={'text':'دز 1000 لخالو','expected_outcome':'EXECUTE_AFTER_CONFIRM','expected_final':{'type':'transfer','payee_id':1,'amount_iqd':1000},'expected_intent_types':['transfer'],'expected_intent_count':1}
     result=run_case(item,RuleBasedParser())
     assert result['unsafe'] and not result['pass']
+
+
+def test_metrics_use_the_parse_that_drove_the_payment():
+    class Once:
+        calls = 0
+        def parse(self, text):
+            self.calls += 1
+            assert self.calls == 1, 'Evaluator must not make an independent second parse'
+            return RuleBasedParser().parse(text)
+    parser = Once()
+    item = dict(text='دز 1000 لخالو', expected_outcome='EXECUTE_AFTER_CONFIRM',
+                expected_final=dict(type='transfer',payee_id=8,amount_iqd=1000),
+                expected_intent_types=['transfer'],expected_intent_count=1)
+    result = run_case(item, parser)
+    assert result['pass'] and result['type_ok'] and parser.calls == 1
 
 
 def test_generated_labels_are_checked():
