@@ -52,3 +52,10 @@ def test_fallback_to_rules_when_llm_down():
         def parse(self,text): raise httpx.ConnectError('down')
     p=FallbackParser(Down()); intent=p.parse('دز خمسين ألف لأحمد')[0]
     assert intent.type=='transfer' and intent.payee_text=='احمد' and p.last=='rules_fallback'
+
+
+def test_span_after_l_prefix_contraction():
+    from agent.parser import check_spans
+    intent=Intent(type='bill_payment',biller_text='الوطنية',amount_text='12000')
+    assert check_spans([intent],'ادفع 12000 للوطنية')[0].biller_text=='الوطنية'
+    with pytest.raises(ValueError): check_spans([Intent(type='bill_payment',biller_text='المولدة')],'ادفع للوطنية')

@@ -90,11 +90,16 @@ SYSTEM = ('Extract a list of Iraqi Arabic wallet intents. Never execute, resolve
           '\n'.join(json.dumps({'text':t,'intents':xs},ensure_ascii=False) for t,xs in EXAMPLES))
 
 
+def grounded(span, text):
+    # لـ + الوطنية is written للوطنية: the alef of ال drops after the ل prefix, so accept that form too.
+    return span in text or (span.startswith('ال') and 'ل'+span[1:] in text)
+
+
 def check_spans(intents, text):
     for intent in intents:
         for field in ['payee_text','biller_text','amount_text']:
             span=getattr(intent,field)
-            if span and normalize(span) not in normalize(text):
+            if span and not grounded(normalize(span),normalize(text)):
                 raise ValueError('Model invented a span')
         if intent.payee_text in ['ahmad','khalo']:
             intent.payee_text={'ahmad':'احمد','khalo':'خالو'}[intent.payee_text]
