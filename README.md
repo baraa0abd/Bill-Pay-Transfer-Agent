@@ -1,38 +1,51 @@
 # بكلمة — Bill Pay & Transfer Agent
 
-A local, mock-wallet hackathon app for Iraqi Arabic typed requests, with an optional hosted parser and voice input. **No real money, bank credentials, or real payment integration.**
+Type or say one sentence in Iraqi Arabic, like «ادفع الكهرباء» or «دز خمسين ألف لأحمد», and the agent works out what you mean, asks when it isn't sure, shows a card you can read, and only then pays. It runs against a **mock wallet**, so no real money moves.
 
-**For judges:** [Problem & users](PROBLEM.md) · [Disclosure](DISCLOSURE.md) · [Failure modes](FAILURE_MODES.md) · [Evaluation report](eval/report.md)
+**For judges:** [Problem & users](PROBLEM.md) · [Disclosure](DISCLOSURE.md) · [Failure modes](FAILURE_MODES.md) · [Dev eval](eval/report.md) · Held-out eval: `eval/report-heldout*.md`
+
+## 60-second demo
+
+Start with `./make.ps1 run` (demo faults: set `$env:DEMO_MODE='true'` first) and open http://localhost:8000.
+
+| # | Type | What to point at |
+|---|---|---|
+| 1 | `ادفع الكهرباء` | It **asks** national grid or generator, instead of guessing. Pick one. The card shows the biller, the account, the amount in digits **and words**, the 250 IQD fee, the balance before and after, and a 2-minute expiry. Press **أكد**. The receipt arrives and the balance on the right updates. |
+| 2 | `دز خمسين ألف لأحمد` | Several Ahmeds, each with a masked phone, so it **asks which one**. Pick one, then press **إلغاء**. Nothing was debited. |
+| 3 | An amount above the balance, e.g. `دز نص مليون لخالو` | An honest refusal: «you need 500,250 IQD with the fee and your balance is 120,000». No card is offered. |
+| 4 | Pick **انقطاع الرد بعد الدفع** in the sidebar, then pay anything | The response is lost *after* the wallet committed. The agent doesn't claim failure and doesn't pay again: it checks the same idempotency key and shows the one real receipt. The transaction list shows **one** debit. |
+
+The badge in the header says who understood the request: **Claude**, fixed rules, or rules because Claude did not answer.
+
+## How the brief's must-haves are met
+
+| Must have | How | Proof |
+|---|---|---|
+| Nothing executes without explicit confirmation | Execution only happens in `Confirmer.confirm`, after a button press or the exact typed word `أكد`. «اوك», «نعم», or a spoken «أكد» don't count. The draft is checked for owner, expiry and a SHA-256 of its payload. | `tests/test_confirm.py`, static AST test |
+| Ambiguity → ask, not guess | Deterministic resolvers. Two or more matching contacts or billers, or any non-exact match, always produce a question. | `tests/test_dialogue.py::test_ahmed`, `::test_electricity` |
+| Retries never double-pay | The draft UUID is the idempotency key; there is a `(user, key)` unique constraint, and the debit and ledger commit atomically | [eval/idempotency_proof.md](eval/idempotency_proof.md), 50-concurrent-request test |
+| Honest failure messages | Each failure has its own Iraqi-Arabic message. An unknown outcome says "checking", never "failed". | [FAILURE_MODES.md](FAILURE_MODES.md) |
+
+Claude only extracts text spans (who, what, how much). It has no wallet tools, and a span that isn't in the user's text is rejected. Everything that touches money is plain code.
 
 ## Run
 
-Python 3.11+ is required. From the repository root:
+Python 3.11+. On Windows use `./make.ps1 <target>`; elsewhere use `make <target>`.
 
 ```sh
-python -m venv .venv
-# Linux/macOS:
-source .venv/bin/activate
-# Windows PowerShell:
-.\.venv\Scripts\Activate.ps1
+python -m venv .venv && .\.venv\Scripts\Activate.ps1   # or: source .venv/bin/activate
 python -m pip install -e ".[test]"
-make seed
-make test
-make eval
-make run
+make seed      # load the mock wallet (keeps an existing database)
+make test      # offline test suite
+make eval      # dev test set
+make heldout   # held-out test set
+make run       # http://localhost:8000
 ```
 
-Open http://localhost:8000. On Windows without GNU Make, use `./make.ps1 seed`, `./make.ps1 test`, `./make.ps1 eval`, and `./make.ps1 run`. These invoke the same Python modules. This workspace includes a project-local virtual environment; Python and GNU Make were absent from PATH during implementation, so all phase gates used `make.ps1`.
-
-Seeding preserves an existing database. To start a separate clean demo, set `DATABASE_URL=sqlite:///fresh-demo.db`, then seed and run. Do not delete a database containing demo transactions you want to retain. `.env.example` documents settings; export them in your shell (the app does not implicitly load `.env`).
-
-PowerShell demo faults:
-
-```powershell
-$env:DEMO_MODE='true'
-.\make.ps1 run
-```
-
-The sidebar lets you simulate a lost response after commit, a crash before commit, delay, and a provider outage. Fault headers are ignored unless demo mode is enabled. This is a localhost development server; do not expose it publicly.
+- **Claude:** set `LLM_PROVIDER=anthropic` and `ANTHROPIC_API_KEY`. Without them the offline rule parser is used.
+- **LLM-generated demo wallet:** set `DATABASE_URL=sqlite:///demo.db` and `SEED_PATH=data/heldout_seed.json`, then run `make seed` and `make run`.
+- **Demo faults:** `DEMO_MODE=true` shows the sidebar faults (lost response, crash before commit, provider down, delay). Fault headers are ignored otherwise.
+- Settings are documented in `.env.example`. Export them in your shell; `.env` is not loaded automatically. This is a localhost demo server; don't expose it.
 
 ## Architecture
 
@@ -119,26 +132,6 @@ Only `EXECUTE_AFTER_CONFIRM` evaluation cases are auto-confirmed. ASK and SPLIT 
 
 The JSONL cases were curated by the implementation agent. `hand_edited: true` means individually edited fixtures, **not human/native-speaker approval**; every item has `human_review: TODO`. Optional live evaluation writes a separate provider report. The >=95% LLM-parser target and live-provider unsafe-execution rate are unverified without credentials. Offline success is not evidence of open-ended language accuracy.
 
-## Implementation phase notes
-
-All phase commits followed a passing offline suite using the Windows Make equivalent. Some requested acceptance checks depend on later phases: phase 2 double-confirm coverage landed in phase 7; phase 5 full-dataset evaluation landed in phase 10; phase 6 sequential confirmed execution landed in phase 7. Live-LLM generation/evaluation and human review could not be performed offline and are explicitly pending.
-
-## Phase gate record
-
-| Phase | Green offline tests | Additional verification / remaining dependency |
-|---|---:|---|
-| 0 — setup/schema | 2 | All nine tables and request schema round trips |
-| 1 — wallet | 10 | Integer validation, exact debit, insufficient funds, paid bills |
-| 2 — idempotency/faults | 19 | 50 concurrent requests; double-confirm test deferred to phase 7 |
-| 3 — seed | 20 | Planted cases and 120 contacts; live generation not run |
-| 4 — normalization/resolvers | 138 | 118 normalization, amount and resolver cases |
-| 5 — parser | 153 | Provider HTTP contracts mocked; live accuracy not measured |
-| 6 — dialogue | 161 | Restart, cancellation, edits, queue; execution deferred to phase 7 |
-| 7 — confirmation | 175 | Double tap, invalid drafts, two confirmations, AST boundary |
-| 8 — outcome messages | 203 | Ledger-truth and unresolved-then-reconciled outcomes |
-| 9 — UI/HTTP | 215 | Ten HTTP flows plus live browser card/cancel check |
-| 10 — evaluation | 217 | 68 cases × 3 runs; see generated report |
-
 ## Voice stretch
 
 Set `ASR_API_KEY` (and optionally `ASR_MODEL=whisper-1`) to enable the microphone button. Click to record and click again to stop; recording stops after 30 seconds. The server accepts WAV/WebM up to 8 MiB. The hosted adapter follows the [OpenAI transcription API](https://developers.openai.com/api/docs/guides/speech-to-text). It sends audio only when the user records/submits it.
@@ -148,10 +141,3 @@ Every response displays the transcript. Unknown confidence, confidence below 90/
 Real audio was not supplied, so live transcription and microphone hardware were not tested. `MockASR` covers low confidence, misheard names, corrected text, and attempted spoken confirmation. Optional TTS is an interface only and is not enabled.
 
 To evaluate your own recordings, put WAV/WebM files in `data/audio/` and add `manifest.jsonl` entries such as `{"file":"request.wav","testset_id":"iq-001"}`. With `ASR_API_KEY` set, `make eval` runs each through `/voice` three times and adds matched voice/text success and unsafe-execution metrics. Missing credentials/annotations are explicitly reported, never counted as a passing audio evaluation. Do not commit personal audio or credentials.
-
-Phase 11 gate: 224 offline tests pass, including 7 voice tests. Text evaluation remains 68/68 items across three runs with zero unsafe executions. No real audio or live model evaluation was performed.
-
-
-Final regression checks additionally cover concurrent different-key debits (no overdraw), daily limits including fees, invalid/oversized requests, stored-refusal reconciliation after lost responses, contact-list recovery, inquiry/payment queues, mobile-only top-ups, recovering an unreceived confirmation, and resuming a durably authorized operation after a crash.
-
-Final handoff gate: **233 tests passed**; **68/68 evaluation items passed across 204 runs**, with **0 unsafe executions**. The running local demo was refreshed after the recovery fixes. Live LLM/ASR accuracy and native-speaker review remain pending.
