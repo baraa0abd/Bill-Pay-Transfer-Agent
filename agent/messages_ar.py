@@ -32,7 +32,8 @@ def message(result):
         timestamp=datetime.fromtimestamp(result['created_at'],timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
         return (f"تم الدفع إلى {result.get('payee_name','الجهة المحددة')}: {result['amount_iqd']:,} د.ع، "
                 f"العمولة {result['fee_iqd']:,} د.ع. رصيدك {result['balance_iqd']:,} د.ع. "
-                f"رقم الوصل: {result['id']} — {timestamp}.")
+                f"رقم الوصل: {result['id']} — {timestamp}."
+                + (" المحاولة الأولى ما رجع ردها، فعدناها بنفس رقم الطلب — انخصم مرة وحدة بس." if result.get('recovered') else ''))
     code=result.get('code','STATUS_UNKNOWN')
     if code=='INSUFFICIENT_FUNDS' and '|' in result.get('detail',''):
         needed,available=result['detail'].split('|')

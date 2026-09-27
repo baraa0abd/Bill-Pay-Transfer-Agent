@@ -18,6 +18,8 @@ class WalletClient:
         return {'code': 'STATUS_UNKNOWN'}
 
     def execute(self, kind, payload, key, fault=None):
+        # `recovered` marks a success reached after a failed attempt, so the user is told the retry reused the same key.
+        recovered = lambda result: {**result, 'recovered': True} if result.get('status') == 'succeeded' else result
         for attempt in range(self.attempts):
             try:
                 headers = {'Idempotency-Key': key}
@@ -26,8 +28,8 @@ class WalletClient:
                 r = self.transport.post('/transfers' if kind == 'transfer' else '/bill-payments', json=payload, headers=headers)
                 result = r.json()
                 if r.status_code < 500 and result.get('code') != 'IN_PROGRESS':
-                    return result
+                    return recovered(result) if attempt else result
             except (httpx.TransportError, TimeoutError, RuntimeError, ValueError):
                 pass
             self.sleep(min(0.05 * 2 ** attempt + random.uniform(0, 0.02), 1))
-        return self.lookup(payload['user_id'], key)
+        return recovered(self.lookup(payload['user_id'], key))

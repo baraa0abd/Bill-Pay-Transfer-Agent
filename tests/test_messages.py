@@ -23,6 +23,8 @@ def test_message_matches_ledger(flow,engine,fault,success):
         tx=s.scalar(select(Transaction).where(Transaction.idempotency_key==key))
         assert bool(tx)==success
         assert ('تم الدفع' in message(result))==bool(tx)
+        # A retried success says so, which makes the double-payment guard visible in the demo.
+        assert ('انخصم مرة وحدة' in message(result))==(fault in ['DROP_RESPONSE_AFTER_COMMIT','CRASH_BEFORE_COMMIT'])
 
 
 def test_unknown_then_reconciled(flow,engine):

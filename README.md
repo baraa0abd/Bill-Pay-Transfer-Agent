@@ -12,8 +12,8 @@ Start with `./make.ps1 run` (demo faults: set `$env:DEMO_MODE='true'` first) and
 |---|---|---|
 | 1 | `ادفع الكهرباء` | It **asks** national grid or generator, instead of guessing. Pick one. The card shows the biller, the account, the amount in digits **and words**, the 250 IQD fee, the balance before and after, and a 2-minute expiry. Press **أكد**. The receipt arrives and the balance on the right updates. |
 | 2 | `دز خمسين ألف لأحمد` | Several Ahmeds, each with a masked phone, so it **asks which one**. Pick one, then press **إلغاء**. Nothing was debited. |
-| 3 | An amount above the balance, e.g. `دز نص مليون لخالو` | An honest refusal: «you need 500,250 IQD with the fee and your balance is 120,000». No card is offered. |
-| 4 | Pick **انقطاع الرد بعد الدفع** in the sidebar, then pay anything | The response is lost *after* the wallet committed. The agent doesn't claim failure and doesn't pay again: it checks the same idempotency key and shows the one real receipt. The transaction list shows **one** debit. |
+| 3 | An amount above the balance, e.g. `دز نص مليون لخالو` | An honest refusal: «you need 500,250 IQD with the fee, and your balance is …». No card is offered. |
+| 4 | Pick **انقطاع الرد بعد الدفع** in the sidebar, then pay anything | The response is lost *after* the wallet committed. The agent retries with the **same** idempotency key, and the wallet replays the stored result instead of paying again. The receipt says so («…عدناها بنفس رقم الطلب — انخصم مرة وحدة بس»), and the balance drops **once**. |
 
 The badge in the header says who understood the request: **Claude**, fixed rules, or rules because Claude did not answer.
 
