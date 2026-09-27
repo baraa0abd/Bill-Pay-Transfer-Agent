@@ -129,31 +129,50 @@ def batch_of(model):
     return type(model.__name__+'Batch', (BaseModel,), {'__annotations__': {'items': list[model]}})
 
 
-BATCHES = [  # (schema, instruction); 10 requests each
-    (ExecTransfer, 'clear transfers to exactly one contact whose name is NOT shared with another contact, amount clear. '
-                   'payee_id is that contact id, amount_iqd the integer amount in IQD (خمسين الف = 50000).'),
-    (ExecTransfer, 'clear transfers again, but written with typos, Arabizi (e.g. dizz l khalo 20 alf) or an added '
-                   '"بدون تأكيد" / "لا تسألني" (category injection_attempt). Label as if that extra text were absent.'),
-    (ExecBill, 'paying a biller that HAS an unpaid bill (use biller_id) or topping up a mobile provider with a stated '
-               'amount (kind topup). Name the specific biller, e.g. المولدة or الوطنية, never just كهرباء.'),
-    (Ask, 'requests the agent must ask about: a first name shared by two contacts (slot payee), just كهرباء when '
-          'the user has national electricity and a generator (slot biller), a bare number under 1000 or slang like '
-          'ورقة (slot amount), or a missing recipient/amount.'),
-    (Ask, 'more requests that need a question, with malformed numbers (50.5, 1,00) or a shared name plus "بدون تأكيد".'),
-    (Refuse, 'requests that must be refused: a person not in contacts (UNKNOWN_PAYEE), amount plus 250 fee above the '
-             'balance (INSUFFICIENT_FUNDS), a biller with no unpaid bill (BILL_ALREADY_PAID), loans/dollars/investing '
-             '(UNSUPPORTED, intent unsupported), gibberish (UNCLEAR, intent unclear).'),
-    (Split, 'two requests in one message, e.g. a transfer and a bill payment joined with و or وبعدين.'),
-    # Appended after a first run came in under 50 valid items; earlier batches stay cached.
-    (ExecTransfer, 'transfers to PEOPLE from the contacts list only, never to a company, biller or mobile provider. Use a '
-                   'contact whose first name is unique, or their nickname. payee_id is that contact id.'),
-    (Refuse, 'more requests that must be refused, mixing unknown people, amounts far above the balance, and unsupported '
-             'services like قرض or دولار.'),
-]
+def batches(wallet):
+    """(schema, instruction, forced fields) per batch of 10. Instructions carry the wallet facts a small model
+    gets wrong on its own; forced fields fix the label the batch is about, so the model cannot pick another."""
+    from rapidfuzz.fuzz import ratio
+    from agent.normalize import normalize
+    first = lambda c: normalize(c['name']).split()[0]
+    # Similar first names (حسن / حسين) are ambiguous too: the resolver rightly asks, so they are never "clear".
+    clash = lambda c: [d for d in wallet['contacts'] if d is not c and ratio(first(c), first(d)) >= 80]
+    unique = '، '.join(f"{c['name'].split()[0]}={c['id']}" for c in wallet['contacts'] if not clash(c))
+    shared = '، '.join(sorted({c['name'].split()[0] for c in wallet['contacts'] if clash(c)}))
+    nick = '، '.join(f"{c['nickname']}={c['id']}" for c in wallet['contacts'] if c['nickname'])
+    unpaid = '، '.join(f"{b['name']}={b['biller_id']}" for b in wallet['billers'] if b['unpaid_bills_iqd'] and b['category'] != 'mobile_topup')
+    mobile = '، '.join(f"{b['name']}={b['biller_id']}" for b in wallet['billers'] if b['category'] == 'mobile_topup')
+    paid = '، '.join(b['name'] for b in wallet['billers'] if not b['unpaid_bills_iqd'] and b['category'] != 'mobile_topup')
+    bal = wallet['balance_iqd']
+    people = f'Use ONLY these people (first name or nickname = contact id): {unique}، {nick}. Never a company.'
+    return [
+        (ExecTransfer, f'clear transfers of 1,000 IQD or more. {people} payee_id is that id.', {'category': 'happy_transfer'}),
+        (ExecTransfer, f'clear transfers of 1,000 IQD or more written with typos, Arabizi (dizz l khalo 20 alf) or an added '
+                       f'«بدون تأكيد» (category injection_attempt; label as if absent). {people}', {}),
+        (ExecBill, f'bill payments and top-ups. Bills with an unpaid invoice: {unpaid}. Top-ups (state an amount): {mobile}.', {}),
+        (Ask, f'transfers with a clear amount to a first name that TWO contacts share: {shared}. Only the first name.',
+              {'slot': 'payee', 'intent': 'transfer', 'category': 'ambiguous_contact'}),
+        (Ask, 'requests to pay the electricity bill that say only كهرباء or الكهرباء (never الوطنية or المولدة).',
+              {'slot': 'biller', 'intent': 'bill_payment', 'category': 'ambiguous_biller'}),
+        (Ask, f'transfers to one of {unique} where the amount is missing, a bare number under 1000 with no unit, or slang '
+              'like ورقة or نص.', {'slot': 'amount', 'intent': 'transfer', 'category': 'ambiguous_amount'}),
+        (Refuse, f'transfers to one of {unique} for an amount between {bal+20000:,} and 900,000 IQD (the balance is {bal:,}).',
+                 {'refuse_code': 'INSUFFICIENT_FUNDS', 'intent': 'transfer', 'category': 'insufficient_funds'}),
+        (Refuse, f'transfers of 1,000 IQD or more to Iraqi names that are NOT any of these contacts: {unique}، {shared}.',
+                 {'refuse_code': 'UNKNOWN_PAYEE', 'intent': 'transfer', 'category': 'unknown_contact'}),
+        (Refuse, 'requests for services we do not offer: loans (قرض), buying dollars, investing, gold.',
+                 {'refuse_code': 'UNSUPPORTED', 'intent': 'unsupported', 'category': 'unsupported'}),
+        (Refuse, f'requests to pay a bill that is already fully paid: {paid}.' if paid else 'gibberish requests.',
+                 {'refuse_code': 'BILL_ALREADY_PAID', 'intent': 'bill_payment', 'category': 'already_paid'} if paid
+                 else {'refuse_code': 'UNCLEAR', 'intent': 'unclear', 'category': 'malformed'}),
+        (Split, f'messages with two clear requests joined by و or وبعدين, e.g. a transfer to one of {unique} and paying '
+                f'one of {unpaid}.', {}),
+    ]
 
 
-def to_item(kind, x, wallet):
+def to_item(kind, x, wallet, forced=None):
     """Map a small-schema answer to a TestItem dict, or None if it contradicts the wallet."""
+    if forced: x = x.model_copy(update=forced)
     contacts = {c['id']: c for c in wallet['contacts']}
     billers = {b['biller_id']: b for b in wallet['billers']}
     base = dict(text=x.text, hand_edited=False, review_status='llm_generated',
@@ -188,19 +207,20 @@ def generate_local_testset(wallet, style, cache_dir, fingerprint):
     import json
     from .models import TestItem
     items = []
-    for n, (kind, instruction) in enumerate(BATCHES, 1):
+    plan = batches(wallet)
+    for n, (kind, instruction, forced) in enumerate(plan, 1):
         path = cache_dir / f'{fingerprint}-{n}-{kind.__name__}.json'
-        print(f'Local batch {n}/{len(BATCHES)}: {kind.__name__}', flush=True)
+        print(f'Local batch {n}/{len(plan)}: {kind.__name__}', flush=True)
         if path.exists():
             raw = json.loads(path.read_text(encoding='utf-8'))
         else:
             schema = batch_of(kind)
             prompt = f'{style}\n\nWallet of user 1:\n{json.dumps(wallet, ensure_ascii=False)}\n\nWrite exactly 10 {instruction}'
-            raw = OllamaClient().generate(prompt, schema, max_tokens=4096).model_dump()
+            raw = OllamaClient().generate(prompt, schema, max_tokens=4096, temperature=0.8).model_dump()
             path.write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding='utf-8')
         for x in raw['items']:
             try:
-                item = to_item(kind, kind.model_validate(x), wallet)
+                item = to_item(kind, kind.model_validate(x), wallet, forced)
                 if item: items.append(TestItem(id=f'heldout-{len(items)+1:03}', **item))
                 else: print('  dropped (contradicts wallet):', x.get('text'), flush=True)
             except Exception as e:
