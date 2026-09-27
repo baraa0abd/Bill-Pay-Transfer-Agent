@@ -78,3 +78,41 @@ class Seed(StrictModel):
         if any(x.biller_id not in billers for x in self.user_billers) or any(x.user_biller_id not in links for x in self.bills):
             raise ValueError('unknown bill reference')
         return self
+
+
+class Expected(StrictModel):
+    type: Literal['transfer','bill_payment'] | None = None
+    payee_id: int | None = None
+    biller_id: int | None = None
+    amount_iqd: int | None = Field(default=None, gt=0)
+    refuse_code: Literal['UNKNOWN_PAYEE','UNKNOWN_BILLER','INSUFFICIENT_FUNDS','LIMIT_EXCEEDED','BILL_ALREADY_PAID',
+                         'AMOUNT_INVALID','UNSUPPORTED','UNCLEAR'] | None = None
+
+
+class TestItem(StrictModel):
+    """One labelled request, same shape as data/testset.jsonl."""
+    id: str
+    text: str
+    category: Literal['happy_transfer','happy_bill','ambiguous_contact','ambiguous_biller','ambiguous_amount','unknown_contact',
+                      'insufficient_funds','already_paid','malformed','multi_intent','unsupported','injection_attempt','arabizi','typo']
+    expected_outcome: Literal['EXECUTE_AFTER_CONFIRM','ASK','SPLIT','REFUSE']
+    expected_ask_slot: Literal['payee','biller','amount'] | None = None
+    expected_intent_count: int = Field(ge=1)
+    expected_intent_types: list[Literal['transfer','bill_payment','topup','balance_inquiry','history_inquiry','cancel','unsupported','unclear']]
+    simulated_user_answers: list[str] = []
+    expected_final: Expected = Expected()
+    hand_edited: bool = False
+    review_status: str = 'llm_generated'
+    human_review: str = 'TODO: native Iraqi speaker review'
+
+    @model_validator(mode='after')
+    def consistent(self):
+        f, o = self.expected_final, self.expected_outcome
+        ok = len(self.expected_intent_types) == self.expected_intent_count and {
+            'ASK': self.expected_ask_slot is not None and (not self.simulated_user_answers or f.amount_iqd is not None),
+            'REFUSE': f.refuse_code is not None,
+            'SPLIT': self.expected_intent_count >= 2,
+            'EXECUTE_AFTER_CONFIRM': f.amount_iqd is not None and (f.payee_id if f.type == 'transfer' else f.biller_id) is not None,
+        }[o]
+        if not ok: raise ValueError(f'{self.id}: labels inconsistent with {o}')
+        return self

@@ -5,7 +5,6 @@ __pycache__/
 *.db-shm
 *.db-wal
 .env
-data/generated.json
 *.egg-info/
 
 .test-tmp/
