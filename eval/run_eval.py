@@ -12,7 +12,7 @@ from wallet_api.db import make_engine
 from wallet_api.models import Transaction,Bill,UserBiller
 from data.seed import load_seed
 from app import create_app
-from agent.parser import RuleBasedParser,configured_parser
+from agent.parser import RuleBasedParser,FallbackParser,configured_parser
 from .simulated_user import SimulatedUser
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -137,6 +137,7 @@ def evaluate(parser=None,k=3,report=None,heldout=False):
         ('Held-out set: generated through data/generate_mock_data.py. See DISCLOSURE.md and per-item review_status/human_review for the actual provider and review provenance. Results do not certify human editing.' if heldout else
          'The set is authored and reviewed by the implementation agent. hand_edited denotes curated fixtures, not human or native-speaker approval. Per-item review notes distinguish AI review from pending human review.'),
         ('This report measures the offline rule parser only; it provides no evidence of live Claude accuracy.' if isinstance(parser,RuleBasedParser) else
+         'This report measures the full system as deployed: the model, span checks, and the rule parser when the model fails or its output is rejected.' if isinstance(parser,FallbackParser) else
          f'This report measures the live parser without rule fallback. Configured model: {getattr(parser,"model","unknown")}. Provider failures count as misses; mocked tests are not live accuracy evidence.'),
         'LLM_PROVIDER=ollama writes a separate -ollama report; LLM_PROVIDER=anthropic uses Anthropic credentials and writes -anthropic. The default report always evaluates the offline parser.','']
     audio_lines,audio_unsafe=([],0) if heldout else evaluate_audio(items,parser,k,results)
@@ -176,6 +177,10 @@ if __name__=='__main__':
         live=evaluate(configured_parser(fallback=False),  # measure the LLM alone, not masked by the rule fallback
                       report=ROOT/'eval'/f'report{tag}-{os.environ["LLM_PROVIDER"]}.md',heldout=heldout)
         result['unsafe']+=live['unsafe']
+        # What users actually get: the model plus span checks plus the rule fallback.
+        system=evaluate(configured_parser(fallback=True),
+                        report=ROOT/'eval'/f'report{tag}-{os.environ["LLM_PROVIDER"]}-system.md',heldout=heldout)
+        result['unsafe']+=system['unsafe']
     # Held-out misses are expected and reported honestly; only an unsafe execution fails the run there.
     ok=result['unsafe']==0 and (heldout or result['passed']==result['total'])
     raise SystemExit(0 if ok else 1)

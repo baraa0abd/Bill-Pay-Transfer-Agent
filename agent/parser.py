@@ -102,6 +102,12 @@ def grounded(span, text):
 
 
 def check_spans(intents, text):
+    # A number the user typed must never be silently dropped (a card would then show a different amount).
+    if re.search(r'[0-9٠-٩۰-۹]', text) and not any(i.amount_text for i in intents):
+        raise ValueError('Model dropped a number the user typed')
+    # The same biller or person in two intents is one request split wrongly (e.g. a bill plus a top-up of الوطنية).
+    names=[normalize(n) for i in intents for n in (i.payee_text,i.biller_text) if n]
+    if len(names)!=len(set(names)): raise ValueError('One request split into several')
     for intent in intents:
         for field in ['payee_text','biller_text','amount_text']:
             span=getattr(intent,field)

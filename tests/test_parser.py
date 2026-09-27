@@ -70,3 +70,15 @@ def test_common_iraqi_transfer_verbs(text):
 def test_article_added_by_model_is_grounded():
     from agent.parser import check_spans
     assert check_spans([Intent(type='bill_payment',biller_text='الكهرباء')],'ادفع كهرباء')
+
+
+def test_dropped_number_is_rejected():
+    from agent.parser import check_spans
+    with pytest.raises(ValueError): check_spans([Intent(type='bill_payment',biller_text='الوطنية')],'ادفع الوطنية 10000')
+    assert check_spans([Intent(type='bill_payment',biller_text='الوطنية')],'ادفع الوطنية')
+
+
+def test_same_biller_split_twice_is_rejected():
+    from agent.parser import check_spans
+    with pytest.raises(ValueError):
+        check_spans([Intent(type='bill_payment',biller_text='الوطنية'),Intent(type='topup',biller_text='الوطنية',amount_text='10000')],'ادفع الوطنية 10000')
