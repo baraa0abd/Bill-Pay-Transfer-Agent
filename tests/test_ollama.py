@@ -58,3 +58,14 @@ def test_generator_preserves_existing_data_before_api(monkeypatch, tmp_path):
         with pytest.raises(SystemExit, match='exists'):
             generate()
     assert path.read_text() == 'frozen'
+
+
+def test_small_schema_answers_are_checked_against_wallet():
+    from data.ollama_data import to_item, ExecTransfer, ExecBill
+    wallet = {'contacts': [{'id': 105, 'name': 'خالد', 'nickname': 'خالو'}],
+              'billers': [{'biller_id': 1, 'category': 'electricity_national', 'unpaid_bills_iqd': [12000]},
+                          {'biller_id': 4, 'category': 'water', 'unpaid_bills_iqd': []}]}
+    assert to_item(ExecTransfer, ExecTransfer(text='t', category='happy_transfer', payee_id=999, amount_iqd=1000), wallet) is None
+    bill = to_item(ExecBill, ExecBill(text='t', kind='bill_payment', biller_id=1, amount_iqd=5), wallet)
+    assert bill['expected_final']['amount_iqd'] == 12000  # the recorded bill amount, not the model's guess
+    assert to_item(ExecBill, ExecBill(text='t', kind='bill_payment', biller_id=4, amount_iqd=5), wallet) is None  # nothing unpaid

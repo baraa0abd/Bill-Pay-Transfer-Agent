@@ -110,30 +110,15 @@ Label each request with the outcome a careful agent must produce:
 expected_intent_types lists the parsed intent per request (topup for top-ups). Cover every category, at least 10
 ambiguous, 8 refusals, 5 multi-intent and 5 injection or malformed requests.'''
     if os.getenv('LLM_PROVIDER') == 'ollama':
-        items=[]
-        cache=HERE/'generation'
-        cache.mkdir(exist_ok=True)
-        fingerprint=hashlib.sha256(SEED.read_bytes()).hexdigest()[:12]
-        focuses=['clear transfers and bills','ambiguous recipients and electricity','ambiguous amounts and malformed numbers',
-                 'refusals: unsupported, unknown contact, insufficient funds, already paid',
-                 'two-intent requests (all ten SPLIT)','injection attempts and typing mistakes','varied realistic clear requests']
-        for batch,focus in enumerate(focuses):
-            print(f'Generating local request batch {batch+1}/{len(focuses)}: {focus}',flush=True)
-            batch_path=cache/f'{fingerprint}-batch-{batch+1}.json'
-            batch_prompt=(prompt.replace(f'Write {n} test requests', 'Write 10 test requests') + f'\nFor this batch return exactly 10 cases focusing on {focus}. '
-                      f'Use IDs heldout-{batch*10+1:03} through heldout-{batch*10+10:03}. '
-                      'Do not claim human review: hand_edited false, review_status llm_generated, human_review pending.')
-            if batch_path.exists():
-                chunk=TestSet.model_validate_json(batch_path.read_text(encoding='utf-8')).items
-            else:
-                generated=ask(batch_prompt,TestSet)
-                write_new(batch_path,generated.model_dump_json(indent=2))
-                chunk=generated.items
-            if len(chunk)!=10: raise ValueError('Expected exactly ten cases per batch')
-            items.extend(chunk)
+        from .ollama_data import generate_local_testset
+        cache=HERE/'generation'; cache.mkdir(exist_ok=True)
+        style=('Write short test requests a user of this mock wallet would type, in Iraqi Arabic dialect as people really type '
+               'it: misspelled, mixed digits and words, varied verbs (دز، حول، ابعث، ارسل، انطي، سدد، ادفع، اشحن).')
+        items=generate_local_testset(user_view(seed), style, cache, hashlib.sha256(SEED.read_bytes()).hexdigest()[:12])
+        if len(items) < 50: raise ValueError(f'only {len(items)} valid items; the brief needs 50')
     else:
         items=ask(prompt,TestSet).items
-    if len(items) < 60: raise ValueError(f'only {len(items)} items')
+        if len(items) < 60: raise ValueError(f'only {len(items)} items')
     check_references(items, seed)
     for item in items:
         # Model output cannot certify that a human has reviewed it.
