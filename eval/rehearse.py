@@ -14,11 +14,9 @@ from wallet_api.db import make_engine
 def rehearse():
     root=Path(__file__).resolve().parents[1]
     seed=root/os.getenv('SEED_PATH','data/heldout_seed.json')
-    directory=root/'.test-tmp'
-    directory.mkdir(exist_ok=True)
     steps=[]
     start=time.monotonic()
-    with tempfile.TemporaryDirectory(dir=directory) as temp:
+    with tempfile.TemporaryDirectory() as temp:
         engine=make_engine('sqlite:///'+str(Path(temp)/'demo.db'))
         try:
             load_seed(engine,seed)
