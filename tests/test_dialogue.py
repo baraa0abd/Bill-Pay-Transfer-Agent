@@ -66,3 +66,13 @@ def test_amount_question(dialogue):
     assert r['ask_slot']=='amount'
     r=dialogue.chat(1,'50 ألف',r['conversation_id'])
     assert r['card']['payment']['amount_iqd']==50000
+
+
+def test_parser_outage_fails_closed(engine):
+    load_seed(engine)
+    class Down:
+        def parse(self,text): raise TimeoutError('provider down')
+    r=Dialogue(engine,Down()).chat(1,'دز خمسين ألف لخالو')
+    assert r['code']=='PARSER_UNAVAILABLE'
+    with Session(engine) as s:
+        assert s.scalar(select(func.count()).select_from(Draft))==0

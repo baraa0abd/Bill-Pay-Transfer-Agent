@@ -2,6 +2,8 @@
 
 A local, mock-wallet hackathon app for Iraqi Arabic typed requests, with an optional hosted parser and voice input. **No real money, bank credentials, or real payment integration.**
 
+**For judges:** [Disclosure](DISCLOSURE.md) · [Failure modes](FAILURE_MODES.md) · [Evaluation report](eval/report.md)
+
 ## Run
 
 Python 3.11+ is required. From the repository root:
