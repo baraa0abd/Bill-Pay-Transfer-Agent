@@ -7,13 +7,14 @@ Everything used to build this project. Update this file whenever something is ad
 | Tool | Used for |
 |---|---|
 | OpenAI Codex (agent) | Wrote the initial codebase, tests, seed data and test set in phases 0–11 (commits authored `Codex`, 2026-09-25). Model version: **TODO — fill in from Codex settings** |
-| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, parser-outage test, Anthropic adapter fixes and rule fallback |
+| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, parser-outage test, Claude SDK parser and generator, rule fallback, OpenAI parser removal |
 
 ## Models at runtime
 
 | Component | Model | Status |
 |---|---|---|
-| Intent parser | Anthropic `claude-opus-5` (`LLM_PROVIDER=anthropic`), rule parser as fallback. Offline default is the rule parser. | Live LLM parsing **not yet run**; contract-tested with mocked HTTP only |
+| Intent parser | Anthropic `claude-opus-5` via the `anthropic` Python SDK (`LLM_PROVIDER=anthropic`), rule parser as fallback. Offline default is the rule parser. | Live LLM parsing **not yet run**; contract-tested with a fake client only |
+| Mock data generator | Anthropic `claude-opus-5` (`data/generate_mock_data.py`) | Not yet run |
 | Speech-to-text (stretch) | OpenAI `whisper-1` via `voice/asr.py` | **Not tested with real audio** |
 | Text-to-speech | Interface only (`voice/tts.py`) | Not enabled |
 
@@ -31,10 +32,10 @@ All data is synthetic. No real customer records, phone numbers, accounts or tran
 
 ## Libraries
 
-Runtime: FastAPI, Uvicorn, SQLAlchemy, Pydantic, HTTPX, RapidFuzz, python-multipart.
+Runtime: Anthropic Python SDK, FastAPI, Uvicorn, SQLAlchemy, Pydantic, HTTPX, RapidFuzz, python-multipart.
 Test: pytest, pytest-asyncio, jsonschema.
 Exact versions: `requirements-lock.txt`.
 
 ## External services
 
-None required. Optional: Anthropic or OpenAI API (parser), OpenAI transcription API (voice). Nothing is sent unless the corresponding key is set.
+None required. Optional: Anthropic API (parser, data generation), OpenAI transcription API (voice only). Nothing is sent unless the corresponding key is set.

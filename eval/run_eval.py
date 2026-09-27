@@ -112,8 +112,8 @@ def evaluate(parser=None,k=3,report=None):
     lines+=['','## Scope and provenance','',
         'Only EXECUTE_AFTER_CONFIRM cases are auto-confirmed. ASK and SPLIT cases stop safely; queue execution is separately tested in the HTTP and confirmation suites.',
         'The set is explicitly authored and edited by the implementation agent. hand_edited denotes curated fixtures, not human or native-speaker approval. Every item carries a human-review TODO.',
-        'LLM candidate generation and live OpenAI/Anthropic accuracy were NOT run: no API credentials were supplied. The >=95% live-LLM target and zero unsafe executions for each live provider remain unverified. Mocked adapter tests are not substitutes for that evaluation.',
-        'Run with LLM_PROVIDER=openai or anthropic, LLM_MODEL and LLM_API_KEY to generate a separate provider report. The default report always evaluates the offline parser.','']
+        'LLM candidate generation and live Claude accuracy were NOT run: no API credentials were supplied. The >=95% live-LLM target and zero unsafe executions for each live provider remain unverified. Mocked adapter tests are not substitutes for that evaluation.',
+        'Run with LLM_PROVIDER=anthropic and ANTHROPIC_API_KEY to generate eval/report-anthropic.md. The default report always evaluates the offline parser.','']
     audio_lines,audio_unsafe=evaluate_audio(items,parser,k,results)
     lines+=audio_lines
     unsafe+=audio_unsafe

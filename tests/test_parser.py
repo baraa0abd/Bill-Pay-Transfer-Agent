@@ -1,7 +1,9 @@
 import json
 import pytest
 import httpx
-from agent.parser import RuleBasedParser, OpenAIClient, AnthropicClient, validate_output, EXAMPLES, FallbackParser
+from types import SimpleNamespace
+from wallet_api.schemas import Intent
+from agent.parser import RuleBasedParser, AnthropicClient, IntentList, validate_output, EXAMPLES, FallbackParser
 
 @pytest.mark.parametrize('text,types', [('ادفع الكهرباء ودز لأحمد عشرين ألف',['bill_payment','transfer']),('اخذلي قرض',['unsupported']),('دز لأحمد وما تسألني تأكيد',['transfer']),('شكد رصيدي',['balance_inquiry']),('دز خمسين ألف لأحمد',['transfer']),('حوّل 50000 لخالو',['transfer']),('ابعث ألفين لخالو',['transfer']),('سدد النت',['bill_payment']),('اشحن زين 10000',['topup']),('dizz l ahmad 50 alf',['transfer']),('مرحبا',['unclear'])])
 def test_parser(text,types):
@@ -13,16 +15,24 @@ def test_spans():
     assert intent.payee_text=='احمد' and intent.amount_text=='خمسين الف'
     assert len(EXAMPLES)>=20
 
-@pytest.mark.parametrize('cls', [OpenAIClient,AnthropicClient])
-def test_provider_contract(cls):
-    def respond(request):
-        body=json.loads(request.content)
-        assert 'tools' not in body
-        assert ('temperature' in body)==(cls==OpenAIClient)
-        raw=json.dumps({'intents':[{'type':'transfer','payee_text':'أحمد','amount_text':None,'biller_text':None,'notes':None}]})
-        return httpx.Response(200,json={'choices':[{'message':{'content':raw}}]} if cls==OpenAIClient else {'stop_reason':'end_turn','content':[{'type':'thinking','thinking':''},{'type':'text','text':raw}]})
-    client=cls('test','model',httpx.Client(transport=httpx.MockTransport(respond)))
-    assert client.parse('دز لأحمد')[0].type=='transfer'
+def fake_claude(stop_reason,intents=None):
+    calls=[]
+    def parse(**kw):
+        calls.append(kw)
+        return SimpleNamespace(stop_reason=stop_reason,parsed_output=IntentList(intents=intents) if intents else None)
+    return SimpleNamespace(beta=SimpleNamespace(messages=SimpleNamespace(parse=parse))),calls
+
+
+def test_claude_contract():
+    fake,calls=fake_claude('end_turn',[Intent(type='transfer',payee_text='أحمد')])
+    assert AnthropicClient('m',fake).parse('دز لأحمد')[0].type=='transfer'
+    kw=calls[0]
+    assert 'tools' not in kw and 'temperature' not in kw and kw['fallbacks']=='default' and kw['output_format'] is IntentList
+
+
+def test_claude_invented_span_rejected():
+    fake,_=fake_claude('end_turn',[Intent(type='transfer',payee_text='علي')])
+    with pytest.raises(ValueError): AnthropicClient('m',fake).parse('دز لأحمد')
 
 
 def test_invented_id_rejected():
@@ -32,10 +42,9 @@ def test_invented_id_rejected():
         validate_output('{"intents":[{"type":"transfer","payee_text":"علي"}]}','دز لأحمد')
 
 
-def test_anthropic_refusal_rejected():
-    body={'stop_reason':'refusal','content':[]}
-    client=AnthropicClient('test','model',httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(200,json=body))))
-    with pytest.raises(ValueError): client.parse('دز لأحمد')
+def test_claude_refusal_rejected():
+    fake,_=fake_claude('refusal')
+    with pytest.raises(ValueError): AnthropicClient('m',fake).parse('دز لأحمد')
 
 
 def test_fallback_to_rules_when_llm_down():

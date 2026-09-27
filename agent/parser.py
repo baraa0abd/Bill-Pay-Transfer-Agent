@@ -3,7 +3,7 @@ import json
 import os
 import re
 from typing import Protocol
-import httpx
+import anthropic
 from pydantic import Field
 from wallet_api.schemas import Intent, StrictModel
 from .normalize import normalize
@@ -90,22 +90,7 @@ SYSTEM = ('Extract a list of Iraqi Arabic wallet intents. Never execute, resolve
           '\n'.join(json.dumps({'text':t,'intents':xs},ensure_ascii=False) for t,xs in EXAMPLES))
 
 
-def strict_schema():
-    schema=IntentList.model_json_schema()
-    def walk(value):
-        if isinstance(value,dict):
-            value.pop('default',None)
-            if value.get('type')=='object':
-                value['required']=list(value.get('properties',{})); value['additionalProperties']=False
-            for child in value.values(): walk(child)
-        elif isinstance(value,list):
-            for child in value: walk(child)
-    walk(schema)
-    return schema
-
-
-def validate_output(raw, text):
-    intents=IntentList.model_validate_json(raw).intents
+def check_spans(intents, text):
     for intent in intents:
         for field in ['payee_text','biller_text','amount_text']:
             span=getattr(intent,field)
@@ -118,28 +103,23 @@ def validate_output(raw, text):
     return intents
 
 
-class OpenAIClient:
-    def __init__(self, key, model, transport=None):
-        self.key,self.model,self.transport=key,model,transport or httpx.Client(timeout=30)
+def validate_output(raw, text):
+    return check_spans(IntentList.model_validate_json(raw).intents,text)
+
+
+class AnthropicClient:
+    def __init__(self, model, client=None):
+        self.model,self.client=model,client or anthropic.Anthropic(timeout=60)
 
     def parse(self,text):
-        r=self.transport.post('https://api.openai.com/v1/chat/completions',headers={'Authorization':f'Bearer {self.key}'},json={
-            'model':self.model,'temperature':0,'messages':[{'role':'system','content':SYSTEM},{'role':'user','content':text}],
-            'response_format':{'type':'json_schema','json_schema':{'name':'wallet_intents','strict':True,'schema':strict_schema()}}})
-        r.raise_for_status()
-        return validate_output(r.json()['choices'][0]['message']['content'],text)
-
-
-class AnthropicClient(OpenAIClient):
-    def parse(self,text):
-        # Current Claude models reject temperature; thinking is on by default, so content[0] may be a thinking block.
-        r=self.transport.post('https://api.anthropic.com/v1/messages',headers={'x-api-key':self.key,'anthropic-version':'2023-06-01','anthropic-beta':'server-side-fallback-2026-07-01'},json={
-            'model':self.model,'max_tokens':16000,'fallbacks':'default','system':SYSTEM,'messages':[{'role':'user','content':text}],
+        r=self.client.beta.messages.parse(
+            model=self.model,max_tokens=16000,system=SYSTEM,messages=[{'role':'user','content':text}],
+            output_format=IntentList,
             # ponytail: low effort for short span extraction; raise if the held-out eval shows misses
-            'output_config':{'effort':'low','format':{'type':'json_schema','schema':strict_schema()}}},timeout=60)
-        r.raise_for_status(); body=r.json()
-        if body.get('stop_reason')!='end_turn': raise ValueError(f"no usable output: {body.get('stop_reason')}")
-        return validate_output(next(b['text'] for b in body['content'] if b['type']=='text'),text)
+            output_config={'effort':'low'},
+            betas=['server-side-fallback-2026-07-01'],fallbacks='default')
+        if r.stop_reason!='end_turn' or r.parsed_output is None: raise ValueError(f'no usable output: {r.stop_reason}')
+        return check_spans(r.parsed_output.intents,text)
 
 
 class FallbackParser:
@@ -150,12 +130,11 @@ class FallbackParser:
         except Exception: return self.fallback.parse(text)
 
 
-DEFAULT_MODELS={'anthropic':'claude-opus-5'}
+MODEL=os.getenv('LLM_MODEL','claude-opus-5')
 
 
 def configured_parser(fallback=True):
-    provider=os.getenv('LLM_PROVIDER','rule')
-    if provider=='rule': return RuleBasedParser()
-    client={'openai':OpenAIClient,'anthropic':AnthropicClient}[provider]
-    llm=client(os.environ['LLM_API_KEY'],os.getenv('LLM_MODEL') or DEFAULT_MODELS[provider])
+    # Credentials: ANTHROPIC_API_KEY (or an `ant auth login` profile), resolved by the SDK.
+    if os.getenv('LLM_PROVIDER','rule')=='rule': return RuleBasedParser()
+    llm=AnthropicClient(MODEL)
     return FallbackParser(llm) if fallback else llm
