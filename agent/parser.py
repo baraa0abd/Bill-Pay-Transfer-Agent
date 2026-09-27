@@ -132,15 +132,30 @@ class OpenAIClient:
 
 class AnthropicClient(OpenAIClient):
     def parse(self,text):
-        r=self.transport.post('https://api.anthropic.com/v1/messages',headers={'x-api-key':self.key,'anthropic-version':'2023-06-01'},json={
-            'model':self.model,'max_tokens':2048,'temperature':0,'system':SYSTEM,'messages':[{'role':'user','content':text}],
-            'output_config':{'format':{'type':'json_schema','schema':strict_schema()}}})
-        r.raise_for_status()
-        return validate_output(r.json()['content'][0]['text'],text)
+        # Current Claude models reject temperature; thinking is on by default, so content[0] may be a thinking block.
+        r=self.transport.post('https://api.anthropic.com/v1/messages',headers={'x-api-key':self.key,'anthropic-version':'2023-06-01','anthropic-beta':'server-side-fallback-2026-07-01'},json={
+            'model':self.model,'max_tokens':16000,'fallbacks':'default','system':SYSTEM,'messages':[{'role':'user','content':text}],
+            # ponytail: low effort for short span extraction; raise if the held-out eval shows misses
+            'output_config':{'effort':'low','format':{'type':'json_schema','schema':strict_schema()}}},timeout=60)
+        r.raise_for_status(); body=r.json()
+        if body.get('stop_reason')!='end_turn': raise ValueError(f"no usable output: {body.get('stop_reason')}")
+        return validate_output(next(b['text'] for b in body['content'] if b['type']=='text'),text)
 
 
-def configured_parser():
+class FallbackParser:
+    """LLM first. If the provider is down or its output is rejected, use the conservative rule parser."""
+    def __init__(self, primary): self.primary,self.fallback=primary,RuleBasedParser()
+    def parse(self,text):
+        try: return self.primary.parse(text)
+        except Exception: return self.fallback.parse(text)
+
+
+DEFAULT_MODELS={'anthropic':'claude-opus-5'}
+
+
+def configured_parser(fallback=True):
     provider=os.getenv('LLM_PROVIDER','rule')
     if provider=='rule': return RuleBasedParser()
     client={'openai':OpenAIClient,'anthropic':AnthropicClient}[provider]
-    return client(os.environ['LLM_API_KEY'],os.environ['LLM_MODEL'])
+    llm=client(os.environ['LLM_API_KEY'],os.getenv('LLM_MODEL') or DEFAULT_MODELS[provider])
+    return FallbackParser(llm) if fallback else llm

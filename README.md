@@ -98,7 +98,7 @@ Only normalized exact tokens `أكد`, `اكد`, `تأكيد`, `نعم أكد` c
 
 ## Optional online parsing and data generation
 
-Default `LLM_PROVIDER=rule` needs no credentials and never contacts an LLM. For live parsing set `LLM_PROVIDER=openai` or `anthropic`, `LLM_API_KEY`, and `LLM_MODEL` to a model supporting the corresponding structured output and temperature settings. The adapter passes temperature 0 and a schema, with 24 examples. Models that reject these parameters fail closed and ask the user to retry.
+Default `LLM_PROVIDER=rule` needs no credentials and never contacts an LLM. For live parsing set `LLM_PROVIDER=anthropic` and `LLM_API_KEY` (`LLM_MODEL` defaults to `claude-opus-5`). The Anthropic adapter uses a JSON schema, 24 examples, low effort and server-side refusal fallbacks. If the provider is down, refuses, or returns a span not in the user's text, the app falls back to the rule parser; `make eval` measures the LLM alone, without that fallback.
 
 Adapters follow [OpenAI structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs) and [Anthropic structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs). They are contract-tested offline with mocked HTTP responses; no live-provider accuracy or availability claim is made.
 

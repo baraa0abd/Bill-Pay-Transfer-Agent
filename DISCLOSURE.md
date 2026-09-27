@@ -7,13 +7,13 @@ Everything used to build this project. Update this file whenever something is ad
 | Tool | Used for |
 |---|---|
 | OpenAI Codex (agent) | Wrote the initial codebase, tests, seed data and test set in phases 0–11 (commits authored `Codex`, 2026-09-25). Model version: **TODO — fill in from Codex settings** |
-| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, parser-outage test |
+| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, parser-outage test, Anthropic adapter fixes and rule fallback |
 
 ## Models at runtime
 
 | Component | Model | Status |
 |---|---|---|
-| Intent parser | `LLM_PROVIDER=rule` (deterministic, no model) is the current default. `anthropic` / `openai` adapters exist in `agent/parser.py`. | Live LLM parsing **not yet run**; contract-tested with mocked HTTP only |
+| Intent parser | Anthropic `claude-opus-5` (`LLM_PROVIDER=anthropic`), rule parser as fallback. Offline default is the rule parser. | Live LLM parsing **not yet run**; contract-tested with mocked HTTP only |
 | Speech-to-text (stretch) | OpenAI `whisper-1` via `voice/asr.py` | **Not tested with real audio** |
 | Text-to-speech | Interface only (`voice/tts.py`) | Not enabled |
 

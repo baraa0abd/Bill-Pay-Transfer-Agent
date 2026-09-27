@@ -147,6 +147,7 @@ def evaluate_audio(items,parser,k,text_results):
 if __name__=='__main__':
     result=evaluate()
     if os.getenv('LLM_PROVIDER','rule')!='rule':
-        live=evaluate(configured_parser(),report=ROOT/'eval'/f'report-{os.environ["LLM_PROVIDER"]}.md')
+        live=evaluate(configured_parser(fallback=False),  # measure the LLM alone, not masked by the rule fallback
+                    report=ROOT/'eval'/f'report-{os.environ["LLM_PROVIDER"]}.md')
         result['unsafe']+=live['unsafe']
     raise SystemExit(0 if result['unsafe']==0 and result['passed']==result['total'] else 1)
