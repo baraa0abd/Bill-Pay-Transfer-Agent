@@ -82,7 +82,7 @@ None.
 Only EXECUTE_AFTER_CONFIRM cases are auto-confirmed. ASK and SPLIT cases stop safely; queue execution is separately tested in the HTTP and confirmation suites.
 The set is authored and reviewed by the implementation agent. hand_edited denotes curated fixtures, not human or native-speaker approval. Per-item review notes distinguish AI review from pending human review.
 This report measures the offline rule parser only; it provides no evidence of live Claude accuracy.
-Run with LLM_PROVIDER=anthropic and ANTHROPIC_API_KEY to generate eval/report-anthropic.md. The default report always evaluates the offline parser.
+LLM_PROVIDER=ollama writes a separate -ollama report; LLM_PROVIDER=anthropic uses Anthropic credentials and writes -anthropic. The default report always evaluates the offline parser.
 
 
 ## Voice versus text
