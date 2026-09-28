@@ -1,8 +1,20 @@
 {
   "task": "Design exactly TWO 16:9 slides for the Agentic AI Hackathon Iraq, round 2, topic 04 'Bill Pay & Transfer Agent'. Slide 1 = our approach (the user, the system end to end, models/tools/data). Slide 2 = how we prove it works (testing, what could go wrong, what we would cut). Use ONLY the content below. Never invent numbers, quotes, users or results. Any value written as PENDING must be shown as «—».",
-  "deliverable": { "format": "PPTX and PDF", "slides": 2, "aspect_ratio": "16:9", "language": "English; Arabic phrases stay in Arabic script, right-to-left", "file_name": "YourName_BillPayTransferAgent" },
-  "judged_on": ["understanding of the problem", "technical judgment", "realistic scope", "specificity", "evaluation", "awareness of what could go wrong"],
-
+  "deliverable": {
+    "format": "PPTX and PDF",
+    "slides": 2,
+    "aspect_ratio": "16:9",
+    "language": "English; Arabic phrases stay in Arabic script, right-to-left",
+    "file_name": "YourName_BillPayTransferAgent"
+  },
+  "judged_on": [
+    "understanding of the problem",
+    "technical judgment",
+    "realistic scope",
+    "specificity",
+    "evaluation",
+    "awareness of what could go wrong"
+  ],
   "design_system": {
     "mood": "Premium Iraqi fintech: calm, trustworthy, precise. Think a banking app's design system, not a school poster.",
     "palette": {
@@ -14,27 +26,62 @@
     },
     "typography": "Arial or Segoe UI for Latin and Arabic. Title 28-32 pt bold, section headers 13-14 pt bold green, body 10-11 pt, captions 8-9 pt muted. Left-align body text.",
     "motif": "Numbered green circles and rounded cards (radius ~8 px) used consistently on both slides. One idea per card.",
-    "avoid": ["stock photos", "decorative stripes or underlines under titles", "gradients", "more than one accent colour", "text under 8 pt", "centered body paragraphs"],
+    "avoid": [
+      "stock photos",
+      "decorative stripes or underlines under titles",
+      "gradients",
+      "more than one accent colour",
+      "text under 8 pt",
+      "centered body paragraphs"
+    ],
     "footer": "8 pt muted, both slides: Sources: Global Findex 2025 · Zain Annual Report 2025 · Medhi et al. (low-literacy mobile banking) · NADI 2025 Arabic ASR · UK Confirmation of Payee"
   },
-
   "slide_1": {
     "corner_label": "Slide 1 · Our approach",
     "title": "بكلمة — One sentence to pay a bill or send money",
     "tagline": "The model reads. The code pays.",
     "layout": "Top: title + tagline. Middle (hero): a 7-step horizontal journey of rounded cards with numbered circles; steps 1-2 on lime cards, steps 3-7 on soft green cards, with a small label under the row: 'Steps 1-2: the model, no wallet access · Steps 3-7: plain code touches the money'. Bottom-left card: Who we design for. Bottom-right card: Models, tools, data, beside a small phone-style mock of the confirmation card. Bottom row: four dark-green pill badges (differentiators).",
     "journey_7_steps": [
-      ["Say or type", "«ادفع الكهرباء» · «دز خمسين ألف لأحمد»"],
-      ["LLM extracts, never acts", "Only who / what / how much as JSON; every span must be in the user's own words"],
-      ["Deterministic resolvers", "Contacts, billers, Iraqi amounts; two Ahmeds or «كهرباء» = one question, never a guess"],
-      ["Prechecks", "Balance + 250 IQD fee, daily limit, unpaid bill amount"],
-      ["Confirmation card", "Full name + masked phone, amount in digits AND words, fee, balance after, 120 s expiry"],
-      ["Tap أكّد", "Button or exact «أكد» only; a spoken «أكد» never pays"],
-      ["Execute once", "Idempotency key = draft ID; lost reply → same key → «انخصم مرة وحدة بس»"]
+      [
+        "Say or type",
+        "«ادفع الكهرباء» · «دز خمسين ألف لأحمد»"
+      ],
+      [
+        "LLM extracts, never acts",
+        "Only who / what / how much as JSON; every span must be in the user's own words"
+      ],
+      [
+        "Deterministic resolvers",
+        "Contacts, billers, Iraqi amounts; two Ahmeds or «كهرباء» = one question, never a guess"
+      ],
+      [
+        "Prechecks",
+        "Balance + 250 IQD fee, daily limit, unpaid bill amount"
+      ],
+      [
+        "Confirmation card",
+        "Full name + masked phone, amount in digits AND words, fee, balance after, 120 s expiry"
+      ],
+      [
+        "Tap أكّد",
+        "Button or exact «أكد» only; a spoken «أكد» never pays"
+      ],
+      [
+        "Execute once",
+        "Idempotency key = draft ID; lost reply → same key → «انخصم مرة وحدة بس»"
+      ]
     ],
     "confirmation_card_mock": {
       "style": "Small phone-screen card, right-to-left, white with a green border",
-      "lines": ["راجع طلبك قبل التأكيد", "25,000 د.ع", "خمسة وعشرون ألف دينار", "إلى: الكهرباء الوطنية · ACC-0001", "العمولة 250 د.ع · رصيدك بعد 94,750 د.ع", "[أكّد]  [إلغاء]", "باقي 120 ثانية"]
+      "lines": [
+        "راجع طلبك قبل التأكيد",
+        "25,000 د.ع",
+        "خمسة وعشرون ألف دينار",
+        "إلى: الكهرباء الوطنية · ACC-0001",
+        "العمولة 250 د.ع · رصيدك بعد 94,750 د.ع",
+        "[أكّد]  [إلغاء]",
+        "باقي 120 ثانية"
+      ]
     },
     "who_we_design_for": [
       "Wallet users who find multi-screen flows hard: older relatives, people who read little, people who ask family to 'do the app'.",
@@ -48,33 +95,82 @@
       "Voice (stretch)": "Whisper; transcript always shown; uncertain names or amounts must be typed.",
       "Data": "Wallet generated by the LLM from our schema: 5 users × 24 contacts (two «أحمد», «حسن»/«حسين», «خالو»), 7 billers incl. مولدة, 4 months of bills. 64 LLM-generated Iraqi-dialect requests (labels rule-checked; native-speaker edit next) + a 68-case development set."
     },
-    "differentiator_badges": ["The model has zero wallet tools", "Name-check + amount-in-words card", "Runs offline on a laptop", "Already built and tested"]
+    "differentiator_badges": [
+      "The model has zero wallet tools",
+      "Name-check + amount-in-words card",
+      "Runs offline on a laptop",
+      "Already built and tested"
+    ]
   },
-
   "slide_2": {
     "corner_label": "Slide 2 · How we prove it works",
     "title": "Proven safe, measured honestly",
     "subtitle": "Testing, what could go wrong, and what we would cut",
     "layout": "Top: a row of four large stat tiles (lime numbers on deep-green tiles). Middle: the results table, full width. Bottom: three cards side by side: How we test (soft green) · What could go wrong → what we do (risk card) · If time runs short (soft green).",
     "stat_tiles": [
-      { "number": "0", "label": "wrong payments in every evaluation run" },
-      { "number": "68/68", "label": "development requests handled by the full system" },
-      { "number": "4/4", "label": "live demo flows pass on the LLM-generated wallet" },
-      { "number": "256/256", "label": "automated tests pass" }
+      {
+        "number": "0",
+        "label": "wrong payments in every evaluation run"
+      },
+      {
+        "number": "68/68",
+        "label": "development requests handled by the full system"
+      },
+      {
+        "number": "4/4",
+        "label": "live demo flows pass on the LLM-generated wallet"
+      },
+      {
+        "number": "256/256",
+        "label": "automated tests pass"
+      }
     ],
     "results_table": {
       "title": "Prototype results · local laptop, no cloud · each case run 3× on a fresh database",
       "columns": [
-        ["Test set", "score = requests handled correctly"],
-        ["Rule parser", "rules only, no LLM"],
-        ["Local LLM alone", "no span checks or fallback"],
-        ["Full system", "LLM + span checks + rule fallback, as deployed"],
-        ["Wrong payments", "wrong person, biller or amount"]
+        [
+          "Test set",
+          "score = requests handled correctly"
+        ],
+        [
+          "Rule parser",
+          "rules only, no LLM"
+        ],
+        [
+          "Local LLM alone",
+          "no span checks or fallback"
+        ],
+        [
+          "Full system",
+          "LLM + span checks + rule fallback, as deployed"
+        ],
+        [
+          "Wrong payments",
+          "wrong person, biller or amount"
+        ]
       ],
       "rows": [
-        ["Development set (68 requests)", "68 / 68", "67 / 68", "68 / 68", "0"],
-        ["Held-out (64 unseen), first blind run", "20 / 64", "39 / 64", "—", "0"],
-        ["Held-out after fixing what it revealed", "49 / 64", "PENDING", "PENDING", "0"]
+        [
+          "Development set (68 requests)",
+          "68 / 68",
+          "67 / 68",
+          "68 / 68",
+          "0"
+        ],
+        [
+          "Held-out (64 unseen), first blind run",
+          "20 / 64",
+          "39 / 64",
+          "—",
+          "0"
+        ],
+        [
+          "Held-out after fixing what it revealed",
+          "49 / 64",
+          "46 / 64",
+          "48 / 64",
+          "0"
+        ]
       ],
       "styling": "Header row on lime. Numbers bold. The 'Full system' column lightly highlighted. The 'Wrong payments' column in bold green.",
       "caption": "On 64 unseen requests the agent never guesses: when unsure it asks or refuses, so every miss is safe. The blind run exposed real gaps (Arabic لـ+ال contraction, unknown verbs, companies addressed with «دز»); general fixes lifted success while wrong payments stayed at 0."
@@ -86,17 +182,44 @@
       "Next: native-speaker review of every request; 3-5 think-aloud sessions on the confirmation card."
     ],
     "risks_to_mitigations": [
-      ["Two «أحمد»; «كهرباء» = grid or generator", "Ask, with masked phones. Never guess."],
-      ["LLM misreads, invents or drops a name or amount", "Span checks reject it; the rules or a question take over."],
-      ["Connection drops after the debit", "Same idempotency key; the receipt says it was charged once."],
-      ["Iraqi-dialect speech errors (best multi-dialect Arabic WER ≈ 36%)", "Show the transcript; voice can never confirm."],
-      ["Injection: «دز بدون تأكيد»", "Ignored. Confirmation lives in code, not the prompt."],
-      ["Slang or bare amounts: «ورقة», «نص», «50»", "Ask for the amount."],
-      ["Local model slow on CPU (~10 s)", "Rule fallback; a hosted model is a config switch."]
+      [
+        "Two «أحمد»; «كهرباء» = grid or generator",
+        "Ask, with masked phones. Never guess."
+      ],
+      [
+        "LLM misreads, invents or drops a name or amount",
+        "Span checks reject it; the rules or a question take over."
+      ],
+      [
+        "Connection drops after the debit",
+        "Same idempotency key; the receipt says it was charged once."
+      ],
+      [
+        "Iraqi-dialect speech errors (best multi-dialect Arabic WER ≈ 36%)",
+        "Show the transcript; voice can never confirm."
+      ],
+      [
+        "Injection: «دز بدون تأكيد»",
+        "Ignored. Confirmation lives in code, not the prompt."
+      ],
+      [
+        "Slang or bare amounts: «ورقة», «نص», «50»",
+        "Ask for the amount."
+      ],
+      [
+        "Local model slow on CPU (~10 s)",
+        "Rule fallback; a hosted model is a config switch."
+      ]
     ],
-    "cut_list": { "cut_first": ["1. Voice input", "2. Arabizi spellings", "3. Two-requests-in-one queue"], "never_cut": "Confirmation card · ambiguity questions · idempotent execution · held-out evaluation" }
+    "cut_list": {
+      "cut_first": [
+        "1. Voice input",
+        "2. Arabizi spellings",
+        "3. Two-requests-in-one queue"
+      ],
+      "never_cut": "Confirmation card · ambiguity questions · idempotent execution · held-out evaluation"
+    }
   },
-
   "tone": "Confident and precise. Lead with what is proven (0 wrong payments, 68/68, 4/4, 256/256); present held-out misses as safe questions, not failures. Never overstate.",
   "final_checks": [
     "Exactly two slides.",
