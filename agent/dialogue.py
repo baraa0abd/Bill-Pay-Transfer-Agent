@@ -180,6 +180,14 @@ class Dialogue:
             if not text: return self.question(st,slot)
             result=(resolve_contact if slot=='payee' else resolve_biller)(self.engine,user_id,text)
             if result['status']=='none':
+                # «دز 12000 للوطنية» / «ادفع 3000 لريم»: before refusing, see if the name is the other kind.
+                other=(resolve_biller if slot=='payee' else resolve_contact)(self.engine,user_id,text)
+                if other['status']!='none':
+                    if slot=='payee':
+                        mobile=s.get(Biller,other['candidates'][0]['biller_id']).category=='mobile_topup'
+                        intent.update(type='topup' if mobile else 'bill_payment',biller_text=text,payee_text=None)
+                    else: intent.update(type='transfer',payee_text=text,biller_text=None)
+                    return self.collect(s,user_id,st)
                 return self.refuse(st,'UNKNOWN_PAYEE' if slot=='payee' else 'UNKNOWN_BILLER','ما لگيت هالاسم بحسابك، ما انخصم شي. اكتب الاسم الكامل أو اكتب عرض الأسماء حتى تشوف الموجود.')
             if result['status']=='many': return self.question(st,slot,result['candidates'])
             st[slot]=result['candidates'][0]

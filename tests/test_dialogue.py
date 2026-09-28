@@ -80,3 +80,24 @@ def test_parser_outage_fails_closed(engine):
 
 def test_response_names_parser(dialogue):
     assert dialogue.chat(1,'دز خمسين ألف لأحمد')['parser']=='rules'
+
+
+def test_transfer_to_a_biller_becomes_bill_payment(dialogue):
+    r=dialogue.chat(1,'دز للوطنية')  # «دز» to a company: pay its bill, still via the card
+    assert r['card']['kind']=='bill_payment'
+
+
+def test_bill_to_a_person_becomes_transfer(engine):
+    from wallet_api.schemas import Intent
+    load_seed(engine)
+    class Model:  # what the LLM returns for «ادفع 1000 لخالو»
+        def parse(self,text): return [Intent(type='bill_payment',biller_text='خالو',amount_text='1000')]
+    r=Dialogue(engine,Model()).chat(1,'ادفع 1000 لخالو')
+    assert r['card']['kind']=='transfer' and r['card']['payment']['payee_id']==8
+
+
+def test_reordered_full_name_matches_one_contact(engine):
+    from agent.resolvers import resolve_contact
+    load_seed(engine)
+    r=resolve_contact(engine,1,'علي احمد')  # «أحمد علي» with the words swapped
+    assert r['status']=='one' and r['candidates'][0]['id']==1

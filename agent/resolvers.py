@@ -20,6 +20,9 @@ def resolve_contact(engine, user_id, text):
     with Session(engine) as s:
         for c in s.scalars(select(Contact).where(Contact.user_id == user_id)):
             values = [normalize(c.display_name), normalize(c.nickname or '')]
+            words = set(' '.join(values).split())
+            # «خالد يوسف خالو»: two or more typed words, all from this contact's name or nickname, is an exact match.
+            if len(q.split()) >= 2 and set(q.split()) <= words: values.append(q)
             score = 0
             for name in filter(None, values):
                 if q == name: current = 100
@@ -43,9 +46,12 @@ def resolve_biller(engine, user_id, text):
     elif any(w in q for w in ['رصيد','شحن','اسيا','زين','كورك']):
         categories=['mobile_topup']
         provider=next((p for w,p in [('اسيا','asiacell'),('زين','zain'),('كورك','korek')] if w in q),None)
+    named=' '.join('ال'+w[2:] if w.startswith('لل') else w for w in q.split())
     with Session(engine) as s:
         candidates=[{'id':u.id,'biller_id':b.id,'display_name':b.name_ar,'account_number':u.account_number,'score':100}
             for b,u in s.execute(select(Biller,UserBiller).join(UserBiller).where(UserBiller.user_id == user_id))
-            if (b.category in categories and (provider is None or b.provider == provider)) or normalize(b.name_ar) == q]
+            if (b.category in categories and (provider is None or b.provider == provider)) or normalize(b.name_ar) == q
+            # No category keyword: fall back to the biller's own name (e.g. «الاتصالات» -> «شركة الاتصالات العراقية»).
+            or (not categories and len(named) >= 4 and token_set_ratio(named, normalize(b.name_ar)) >= 90)]
     return rank(candidates)
 
