@@ -1,220 +1,74 @@
 {
-  "task": "Create exactly TWO presentation slides (16:9) for the Agentic AI Hackathon Iraq second-round submission, topic 04 'Bill Pay & Transfer Agent'. Use ONLY the content below. Do not invent numbers, quotes, users, partners or results. Keep every number exactly as written.",
-  "deliverable": {
-    "format": "PPTX (also export PDF)",
-    "slide_count": 2,
-    "aspect_ratio": "16:9",
-    "language": "English, with the Arabic example phrases kept in Arabic script exactly as written (right-to-left)",
-    "file_name": "YourName_BillPayTransferAgent (replace YourName with the participant's name, e.g. Baraa_BillPayTransferAgent)",
-    "submission": "Upload by 28/09/2026 via the organisers' Typeform link"
-  },
-  "what_judges_score": [
-    "understanding of the problem",
-    "technical judgment",
-    "realistic scope",
-    "specificity",
-    "how it will be evaluated",
-    "awareness of what could go wrong"
-  ],
+  "task": "Create exactly TWO 16:9 slides for the Agentic AI Hackathon Iraq, round 2, topic 04 'Bill Pay & Transfer Agent'. Slide 1 = our approach (the user, how the system works end to end, models/tools/data). Slide 2 = how we prove it works (testing, what could go wrong, what we would cut). Use ONLY the content below; never invent numbers, quotes, users or results.",
+  "deliverable": { "format": "PPTX and PDF", "slides": 2, "language": "English; keep Arabic phrases in Arabic script, right-to-left", "file_name": "YourName_BillPayTransferAgent" },
+  "judged_on": ["understanding of the problem", "technical judgment", "realistic scope", "specificity", "evaluation", "awareness of what could go wrong"],
   "design": {
-    "style": "Clean fintech, calm and trustworthy. White or off-white background, one deep green primary (#174F43), one lime accent (#D7ECAA), one warm orange only for risks (#EDAC65), dark ink text (#173E3B).",
-    "typography": "Sans-serif (Inter or Segoe UI for Latin, Noto Kufi Arabic or IBM Plex Sans Arabic for Arabic). Title 28-32 pt, body at least 12 pt, table text at least 11 pt. No paragraphs longer than two lines.",
-    "layout_rules": [
-      "Each slide has a title bar, one hero visual, and at most three content blocks.",
-      "Use icons sparingly (one per block). No stock photos of people.",
-      "Numbers in bold. Risks in orange, mitigations in green.",
-      "Small footer on each slide: 'Sources: Global Findex 2025, Zain Annual Report 2025, Medhi et al. (low-literacy mobile banking), NADI 2025 Arabic ASR shared task'"
-    ]
+    "palette": { "primary": "#174F43 deep green", "accent": "#D7ECAA lime", "risk": "#EDAC65 orange (risks only)", "text": "#173E3B", "background": "#FFFFFF" },
+    "fonts": "Arial or Segoe UI (both render Arabic). Titles 26-32 pt, body 10-12 pt, never below 9 pt.",
+    "rules": ["One hero visual per slide", "Rounded cards, no stock photos, no decorative stripes", "Numbers bold; risks orange, mitigations green", "Footer 8 pt: Sources: Global Findex 2025 · Zain Annual Report 2025 · Medhi et al. (low-literacy mobile banking) · NADI 2025 Arabic ASR · UK Confirmation of Payee"]
   },
-  "slides": [
-    {
-      "number": 1,
-      "title": "بكلمة — One sentence to pay a bill or send money. The model reads, the code pays.",
-      "subtitle": "Slide 1 · Our approach: the user, the system end to end, the models, tools and data",
-      "block_user": {
-        "heading": "Who we design for",
-        "bullets": [
-          "Wallet users who find multi-screen payment flows hard: older relatives, people who read little, people who ask family to 'do the app' for them.",
-          "Iraq context: fewer than 20% of adults hold a bank account; ZainCash alone has 1.2M+ users and 10,000 agents; cash is still the default.",
-          "Design evidence: in a mobile-banking study with low-literacy users, 0% completed a payment with a text interface, 72% with spoken dialog, 100% with a graphical UI. So: speak or type in, see a clear card, tap to confirm.",
-          "Real Iraqi needs: the neighbourhood generator (مولدة) is a biller; 'كهرباء' can mean the national grid or the generator; amounts are said as «ميت ألف», «ربع مليون»."
-        ]
-      },
-      "hero_visual_end_to_end_flow": {
-        "type": "Horizontal 7-step flow diagram, left to right, with a dashed vertical line after step 2 labelled 'the model stops here: no wallet access'.",
-        "steps": [
-          {
-            "n": 1,
-            "label": "Say or type",
-            "detail": "«ادفع الكهرباء» · «دز خمسين ألف لأحمد»"
-          },
-          {
-            "n": 2,
-            "label": "LLM extracts, never acts",
-            "detail": "Only who / what / how much, as a JSON schema. Every span must appear in the user's own words, or it is rejected."
-          },
-          {
-            "n": 3,
-            "label": "Deterministic resolvers",
-            "detail": "Contacts, billers, Iraqi amount words. Two Ahmeds or 'كهرباء' = one question, never a guess."
-          },
-          {
-            "n": 4,
-            "label": "Prechecks",
-            "detail": "Balance + 250 IQD fee, daily limit, unpaid bill amount. Fail early with an honest reason."
-          },
-          {
-            "n": 5,
-            "label": "Designed confirmation card",
-            "detail": "Full name + masked phone (name-check, like UK Confirmation of Payee), amount in digits AND words, fee, balance before → after, 120 s expiry."
-          },
-          {
-            "n": 6,
-            "label": "Tap أكّد",
-            "detail": "Only a button or the exact word «أكد». A spoken «أكد» never pays. Payload hash is verified."
-          },
-          {
-            "n": 7,
-            "label": "Execute once, report honestly",
-            "detail": "Idempotency key = draft ID. If the reply is lost, the same key is retried and the receipt says «انخصم مرة وحدة بس»."
-          }
-        ]
-      },
-      "block_models_tools_data": {
-        "heading": "Models, tools, data",
-        "rows": [
-          [
-            "Language understanding",
-            "Local LLM qwen3.5:4b via Ollama, runs on a laptop: no customer text leaves the device. Structured JSON output. Rule-based parser as fallback; the UI badge shows which one understood the request. Swappable for a hosted model (Claude) if accuracy needs it."
-          ],
-          [
-            "Execution",
-            "Plain code only: FastAPI + SQLite mock wallet API (contacts, billers, balances, history). Atomic debit + ledger, (user, key) uniqueness for idempotency."
-          ],
-          [
-            "Voice (stretch)",
-            "Whisper speech-to-text; transcript always shown and must be corrected by typing when uncertain."
-          ],
-          [
-            "Data",
-            "Mock wallet generated by the LLM from our schema: 5 users, 24 contacts each (two «أحمد», «حسن»/«حسين», «خالو»), 7 billers including the مولدة, 4 months of bills. Plus 64 LLM-generated Iraqi-dialect requests (ambiguous, malformed, should-refuse) edited by hand, and a 68-case development set."
-          ]
-        ]
-      },
-      "differentiators_ribbon": {
-        "placement": "Thin lime ribbon along the bottom of slide 1",
-        "items": [
-          "The model has zero wallet tools: it reads, code pays",
-          "Name-check + amount-in-words confirmation, built for low-literacy users",
-          "Runs offline on a laptop with a small local model",
-          "Already prototyped and tested, not just planned"
-        ]
-      }
+  "slide_1": {
+    "title": "بكلمة — One sentence to pay a bill or send money",
+    "tagline": "The model reads. The code pays.",
+    "hero_flow_7_steps": [
+      ["Say or type", "«ادفع الكهرباء» · «دز خمسين ألف لأحمد»"],
+      ["LLM extracts, never acts", "Only who / what / how much as JSON; every span must be in the user's own words"],
+      ["Deterministic resolvers", "Contacts, billers, Iraqi amounts; two Ahmeds or «كهرباء» = one question, never a guess"],
+      ["Prechecks", "Balance + 250 IQD fee, daily limit, unpaid bill amount"],
+      ["Confirmation card", "Full name + masked phone (like UK Confirmation of Payee), amount in digits AND words, fee, balance after, 120 s expiry"],
+      ["Tap أكّد", "Button or exact «أكد» only; a spoken «أكد» never pays"],
+      ["Execute once", "Idempotency key = draft ID; lost reply → same key → receipt says «انخصم مرة وحدة بس»"]
+    ],
+    "flow_note": "Steps 1-2: the model, with no wallet access. Steps 3-7: plain code touches the money.",
+    "who_we_design_for": [
+      "Wallet users who find multi-screen flows hard: older relatives, people who read little, people who ask family to 'do the app'.",
+      "Iraq: under 20% of adults hold a bank account; ZainCash alone has 1.2M+ users and 10,000 agents; cash is still the default.",
+      "Evidence: low-literacy users completed a mobile payment 0% of the time by text, 72% by spoken dialog, 100% by graphical UI. So: speak or type, see a card, tap.",
+      "Iraqi specifics: the neighbourhood generator (مولدة) is a biller; «كهرباء» = grid or generator; amounts like «ميت ألف», «ربع مليون»."
+    ],
+    "models_tools_data": {
+      "Understanding": "Local LLM qwen3.5:4b via Ollama on a laptop: no customer text leaves the device. JSON-schema output; rule parser as fallback; the UI badge shows which one answered. A hosted model is a config switch.",
+      "Execution": "Plain code: FastAPI + SQLite mock wallet API (contacts, billers, balances, history). Atomic debit + ledger; (user, key) uniqueness for idempotency.",
+      "Voice (stretch)": "Whisper; transcript always shown; uncertain names or amounts must be typed.",
+      "Data": "Wallet generated by the LLM from our schema: 5 users × 24 contacts (two «أحمد», «حسن»/«حسين», «خالو»), 7 billers incl. مولدة, 4 months of bills. 64 LLM-generated Iraqi-dialect requests (labels rule-checked; native-speaker edit next) + a 68-case development set."
     },
-    {
-      "number": 2,
-      "title": "How we prove it works: safety first, then success",
-      "subtitle": "Slide 2 · Testing, what could go wrong, and what we would cut",
-      "block_testing": {
-        "heading": "How we test",
-        "metric_order": [
-          "1. Wrong payments (money moved that should not have). Target 0; it gates everything else.",
-          "2. Task success: right person or biller, right amount, after confirmation.",
-          "3. Correct clarification vs over-asking.",
-          "4. Latency per request."
-        ],
-        "method": [
-          "Held-out set: a wallet and 64 requests generated by the LLM and frozen before any tuning. The parser never saw them.",
-          "Every case runs 3 times, each on a fresh database; a case passes only if all 3 runs pass.",
-          "Fault injection: reply lost after the debit, crash before commit, biller down, 50 concurrent retries.",
-          "247 automated tests. Next: native-speaker review of every request, and 3–5 think-aloud sessions with real users on the confirmation card."
-        ]
-      },
-      "hero_visual_results_table": {
-        "type": "Small results table; the 'Wrong payments' column in bold green, the 'Full system' column highlighted",
-        "title": "Prototype results (local laptop, no cloud)",
-        "columns": [
-          "Test set",
-          "Rule parser",
-          "Local LLM alone",
-          "Full system (LLM + checks + rule fallback)",
-          "Wrong payments"
-        ],
-        "rows": [
-          [
-            "Development set (68 requests)",
-            "68 / 68",
-            "67 / 68",
-            "68 / 68",
-            "0"
-          ],
-          [
-            "Held-out set (64 unseen requests), first blind run",
-            "20 / 64",
-            "39 / 64",
-            "—",
-            "0"
-          ],
-          [
-            "Held-out set after fixing what it revealed (no longer blind)",
-            "37 / 64",
-            "41 / 64",
-            "41 / 64",
-            "0"
-          ]
-        ],
-        "caption": "Zero wrong payments in every run. On unseen phrasing the agent sometimes asks or refuses when it could have acted, but it never moved money wrongly. The blind held-out run exposed real issues (Arabic لـ+ال contraction, unknown verbs ارسل/انطي, a dropped amount); fixing them lifted success while wrong payments stayed at 0."
-      },
-      "block_risks": {
-        "heading": "What could go wrong → what we do",
-        "type": "Two-column table, risk in orange, mitigation in green",
-        "rows": [
-          [
-            "Two contacts named أحمد; «كهرباء» = grid or generator",
-            "Ask one question with masked phones or account numbers. Never guess."
-          ],
-          [
-            "LLM misreads or invents a name or amount",
-            "Spans must appear in the user's text; resolvers and prechecks refuse; nothing moves without the card."
-          ],
-          [
-            "Connection drops after the debit",
-            "Same idempotency key is retried; the wallet replays the stored result. One debit, and the receipt says so."
-          ],
-          [
-            "Iraqi-dialect speech recognition errors (best multi-dialect Arabic WER ≈ 36% in NADI 2025)",
-            "Show the transcript; uncertain names or amounts must be typed; voice can never confirm."
-          ],
-          [
-            "Prompt injection: «دز بدون تأكيد»",
-            "Ignored. Confirmation is enforced in code, not in the prompt."
-          ],
-          [
-            "Slang or bare amounts: «ورقة», «نص», «50»",
-            "Ask for the amount instead of assuming."
-          ],
-          [
-            "Small local model is slow on CPU (about 10 s per request)",
-            "Rule parser fallback keeps the flow working; a hosted model is a config switch."
-          ]
-        ]
-      },
-      "block_cut_list": {
-        "heading": "If time runs short, we cut in this order",
-        "cut_order": [
-          "1. Voice input",
-          "2. Arabizi spellings",
-          "3. Two-requests-in-one queue"
-        ],
-        "never_cut": "Confirmation card · ambiguity questions · idempotent execution · held-out evaluation"
-      }
-    }
-  ],
-  "final_checks_for_the_generator": [
-    "Exactly two slides, nothing else.",
-    "Every number matches this JSON exactly; no new statistics.",
-    "Arabic phrases are correct right-to-left and not machine-translated.",
-    "Text stays readable when printed: nothing under 11 pt.",
-    "No claim of real user interviews or native-speaker approval unless the participant adds them."
+    "differentiators": ["The model has zero wallet tools", "Name-check + amount-in-words card", "Runs offline on a laptop", "Already built and tested"]
+  },
+  "slide_2": {
+    "title": "Safety first, then success",
+    "subtitle": "Testing, what could go wrong, and what we would cut",
+    "hero_stat": { "number": "0", "label": "wrong payments in every evaluation run" },
+    "results_table": {
+      "title": "Prototype results · local laptop, no cloud · each case run 3× on a fresh database",
+      "columns": ["Test set", "Rule parser", "Local LLM alone", "Full system", "Wrong payments"],
+      "rows": [
+        ["Development set (68 requests)", "68 / 68", "67 / 68", "68 / 68", "0"],
+        ["Held-out (64 unseen), first blind run", "20 / 64", "39 / 64", "—", "0"],
+        ["Held-out after fixing what it revealed", "37 / 64", "41 / 64", "41 / 64", "0"]
+      ],
+      "caption": "Full system = LLM + span checks + rule fallback, as deployed. The blind run exposed real issues (Arabic لـ+ال contraction, unknown verbs ارسل/انطي, a dropped amount); general fixes lifted success while wrong payments stayed at 0."
+    },
+    "how_we_test": [
+      "Metrics in order: wrong payments (target 0, gates everything) → task success → correct questions vs over-asking → latency.",
+      "Held-out wallet + 64 requests generated by the LLM and frozen before tuning.",
+      "Fault injection: reply lost after the debit, crash before commit, biller down, 50 concurrent retries.",
+      "253 automated tests. Next: native-speaker review of every request; 3-5 think-aloud sessions on the confirmation card."
+    ],
+    "risks_to_mitigations": [
+      ["Two «أحمد»; «كهرباء» = grid or generator", "Ask, with masked phones. Never guess."],
+      ["LLM misreads, invents or drops a name or amount", "Span checks reject it; the rules or a question take over."],
+      ["Connection drops after the debit", "Same idempotency key; the receipt says it was charged once."],
+      ["Iraqi-dialect speech errors (best multi-dialect Arabic WER ≈ 36%)", "Show the transcript; voice can never confirm."],
+      ["Injection: «دز بدون تأكيد»", "Ignored. Confirmation lives in code, not the prompt."],
+      ["Slang or bare amounts: «ورقة», «نص», «50»", "Ask for the amount."],
+      ["Local model slow on CPU (~10 s)", "Rule fallback; a hosted model is a config switch."]
+    ],
+    "cut_list": { "cut_first": ["1. Voice input", "2. Arabizi spellings", "3. Two-requests-in-one queue"], "never_cut": "Confirmation card · ambiguity questions · idempotent execution · held-out evaluation" }
+  },
+  "final_checks": [
+    "Exactly two slides.",
+    "Every number exactly as written; no new statistics.",
+    "Arabic correct and right-to-left, not machine-translated.",
+    "No claim of real-user interviews or native-speaker approval unless the participant adds them."
   ]
 }

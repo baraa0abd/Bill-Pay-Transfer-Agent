@@ -71,7 +71,7 @@ const footer = s => text(s, 'Sources: Global Findex 2025 · Zain Annual Report 2
     ['Understanding', 'Local LLM qwen3.5:4b (Ollama) on a laptop: no customer text leaves the device. JSON schema output; rule parser fallback; UI badge shows which one answered. Hosted model is a config switch.'],
     ['Execution', 'Plain code: FastAPI + SQLite mock wallet API. Atomic debit + ledger; (user, key) uniqueness.'],
     ['Voice (stretch)', 'Whisper; transcript always shown, uncertain names/amounts must be typed.'],
-    ['Data', 'LLM-generated wallet from our schema: 5 users × 24 contacts (two «أحمد», «حسن»/«حسين», «خالو»), 7 billers incl. مولدة, 4 months of bills. 64 LLM-generated dialect requests + 68-case dev set.'],
+    ['Data', 'LLM-generated wallet from our schema: 5 users × 24 contacts (two «أحمد», «حسن»/«حسين», «خالو»), 7 billers incl. مولدة, 4 months of bills. 64 LLM-generated dialect requests (rule-checked; native-speaker edit next) + 68-case dev set.'],
   ];
   text(s, rows.map(([k, v], i) => [
     { text: k + '  ', options: { bold: true, color: C.green } },
