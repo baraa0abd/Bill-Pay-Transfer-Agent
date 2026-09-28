@@ -2,7 +2,7 @@
   "provider": "ollama",
   "model": "qwen3.5:4b",
   "seed": "data\\heldout_seed.json",
-  "seconds": 41.55,
+  "seconds": 36.95,
   "steps": [
     "Electricity: asked which supplier; no debit before confirmation; confirmed exactly one payment.",
     "Ahmed: asked which contact; cancellation left balance unchanged.",
