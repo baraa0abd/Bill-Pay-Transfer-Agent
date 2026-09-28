@@ -33,8 +33,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "d98a2e5f-4eef-4bdc-82c9-a2faa73dc9dc",
-            "expires_at": 1790544859,
+            "draft_id": "088d18d4-9555-49c7-a77e-c992df24063a",
+            "expires_at": 1790550937,
             "amount_words": "عشرون ألف دينار",
             "balance_after": 264750,
             "balance_before": 285000,
@@ -58,17 +58,17 @@
           },
           "transactions": [
             {
-              "id": "986a5daa-0011-4366-a692-9004723b40f3",
+              "id": "f2c60d73-53a1-41d0-aded-119a728e3257",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "105",
               "amount_iqd": 20000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544739,
-              "idempotency_key": "d98a2e5f-4eef-4bdc-82c9-a2faa73dc9dc",
+              "created_at": 1790550817,
+              "idempotency_key": "088d18d4-9555-49c7-a77e-c992df24063a",
               "request_fingerprint": "1eef65e25d9f26b3a6c7fbeb8433348c75a426e910bad0e1c70266925465773c",
-              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790544739,\"fee_iqd\":250,\"id\":\"986a5daa-0011-4366-a692-9004723b40f3\",\"idempotency_key\":\"d98a2e5f-4eef-4bdc-82c9-a2faa73dc9dc\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790550817,\"fee_iqd\":250,\"id\":\"f2c60d73-53a1-41d0-aded-119a728e3257\",\"idempotency_key\":\"088d18d4-9555-49c7-a77e-c992df24063a\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -86,8 +86,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "9e3e8555-914c-4233-859a-696207a71046",
-            "expires_at": 1790544865,
+            "draft_id": "c996b3db-cf7b-4ef1-af5d-fefa149d07b9",
+            "expires_at": 1790550942,
             "amount_words": "عشرون ألف دينار",
             "balance_after": 264750,
             "balance_before": 285000,
@@ -111,17 +111,17 @@
           },
           "transactions": [
             {
-              "id": "ea2044c3-ea20-496a-ba6c-aa78e2d79ddf",
+              "id": "5f5c38d0-5ac3-4fa6-929e-2b9403402b2e",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "105",
               "amount_iqd": 20000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544745,
-              "idempotency_key": "9e3e8555-914c-4233-859a-696207a71046",
+              "created_at": 1790550822,
+              "idempotency_key": "c996b3db-cf7b-4ef1-af5d-fefa149d07b9",
               "request_fingerprint": "1eef65e25d9f26b3a6c7fbeb8433348c75a426e910bad0e1c70266925465773c",
-              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790544745,\"fee_iqd\":250,\"id\":\"ea2044c3-ea20-496a-ba6c-aa78e2d79ddf\",\"idempotency_key\":\"9e3e8555-914c-4233-859a-696207a71046\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790550822,\"fee_iqd\":250,\"id\":\"5f5c38d0-5ac3-4fa6-929e-2b9403402b2e\",\"idempotency_key\":\"c996b3db-cf7b-4ef1-af5d-fefa149d07b9\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -139,8 +139,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "8d7ff343-13db-459d-8627-7f70ee6b3ca3",
-            "expires_at": 1790544872,
+            "draft_id": "0039e0bd-b780-4ee0-a8b0-e6f08aef584d",
+            "expires_at": 1790550948,
             "amount_words": "عشرون ألف دينار",
             "balance_after": 264750,
             "balance_before": 285000,
@@ -164,17 +164,17 @@
           },
           "transactions": [
             {
-              "id": "9da08ad9-8407-483e-870a-308f27a34292",
+              "id": "39d90e9d-7363-4f54-8881-9e04d4871cf3",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "105",
               "amount_iqd": 20000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544752,
-              "idempotency_key": "8d7ff343-13db-459d-8627-7f70ee6b3ca3",
+              "created_at": 1790550828,
+              "idempotency_key": "0039e0bd-b780-4ee0-a8b0-e6f08aef584d",
               "request_fingerprint": "1eef65e25d9f26b3a6c7fbeb8433348c75a426e910bad0e1c70266925465773c",
-              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790544752,\"fee_iqd\":250,\"id\":\"9da08ad9-8407-483e-870a-308f27a34292\",\"idempotency_key\":\"8d7ff343-13db-459d-8627-7f70ee6b3ca3\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790550828,\"fee_iqd\":250,\"id\":\"39d90e9d-7363-4f54-8881-9e04d4871cf3\",\"idempotency_key\":\"0039e0bd-b780-4ee0-a8b0-e6f08aef584d\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -216,8 +216,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "cedd9aa3-140c-448f-b4cf-74bba55036a6",
-            "expires_at": 1790544883,
+            "draft_id": "e2a982a9-54ca-4592-a9a8-bbfd075603fd",
+            "expires_at": 1790550958,
             "amount_words": "خمسة وثلاثون ألف دينار",
             "balance_after": 249750,
             "balance_before": 285000,
@@ -241,17 +241,17 @@
           },
           "transactions": [
             {
-              "id": "55737892-7ed5-4259-93e2-c0f8180efa6f",
+              "id": "1034ec07-af9c-4d35-a688-c208a91014d9",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "109",
               "amount_iqd": 35000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544763,
-              "idempotency_key": "cedd9aa3-140c-448f-b4cf-74bba55036a6",
+              "created_at": 1790550838,
+              "idempotency_key": "e2a982a9-54ca-4592-a9a8-bbfd075603fd",
               "request_fingerprint": "050837e94c2002ca53618e614ffbfd31170429ed9779314956141ec54251e26a",
-              "receipt_json": "{\"amount_iqd\":35000,\"balance_iqd\":249750,\"created_at\":1790544763,\"fee_iqd\":250,\"id\":\"55737892-7ed5-4259-93e2-c0f8180efa6f\",\"idempotency_key\":\"cedd9aa3-140c-448f-b4cf-74bba55036a6\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":35000,\"balance_iqd\":249750,\"created_at\":1790550838,\"fee_iqd\":250,\"id\":\"1034ec07-af9c-4d35-a688-c208a91014d9\",\"idempotency_key\":\"e2a982a9-54ca-4592-a9a8-bbfd075603fd\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -269,8 +269,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "b74dd18d-d9ab-4bdb-8c92-ea52d08489a1",
-            "expires_at": 1790544891,
+            "draft_id": "55ad23aa-9e2d-455b-9d3a-a255cf2964b4",
+            "expires_at": 1790550964,
             "amount_words": "خمسة وثلاثون ألف دينار",
             "balance_after": 249750,
             "balance_before": 285000,
@@ -294,17 +294,17 @@
           },
           "transactions": [
             {
-              "id": "02679934-6760-40de-8c13-b88da32fcf87",
+              "id": "97df3985-94ee-4328-a8ed-a8767505df7e",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "109",
               "amount_iqd": 35000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544771,
-              "idempotency_key": "b74dd18d-d9ab-4bdb-8c92-ea52d08489a1",
+              "created_at": 1790550844,
+              "idempotency_key": "55ad23aa-9e2d-455b-9d3a-a255cf2964b4",
               "request_fingerprint": "050837e94c2002ca53618e614ffbfd31170429ed9779314956141ec54251e26a",
-              "receipt_json": "{\"amount_iqd\":35000,\"balance_iqd\":249750,\"created_at\":1790544771,\"fee_iqd\":250,\"id\":\"02679934-6760-40de-8c13-b88da32fcf87\",\"idempotency_key\":\"b74dd18d-d9ab-4bdb-8c92-ea52d08489a1\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":35000,\"balance_iqd\":249750,\"created_at\":1790550844,\"fee_iqd\":250,\"id\":\"97df3985-94ee-4328-a8ed-a8767505df7e\",\"idempotency_key\":\"55ad23aa-9e2d-455b-9d3a-a255cf2964b4\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -322,8 +322,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "9b4006ff-6e3e-478f-895a-81082d6c68ff",
-            "expires_at": 1790544899,
+            "draft_id": "57eba142-8a20-41fd-8145-905788fb65e5",
+            "expires_at": 1790550970,
             "amount_words": "خمسة وثلاثون ألف دينار",
             "balance_after": 249750,
             "balance_before": 285000,
@@ -347,17 +347,17 @@
           },
           "transactions": [
             {
-              "id": "f5be884c-88fb-44bf-92a2-610186505ebe",
+              "id": "546ebec0-667e-4ef2-9a7b-e34863014859",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "109",
               "amount_iqd": 35000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544780,
-              "idempotency_key": "9b4006ff-6e3e-478f-895a-81082d6c68ff",
+              "created_at": 1790550850,
+              "idempotency_key": "57eba142-8a20-41fd-8145-905788fb65e5",
               "request_fingerprint": "050837e94c2002ca53618e614ffbfd31170429ed9779314956141ec54251e26a",
-              "receipt_json": "{\"amount_iqd\":35000,\"balance_iqd\":249750,\"created_at\":1790544780,\"fee_iqd\":250,\"id\":\"f5be884c-88fb-44bf-92a2-610186505ebe\",\"idempotency_key\":\"9b4006ff-6e3e-478f-895a-81082d6c68ff\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":35000,\"balance_iqd\":249750,\"created_at\":1790550850,\"fee_iqd\":250,\"id\":\"546ebec0-667e-4ef2-9a7b-e34863014859\",\"idempotency_key\":\"57eba142-8a20-41fd-8145-905788fb65e5\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -395,9 +395,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -411,9 +411,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -427,9 +427,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -471,8 +471,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "d8bac0d4-cc2c-40f5-8a0c-b56cb2acd7ff",
-            "expires_at": 1790544943,
+            "draft_id": "60e8c9f5-cd91-4a8f-9835-5914501052e3",
+            "expires_at": 1790551006,
             "amount_words": "خمسة عشر ألف دينار",
             "balance_after": 269750,
             "balance_before": 285000,
@@ -496,17 +496,17 @@
           },
           "transactions": [
             {
-              "id": "1239492f-3a71-4b8a-be88-26d3a7c4f63a",
+              "id": "4eeb43f2-29c8-488c-bc86-47a1535f1ac7",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 15000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544823,
-              "idempotency_key": "d8bac0d4-cc2c-40f5-8a0c-b56cb2acd7ff",
+              "created_at": 1790550886,
+              "idempotency_key": "60e8c9f5-cd91-4a8f-9835-5914501052e3",
               "request_fingerprint": "cbd3ff90d33212caa0f3b25d3b107f42c3c128f36f09c82911c9a6ca88eff61f",
-              "receipt_json": "{\"amount_iqd\":15000,\"balance_iqd\":269750,\"created_at\":1790544823,\"fee_iqd\":250,\"id\":\"1239492f-3a71-4b8a-be88-26d3a7c4f63a\",\"idempotency_key\":\"d8bac0d4-cc2c-40f5-8a0c-b56cb2acd7ff\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":15000,\"balance_iqd\":269750,\"created_at\":1790550886,\"fee_iqd\":250,\"id\":\"4eeb43f2-29c8-488c-bc86-47a1535f1ac7\",\"idempotency_key\":\"60e8c9f5-cd91-4a8f-9835-5914501052e3\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -524,8 +524,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "ae006b6d-999b-4740-9511-dfed8740809e",
-            "expires_at": 1790544951,
+            "draft_id": "05548dbb-ec50-4e52-934b-4919ac25cbda",
+            "expires_at": 1790551012,
             "amount_words": "خمسة عشر ألف دينار",
             "balance_after": 269750,
             "balance_before": 285000,
@@ -549,17 +549,17 @@
           },
           "transactions": [
             {
-              "id": "5e831d2f-a670-4b30-adaa-b0c99ca42213",
+              "id": "646517ec-bdff-4745-8592-7bdb26a55f9f",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 15000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544831,
-              "idempotency_key": "ae006b6d-999b-4740-9511-dfed8740809e",
+              "created_at": 1790550892,
+              "idempotency_key": "05548dbb-ec50-4e52-934b-4919ac25cbda",
               "request_fingerprint": "cbd3ff90d33212caa0f3b25d3b107f42c3c128f36f09c82911c9a6ca88eff61f",
-              "receipt_json": "{\"amount_iqd\":15000,\"balance_iqd\":269750,\"created_at\":1790544831,\"fee_iqd\":250,\"id\":\"5e831d2f-a670-4b30-adaa-b0c99ca42213\",\"idempotency_key\":\"ae006b6d-999b-4740-9511-dfed8740809e\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":15000,\"balance_iqd\":269750,\"created_at\":1790550892,\"fee_iqd\":250,\"id\":\"646517ec-bdff-4745-8592-7bdb26a55f9f\",\"idempotency_key\":\"05548dbb-ec50-4e52-934b-4919ac25cbda\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -577,8 +577,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "dd218975-cc88-4ff9-b744-e8e68cdbc7dc",
-            "expires_at": 1790544960,
+            "draft_id": "07e82307-e1e1-4074-911a-8d5df04bda1d",
+            "expires_at": 1790551018,
             "amount_words": "خمسة عشر ألف دينار",
             "balance_after": 269750,
             "balance_before": 285000,
@@ -602,17 +602,17 @@
           },
           "transactions": [
             {
-              "id": "340ad5dd-cc07-4ec1-9caf-957dc07b9ec5",
+              "id": "3ab429d0-bcec-4641-9a9c-a8040b7f59f7",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 15000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544840,
-              "idempotency_key": "dd218975-cc88-4ff9-b744-e8e68cdbc7dc",
+              "created_at": 1790550898,
+              "idempotency_key": "07e82307-e1e1-4074-911a-8d5df04bda1d",
               "request_fingerprint": "cbd3ff90d33212caa0f3b25d3b107f42c3c128f36f09c82911c9a6ca88eff61f",
-              "receipt_json": "{\"amount_iqd\":15000,\"balance_iqd\":269750,\"created_at\":1790544840,\"fee_iqd\":250,\"id\":\"340ad5dd-cc07-4ec1-9caf-957dc07b9ec5\",\"idempotency_key\":\"dd218975-cc88-4ff9-b744-e8e68cdbc7dc\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":15000,\"balance_iqd\":269750,\"created_at\":1790550898,\"fee_iqd\":250,\"id\":\"3ab429d0-bcec-4641-9a9c-a8040b7f59f7\",\"idempotency_key\":\"07e82307-e1e1-4074-911a-8d5df04bda1d\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -654,8 +654,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "45b6b08b-6ca7-4776-aa48-a1abb3bcfd4a",
-            "expires_at": 1790544972,
+            "draft_id": "835d4fb4-970a-4e8a-aebb-7666ac213c3d",
+            "expires_at": 1790551028,
             "amount_words": "خمسة وأربعون ألف دينار",
             "balance_after": 239750,
             "balance_before": 285000,
@@ -679,17 +679,17 @@
           },
           "transactions": [
             {
-              "id": "0a84adef-c79d-41ef-a8a8-a15cd43e7711",
+              "id": "66f66b3e-1407-406e-9ed6-6f95b64ce4d4",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "116",
               "amount_iqd": 45000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544852,
-              "idempotency_key": "45b6b08b-6ca7-4776-aa48-a1abb3bcfd4a",
+              "created_at": 1790550908,
+              "idempotency_key": "835d4fb4-970a-4e8a-aebb-7666ac213c3d",
               "request_fingerprint": "81387e1785ca5f8cffd6ee90782852182d2a0a74331bde4266fb98451f86bd13",
-              "receipt_json": "{\"amount_iqd\":45000,\"balance_iqd\":239750,\"created_at\":1790544852,\"fee_iqd\":250,\"id\":\"0a84adef-c79d-41ef-a8a8-a15cd43e7711\",\"idempotency_key\":\"45b6b08b-6ca7-4776-aa48-a1abb3bcfd4a\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":45000,\"balance_iqd\":239750,\"created_at\":1790550908,\"fee_iqd\":250,\"id\":\"66f66b3e-1407-406e-9ed6-6f95b64ce4d4\",\"idempotency_key\":\"835d4fb4-970a-4e8a-aebb-7666ac213c3d\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -707,8 +707,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "a76017af-4084-432f-8068-ec126b5e660d",
-            "expires_at": 1790544980,
+            "draft_id": "c229e588-bfef-4d74-bbbb-533cced62457",
+            "expires_at": 1790551034,
             "amount_words": "خمسة وأربعون ألف دينار",
             "balance_after": 239750,
             "balance_before": 285000,
@@ -732,17 +732,17 @@
           },
           "transactions": [
             {
-              "id": "192b2173-8709-4399-ac76-150898a952a4",
+              "id": "f5fd9e32-a1cd-4fe3-a48d-d7a531025a50",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "116",
               "amount_iqd": 45000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544860,
-              "idempotency_key": "a76017af-4084-432f-8068-ec126b5e660d",
+              "created_at": 1790550914,
+              "idempotency_key": "c229e588-bfef-4d74-bbbb-533cced62457",
               "request_fingerprint": "81387e1785ca5f8cffd6ee90782852182d2a0a74331bde4266fb98451f86bd13",
-              "receipt_json": "{\"amount_iqd\":45000,\"balance_iqd\":239750,\"created_at\":1790544860,\"fee_iqd\":250,\"id\":\"192b2173-8709-4399-ac76-150898a952a4\",\"idempotency_key\":\"a76017af-4084-432f-8068-ec126b5e660d\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":45000,\"balance_iqd\":239750,\"created_at\":1790550914,\"fee_iqd\":250,\"id\":\"f5fd9e32-a1cd-4fe3-a48d-d7a531025a50\",\"idempotency_key\":\"c229e588-bfef-4d74-bbbb-533cced62457\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -760,8 +760,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "3edac176-bb84-4d25-b9ea-f524e7474b21",
-            "expires_at": 1790544987,
+            "draft_id": "9c24aac0-1d81-4f1f-b962-ac75187b897a",
+            "expires_at": 1790551040,
             "amount_words": "خمسة وأربعون ألف دينار",
             "balance_after": 239750,
             "balance_before": 285000,
@@ -785,17 +785,17 @@
           },
           "transactions": [
             {
-              "id": "2d387f4c-1319-4ce8-8919-32d37379cc15",
+              "id": "79e0ac90-7514-47f6-a957-d354ae4dbb93",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "116",
               "amount_iqd": 45000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544867,
-              "idempotency_key": "3edac176-bb84-4d25-b9ea-f524e7474b21",
+              "created_at": 1790550920,
+              "idempotency_key": "9c24aac0-1d81-4f1f-b962-ac75187b897a",
               "request_fingerprint": "81387e1785ca5f8cffd6ee90782852182d2a0a74331bde4266fb98451f86bd13",
-              "receipt_json": "{\"amount_iqd\":45000,\"balance_iqd\":239750,\"created_at\":1790544867,\"fee_iqd\":250,\"id\":\"2d387f4c-1319-4ce8-8919-32d37379cc15\",\"idempotency_key\":\"3edac176-bb84-4d25-b9ea-f524e7474b21\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":45000,\"balance_iqd\":239750,\"created_at\":1790550920,\"fee_iqd\":250,\"id\":\"79e0ac90-7514-47f6-a957-d354ae4dbb93\",\"idempotency_key\":\"9c24aac0-1d81-4f1f-b962-ac75187b897a\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -981,8 +981,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "f73c0e96-c35b-4c3b-9e50-deb620a0cf47",
-            "expires_at": 1790545055,
+            "draft_id": "b3495be9-d79d-4752-abb8-87fe3a66fe2e",
+            "expires_at": 1790551097,
             "amount_words": "عشرون ألف دينار",
             "balance_after": 264750,
             "balance_before": 285000,
@@ -1006,17 +1006,17 @@
           },
           "transactions": [
             {
-              "id": "e89a9968-698a-4918-9d10-7a0c7bb80386",
+              "id": "0d078c7e-e617-43df-977a-ce6db2e191bc",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "111",
               "amount_iqd": 20000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544935,
-              "idempotency_key": "f73c0e96-c35b-4c3b-9e50-deb620a0cf47",
+              "created_at": 1790550977,
+              "idempotency_key": "b3495be9-d79d-4752-abb8-87fe3a66fe2e",
               "request_fingerprint": "6f1ee23bee611915fde7b385c773097811e8692bf7162a7c7acf9f13c1797431",
-              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790544935,\"fee_iqd\":250,\"id\":\"e89a9968-698a-4918-9d10-7a0c7bb80386\",\"idempotency_key\":\"f73c0e96-c35b-4c3b-9e50-deb620a0cf47\",\"payee_ref\":\"111\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790550977,\"fee_iqd\":250,\"id\":\"0d078c7e-e617-43df-977a-ce6db2e191bc\",\"idempotency_key\":\"b3495be9-d79d-4752-abb8-87fe3a66fe2e\",\"payee_ref\":\"111\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1034,8 +1034,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "14c9a6e9-1ca5-4ec5-a2eb-2cc54aecf076",
-            "expires_at": 1790545064,
+            "draft_id": "e13361de-7e06-4ccf-9b1b-e5446eba9cd2",
+            "expires_at": 1790551103,
             "amount_words": "عشرون ألف دينار",
             "balance_after": 264750,
             "balance_before": 285000,
@@ -1059,17 +1059,17 @@
           },
           "transactions": [
             {
-              "id": "c8b06b1b-eebb-4a0e-a423-cde7f25cdaae",
+              "id": "d9db2b3f-e4c6-441f-a7f1-ae66f6a142bf",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "111",
               "amount_iqd": 20000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544944,
-              "idempotency_key": "14c9a6e9-1ca5-4ec5-a2eb-2cc54aecf076",
+              "created_at": 1790550983,
+              "idempotency_key": "e13361de-7e06-4ccf-9b1b-e5446eba9cd2",
               "request_fingerprint": "6f1ee23bee611915fde7b385c773097811e8692bf7162a7c7acf9f13c1797431",
-              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790544944,\"fee_iqd\":250,\"id\":\"c8b06b1b-eebb-4a0e-a423-cde7f25cdaae\",\"idempotency_key\":\"14c9a6e9-1ca5-4ec5-a2eb-2cc54aecf076\",\"payee_ref\":\"111\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790550983,\"fee_iqd\":250,\"id\":\"d9db2b3f-e4c6-441f-a7f1-ae66f6a142bf\",\"idempotency_key\":\"e13361de-7e06-4ccf-9b1b-e5446eba9cd2\",\"payee_ref\":\"111\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1087,8 +1087,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "6428f2ba-8637-486a-af65-47f4dd66957e",
-            "expires_at": 1790545073,
+            "draft_id": "7c957116-ec54-4317-8510-5293d8538d9f",
+            "expires_at": 1790551109,
             "amount_words": "عشرون ألف دينار",
             "balance_after": 264750,
             "balance_before": 285000,
@@ -1112,17 +1112,17 @@
           },
           "transactions": [
             {
-              "id": "3f70e790-5c08-4274-81ee-1b43d2becc56",
+              "id": "74e22e46-9b0d-4f66-9522-520711a1d28b",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "111",
               "amount_iqd": 20000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544953,
-              "idempotency_key": "6428f2ba-8637-486a-af65-47f4dd66957e",
+              "created_at": 1790550989,
+              "idempotency_key": "7c957116-ec54-4317-8510-5293d8538d9f",
               "request_fingerprint": "6f1ee23bee611915fde7b385c773097811e8692bf7162a7c7acf9f13c1797431",
-              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790544953,\"fee_iqd\":250,\"id\":\"3f70e790-5c08-4274-81ee-1b43d2becc56\",\"idempotency_key\":\"6428f2ba-8637-486a-af65-47f4dd66957e\",\"payee_ref\":\"111\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":20000,\"balance_iqd\":264750,\"created_at\":1790550989,\"fee_iqd\":250,\"id\":\"74e22e46-9b0d-4f66-9522-520711a1d28b\",\"idempotency_key\":\"7c957116-ec54-4317-8510-5293d8538d9f\",\"payee_ref\":\"111\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1164,8 +1164,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "ac0dc7e8-5d7b-4205-b37c-9617dd78f30d",
-            "expires_at": 1790545085,
+            "draft_id": "4c043a6c-d8fd-416a-b4d4-29e118cde928",
+            "expires_at": 1790551118,
             "amount_words": "خمسة ألف دينار",
             "balance_after": 279750,
             "balance_before": 285000,
@@ -1189,17 +1189,17 @@
           },
           "transactions": [
             {
-              "id": "f77c0d83-a3b3-464e-967e-7dbe6c57ad30",
+              "id": "cb0189e5-b4d4-4a61-a731-69d0a8325514",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "113",
               "amount_iqd": 5000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544965,
-              "idempotency_key": "ac0dc7e8-5d7b-4205-b37c-9617dd78f30d",
+              "created_at": 1790550998,
+              "idempotency_key": "4c043a6c-d8fd-416a-b4d4-29e118cde928",
               "request_fingerprint": "d89cd13bf3164dd7acea745d3dd08e321bb785e0a84fa070774105f2cee405ac",
-              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790544965,\"fee_iqd\":250,\"id\":\"f77c0d83-a3b3-464e-967e-7dbe6c57ad30\",\"idempotency_key\":\"ac0dc7e8-5d7b-4205-b37c-9617dd78f30d\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790550998,\"fee_iqd\":250,\"id\":\"cb0189e5-b4d4-4a61-a731-69d0a8325514\",\"idempotency_key\":\"4c043a6c-d8fd-416a-b4d4-29e118cde928\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1217,8 +1217,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "16224ef1-6df4-4ad5-95ac-b7d23b910a12",
-            "expires_at": 1790545093,
+            "draft_id": "a9ab135b-d16f-41ae-914c-4dad01a4636f",
+            "expires_at": 1790551124,
             "amount_words": "خمسة ألف دينار",
             "balance_after": 279750,
             "balance_before": 285000,
@@ -1242,17 +1242,17 @@
           },
           "transactions": [
             {
-              "id": "03ee9eae-5535-4d47-93f8-7ee990dc7692",
+              "id": "5a3c5a90-d9a5-4afc-9a4b-e939c6a3bd43",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "113",
               "amount_iqd": 5000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544973,
-              "idempotency_key": "16224ef1-6df4-4ad5-95ac-b7d23b910a12",
+              "created_at": 1790551004,
+              "idempotency_key": "a9ab135b-d16f-41ae-914c-4dad01a4636f",
               "request_fingerprint": "d89cd13bf3164dd7acea745d3dd08e321bb785e0a84fa070774105f2cee405ac",
-              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790544973,\"fee_iqd\":250,\"id\":\"03ee9eae-5535-4d47-93f8-7ee990dc7692\",\"idempotency_key\":\"16224ef1-6df4-4ad5-95ac-b7d23b910a12\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790551004,\"fee_iqd\":250,\"id\":\"5a3c5a90-d9a5-4afc-9a4b-e939c6a3bd43\",\"idempotency_key\":\"a9ab135b-d16f-41ae-914c-4dad01a4636f\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1270,8 +1270,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "e7a6621c-a186-4492-8c2e-eb96a8403440",
-            "expires_at": 1790545100,
+            "draft_id": "10766d4c-97aa-487f-b565-bb7a9034b5cf",
+            "expires_at": 1790551130,
             "amount_words": "خمسة ألف دينار",
             "balance_after": 279750,
             "balance_before": 285000,
@@ -1295,17 +1295,17 @@
           },
           "transactions": [
             {
-              "id": "b69b1251-973e-4694-b7b3-eb6429cd9429",
+              "id": "5650767d-33b7-4d3d-a406-212566909d63",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "113",
               "amount_iqd": 5000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544980,
-              "idempotency_key": "e7a6621c-a186-4492-8c2e-eb96a8403440",
+              "created_at": 1790551010,
+              "idempotency_key": "10766d4c-97aa-487f-b565-bb7a9034b5cf",
               "request_fingerprint": "d89cd13bf3164dd7acea745d3dd08e321bb785e0a84fa070774105f2cee405ac",
-              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790544980,\"fee_iqd\":250,\"id\":\"b69b1251-973e-4694-b7b3-eb6429cd9429\",\"idempotency_key\":\"e7a6621c-a186-4492-8c2e-eb96a8403440\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790551010,\"fee_iqd\":250,\"id\":\"5650767d-33b7-4d3d-a406-212566909d63\",\"idempotency_key\":\"10766d4c-97aa-487f-b565-bb7a9034b5cf\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1347,8 +1347,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "ad40b79a-ca13-4c54-9d4a-920a8c62bf16",
-            "expires_at": 1790545111,
+            "draft_id": "00a75d61-67fc-491f-bcee-cd8489bc64f2",
+            "expires_at": 1790551139,
             "amount_words": "ثلاثة ألف دينار",
             "balance_after": 281750,
             "balance_before": 285000,
@@ -1372,17 +1372,17 @@
           },
           "transactions": [
             {
-              "id": "9273d29b-ac84-48e9-a200-c6e009709e37",
+              "id": "3cb1d636-fc16-4bdd-89e8-69819245512a",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "103",
               "amount_iqd": 3000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544991,
-              "idempotency_key": "ad40b79a-ca13-4c54-9d4a-920a8c62bf16",
+              "created_at": 1790551020,
+              "idempotency_key": "00a75d61-67fc-491f-bcee-cd8489bc64f2",
               "request_fingerprint": "0c32778511a329a32fcbd900748ea58677e30cdbf6ef536d571eb8e52bac4afd",
-              "receipt_json": "{\"amount_iqd\":3000,\"balance_iqd\":281750,\"created_at\":1790544991,\"fee_iqd\":250,\"id\":\"9273d29b-ac84-48e9-a200-c6e009709e37\",\"idempotency_key\":\"ad40b79a-ca13-4c54-9d4a-920a8c62bf16\",\"payee_ref\":\"103\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":3000,\"balance_iqd\":281750,\"created_at\":1790551020,\"fee_iqd\":250,\"id\":\"3cb1d636-fc16-4bdd-89e8-69819245512a\",\"idempotency_key\":\"00a75d61-67fc-491f-bcee-cd8489bc64f2\",\"payee_ref\":\"103\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1400,8 +1400,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "80f3f8d0-5df3-4e80-b73c-0622cfbe35a1",
-            "expires_at": 1790545118,
+            "draft_id": "50837dab-aed9-4305-9510-79ce552bf3ae",
+            "expires_at": 1790551145,
             "amount_words": "ثلاثة ألف دينار",
             "balance_after": 281750,
             "balance_before": 285000,
@@ -1425,17 +1425,17 @@
           },
           "transactions": [
             {
-              "id": "169a8a2b-4f9f-47e9-86c7-10b86e8163e7",
+              "id": "84a7849a-ac26-4f37-a97c-5bbbf53966df",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "103",
               "amount_iqd": 3000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790544998,
-              "idempotency_key": "80f3f8d0-5df3-4e80-b73c-0622cfbe35a1",
+              "created_at": 1790551025,
+              "idempotency_key": "50837dab-aed9-4305-9510-79ce552bf3ae",
               "request_fingerprint": "0c32778511a329a32fcbd900748ea58677e30cdbf6ef536d571eb8e52bac4afd",
-              "receipt_json": "{\"amount_iqd\":3000,\"balance_iqd\":281750,\"created_at\":1790544998,\"fee_iqd\":250,\"id\":\"169a8a2b-4f9f-47e9-86c7-10b86e8163e7\",\"idempotency_key\":\"80f3f8d0-5df3-4e80-b73c-0622cfbe35a1\",\"payee_ref\":\"103\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":3000,\"balance_iqd\":281750,\"created_at\":1790551025,\"fee_iqd\":250,\"id\":\"84a7849a-ac26-4f37-a97c-5bbbf53966df\",\"idempotency_key\":\"50837dab-aed9-4305-9510-79ce552bf3ae\",\"payee_ref\":\"103\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1453,8 +1453,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "fef15635-dc36-4149-aa31-9e3515888907",
-            "expires_at": 1790545125,
+            "draft_id": "bfd6b4a0-6ca0-447f-9c24-81f1d1707958",
+            "expires_at": 1790551151,
             "amount_words": "ثلاثة ألف دينار",
             "balance_after": 281750,
             "balance_before": 285000,
@@ -1478,17 +1478,17 @@
           },
           "transactions": [
             {
-              "id": "45b37a15-2e91-4d7c-8a98-84b06c9c603c",
+              "id": "740b4b65-35bf-4489-a23e-7f30bcafaf56",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "103",
               "amount_iqd": 3000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545005,
-              "idempotency_key": "fef15635-dc36-4149-aa31-9e3515888907",
+              "created_at": 1790551031,
+              "idempotency_key": "bfd6b4a0-6ca0-447f-9c24-81f1d1707958",
               "request_fingerprint": "0c32778511a329a32fcbd900748ea58677e30cdbf6ef536d571eb8e52bac4afd",
-              "receipt_json": "{\"amount_iqd\":3000,\"balance_iqd\":281750,\"created_at\":1790545005,\"fee_iqd\":250,\"id\":\"45b37a15-2e91-4d7c-8a98-84b06c9c603c\",\"idempotency_key\":\"fef15635-dc36-4149-aa31-9e3515888907\",\"payee_ref\":\"103\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":3000,\"balance_iqd\":281750,\"created_at\":1790551031,\"fee_iqd\":250,\"id\":\"740b4b65-35bf-4489-a23e-7f30bcafaf56\",\"idempotency_key\":\"bfd6b4a0-6ca0-447f-9c24-81f1d1707958\",\"payee_ref\":\"103\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -1587,163 +1587,52 @@
     },
     "runs": [
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
         "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "DRAFT_PENDING",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": null,
-          "card": {
-            "draft_id": "aeebd3e6-7de2-4031-9397-fc99604fc419",
-            "expires_at": 1790545161,
-            "amount_words": "اثنا عشر ألف دينار",
-            "balance_after": 272750,
-            "balance_before": 285000,
-            "display": {
-              "account_number": "MOCK-101",
-              "biller_id": 1,
-              "display_name": "الشركة الوطنية للكهرباء",
-              "id": 101,
-              "score": 100
-            },
-            "duplicate_warning": null,
-            "fee_iqd": 250,
-            "kind": "bill_payment",
-            "payment": {
-              "amount_iqd": 12000,
-              "bill_id": 1018,
-              "payee_id": null,
-              "user_id": 1
-            },
-            "period": "2026-08"
-          },
-          "transactions": [
-            {
-              "id": "304785f5-b927-44bf-b935-3bf1f35ed294",
-              "user_id": 1,
-              "type": "bill_payment",
-              "payee_ref": "1018",
-              "amount_iqd": 12000,
-              "fee_iqd": 250,
-              "status": "succeeded",
-              "created_at": 1790545041,
-              "idempotency_key": "aeebd3e6-7de2-4031-9397-fc99604fc419",
-              "request_fingerprint": "1debdb97777b13a582c53079bcad5628064ef1e8c82a8fb1133ec5d71bd10bfd",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790545041,\"fee_iqd\":250,\"id\":\"304785f5-b927-44bf-b935-3bf1f35ed294\",\"idempotency_key\":\"aeebd3e6-7de2-4031-9397-fc99604fc419\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
-            }
-          ]
+          "code": "PARSER_UNAVAILABLE",
+          "card": null,
+          "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       },
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
         "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "DRAFT_PENDING",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": null,
-          "card": {
-            "draft_id": "ef1bd88a-d3a2-4f8c-b5a4-b8fb53086dbd",
-            "expires_at": 1790545171,
-            "amount_words": "اثنا عشر ألف دينار",
-            "balance_after": 272750,
-            "balance_before": 285000,
-            "display": {
-              "account_number": "MOCK-101",
-              "biller_id": 1,
-              "display_name": "الشركة الوطنية للكهرباء",
-              "id": 101,
-              "score": 100
-            },
-            "duplicate_warning": null,
-            "fee_iqd": 250,
-            "kind": "bill_payment",
-            "payment": {
-              "amount_iqd": 12000,
-              "bill_id": 1018,
-              "payee_id": null,
-              "user_id": 1
-            },
-            "period": "2026-08"
-          },
-          "transactions": [
-            {
-              "id": "98cf7114-61c7-473d-92a9-093feecc002d",
-              "user_id": 1,
-              "type": "bill_payment",
-              "payee_ref": "1018",
-              "amount_iqd": 12000,
-              "fee_iqd": 250,
-              "status": "succeeded",
-              "created_at": 1790545051,
-              "idempotency_key": "ef1bd88a-d3a2-4f8c-b5a4-b8fb53086dbd",
-              "request_fingerprint": "1debdb97777b13a582c53079bcad5628064ef1e8c82a8fb1133ec5d71bd10bfd",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790545051,\"fee_iqd\":250,\"id\":\"98cf7114-61c7-473d-92a9-093feecc002d\",\"idempotency_key\":\"ef1bd88a-d3a2-4f8c-b5a4-b8fb53086dbd\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
-            }
-          ]
+          "code": "PARSER_UNAVAILABLE",
+          "card": null,
+          "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       },
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
         "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "DRAFT_PENDING",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": null,
-          "card": {
-            "draft_id": "098fa141-f98a-4d33-9ec9-19a27f477fbf",
-            "expires_at": 1790545183,
-            "amount_words": "اثنا عشر ألف دينار",
-            "balance_after": 272750,
-            "balance_before": 285000,
-            "display": {
-              "account_number": "MOCK-101",
-              "biller_id": 1,
-              "display_name": "الشركة الوطنية للكهرباء",
-              "id": 101,
-              "score": 100
-            },
-            "duplicate_warning": null,
-            "fee_iqd": 250,
-            "kind": "bill_payment",
-            "payment": {
-              "amount_iqd": 12000,
-              "bill_id": 1018,
-              "payee_id": null,
-              "user_id": 1
-            },
-            "period": "2026-08"
-          },
-          "transactions": [
-            {
-              "id": "e59e44e5-8ddd-4273-9d7f-e37b2c1f0dfe",
-              "user_id": 1,
-              "type": "bill_payment",
-              "payee_ref": "1018",
-              "amount_iqd": 12000,
-              "fee_iqd": 250,
-              "status": "succeeded",
-              "created_at": 1790545063,
-              "idempotency_key": "098fa141-f98a-4d33-9ec9-19a27f477fbf",
-              "request_fingerprint": "1debdb97777b13a582c53079bcad5628064ef1e8c82a8fb1133ec5d71bd10bfd",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790545063,\"fee_iqd\":250,\"id\":\"e59e44e5-8ddd-4273-9d7f-e37b2c1f0dfe\",\"idempotency_key\":\"098fa141-f98a-4d33-9ec9-19a27f477fbf\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
-            }
-          ]
+          "code": "PARSER_UNAVAILABLE",
+          "card": null,
+          "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       }
     ]
   },
@@ -1925,8 +1814,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "20a81508-4d9e-4f8b-b9e0-a05eee6cbcb9",
-            "expires_at": 1790545243,
+            "draft_id": "0590da74-c9ff-43b1-a6d0-fb85b3399ee9",
+            "expires_at": 1790551257,
             "amount_words": "اثنان وعشرون ألف دينار",
             "balance_after": 262750,
             "balance_before": 285000,
@@ -1950,17 +1839,17 @@
           },
           "transactions": [
             {
-              "id": "d71b0856-2354-4e8f-9d35-39dd201653a1",
+              "id": "ae652b06-953a-4e56-a948-d893e477fbd5",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 22000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545123,
-              "idempotency_key": "20a81508-4d9e-4f8b-b9e0-a05eee6cbcb9",
+              "created_at": 1790551137,
+              "idempotency_key": "0590da74-c9ff-43b1-a6d0-fb85b3399ee9",
               "request_fingerprint": "894a754d8bec389709c2f089e75f0ffb1ed938f5b5bcda07391d6bb5ecf0477d",
-              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790545123,\"fee_iqd\":250,\"id\":\"d71b0856-2354-4e8f-9d35-39dd201653a1\",\"idempotency_key\":\"20a81508-4d9e-4f8b-b9e0-a05eee6cbcb9\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790551137,\"fee_iqd\":250,\"id\":\"ae652b06-953a-4e56-a948-d893e477fbd5\",\"idempotency_key\":\"0590da74-c9ff-43b1-a6d0-fb85b3399ee9\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -1978,8 +1867,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "8f4616a1-79d3-40aa-9628-83512940c1b7",
-            "expires_at": 1790545249,
+            "draft_id": "3d32e12c-f9e0-4f0c-a18c-dec5a9a0f8d1",
+            "expires_at": 1790551263,
             "amount_words": "اثنان وعشرون ألف دينار",
             "balance_after": 262750,
             "balance_before": 285000,
@@ -2003,17 +1892,17 @@
           },
           "transactions": [
             {
-              "id": "9010e0c3-0177-45a4-807f-86baeb0f7b1c",
+              "id": "2f968658-f74f-410f-a174-5b461e4c493b",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 22000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545129,
-              "idempotency_key": "8f4616a1-79d3-40aa-9628-83512940c1b7",
+              "created_at": 1790551143,
+              "idempotency_key": "3d32e12c-f9e0-4f0c-a18c-dec5a9a0f8d1",
               "request_fingerprint": "894a754d8bec389709c2f089e75f0ffb1ed938f5b5bcda07391d6bb5ecf0477d",
-              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790545129,\"fee_iqd\":250,\"id\":\"9010e0c3-0177-45a4-807f-86baeb0f7b1c\",\"idempotency_key\":\"8f4616a1-79d3-40aa-9628-83512940c1b7\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790551143,\"fee_iqd\":250,\"id\":\"2f968658-f74f-410f-a174-5b461e4c493b\",\"idempotency_key\":\"3d32e12c-f9e0-4f0c-a18c-dec5a9a0f8d1\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2031,8 +1920,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "3c136f62-03fc-40d8-b7b8-ff2765d4de2d",
-            "expires_at": 1790545256,
+            "draft_id": "c3be5647-997b-49a1-a38a-14647eddcb81",
+            "expires_at": 1790551270,
             "amount_words": "اثنان وعشرون ألف دينار",
             "balance_after": 262750,
             "balance_before": 285000,
@@ -2056,17 +1945,17 @@
           },
           "transactions": [
             {
-              "id": "bb4ca35c-850e-464f-8ae7-ed768ed00a31",
+              "id": "bf3bff6c-272d-413b-83cc-c5a68382e3d2",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 22000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545136,
-              "idempotency_key": "3c136f62-03fc-40d8-b7b8-ff2765d4de2d",
+              "created_at": 1790551150,
+              "idempotency_key": "c3be5647-997b-49a1-a38a-14647eddcb81",
               "request_fingerprint": "894a754d8bec389709c2f089e75f0ffb1ed938f5b5bcda07391d6bb5ecf0477d",
-              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790545136,\"fee_iqd\":250,\"id\":\"bb4ca35c-850e-464f-8ae7-ed768ed00a31\",\"idempotency_key\":\"3c136f62-03fc-40d8-b7b8-ff2765d4de2d\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790551150,\"fee_iqd\":250,\"id\":\"bf3bff6c-272d-413b-83cc-c5a68382e3d2\",\"idempotency_key\":\"c3be5647-997b-49a1-a38a-14647eddcb81\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2108,8 +1997,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "3d212f40-80ab-4fdf-9d35-a7ad48e6356b",
-            "expires_at": 1790545266,
+            "draft_id": "7d2d558a-f858-4576-b820-9c51956d84db",
+            "expires_at": 1790551280,
             "amount_words": "تسعة ألف دينار",
             "balance_after": 275750,
             "balance_before": 285000,
@@ -2133,17 +2022,17 @@
           },
           "transactions": [
             {
-              "id": "82e46aae-9391-4ae9-b385-239ec2e08502",
+              "id": "14313127-42e5-4b2a-9c4b-a93c18a361bc",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 9000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545146,
-              "idempotency_key": "3d212f40-80ab-4fdf-9d35-a7ad48e6356b",
+              "created_at": 1790551160,
+              "idempotency_key": "7d2d558a-f858-4576-b820-9c51956d84db",
               "request_fingerprint": "5efb4ea8c90540839dfacc167c7281f6bb2c945c8c47a210a777244023defc99",
-              "receipt_json": "{\"amount_iqd\":9000,\"balance_iqd\":275750,\"created_at\":1790545146,\"fee_iqd\":250,\"id\":\"82e46aae-9391-4ae9-b385-239ec2e08502\",\"idempotency_key\":\"3d212f40-80ab-4fdf-9d35-a7ad48e6356b\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":9000,\"balance_iqd\":275750,\"created_at\":1790551160,\"fee_iqd\":250,\"id\":\"14313127-42e5-4b2a-9c4b-a93c18a361bc\",\"idempotency_key\":\"7d2d558a-f858-4576-b820-9c51956d84db\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2161,8 +2050,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "7c08a73e-5bad-4163-a441-76993ae739a0",
-            "expires_at": 1790545273,
+            "draft_id": "e66ab582-e612-4f2e-8cb6-22dac69d4a49",
+            "expires_at": 1790551286,
             "amount_words": "تسعة ألف دينار",
             "balance_after": 275750,
             "balance_before": 285000,
@@ -2186,17 +2075,17 @@
           },
           "transactions": [
             {
-              "id": "9df583c6-57b2-4657-9bf5-a400bc6e45d2",
+              "id": "6a08ccec-e441-4d34-8249-6c82b02ff38f",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 9000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545153,
-              "idempotency_key": "7c08a73e-5bad-4163-a441-76993ae739a0",
+              "created_at": 1790551166,
+              "idempotency_key": "e66ab582-e612-4f2e-8cb6-22dac69d4a49",
               "request_fingerprint": "5efb4ea8c90540839dfacc167c7281f6bb2c945c8c47a210a777244023defc99",
-              "receipt_json": "{\"amount_iqd\":9000,\"balance_iqd\":275750,\"created_at\":1790545153,\"fee_iqd\":250,\"id\":\"9df583c6-57b2-4657-9bf5-a400bc6e45d2\",\"idempotency_key\":\"7c08a73e-5bad-4163-a441-76993ae739a0\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":9000,\"balance_iqd\":275750,\"created_at\":1790551166,\"fee_iqd\":250,\"id\":\"6a08ccec-e441-4d34-8249-6c82b02ff38f\",\"idempotency_key\":\"e66ab582-e612-4f2e-8cb6-22dac69d4a49\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2214,8 +2103,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "55fdd146-ee3b-444d-8525-75b755c7dfd3",
-            "expires_at": 1790545280,
+            "draft_id": "209e494d-316e-4782-8750-4907ba3dcbb9",
+            "expires_at": 1790551292,
             "amount_words": "تسعة ألف دينار",
             "balance_after": 275750,
             "balance_before": 285000,
@@ -2239,17 +2128,17 @@
           },
           "transactions": [
             {
-              "id": "19968533-ed70-4abe-beac-02cca9caad31",
+              "id": "101ffc3e-253f-454a-abac-85a36abf932a",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 9000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545160,
-              "idempotency_key": "55fdd146-ee3b-444d-8525-75b755c7dfd3",
+              "created_at": 1790551172,
+              "idempotency_key": "209e494d-316e-4782-8750-4907ba3dcbb9",
               "request_fingerprint": "5efb4ea8c90540839dfacc167c7281f6bb2c945c8c47a210a777244023defc99",
-              "receipt_json": "{\"amount_iqd\":9000,\"balance_iqd\":275750,\"created_at\":1790545160,\"fee_iqd\":250,\"id\":\"19968533-ed70-4abe-beac-02cca9caad31\",\"idempotency_key\":\"55fdd146-ee3b-444d-8525-75b755c7dfd3\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":9000,\"balance_iqd\":275750,\"created_at\":1790551172,\"fee_iqd\":250,\"id\":\"101ffc3e-253f-454a-abac-85a36abf932a\",\"idempotency_key\":\"209e494d-316e-4782-8750-4907ba3dcbb9\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2291,8 +2180,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "0aedaf15-bef2-4c59-a910-77054d4d8bb4",
-            "expires_at": 1790545291,
+            "draft_id": "2c09e033-fa64-45f1-af5b-c75fb0124fec",
+            "expires_at": 1790551302,
             "amount_words": "اثنا عشر ألف دينار",
             "balance_after": 272750,
             "balance_before": 285000,
@@ -2316,17 +2205,17 @@
           },
           "transactions": [
             {
-              "id": "78a2304b-c17e-43c2-b747-c439c63b8ea8",
+              "id": "7bcc0ada-5060-4e53-9bdb-38c8535a8314",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "1018",
               "amount_iqd": 12000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545171,
-              "idempotency_key": "0aedaf15-bef2-4c59-a910-77054d4d8bb4",
+              "created_at": 1790551182,
+              "idempotency_key": "2c09e033-fa64-45f1-af5b-c75fb0124fec",
               "request_fingerprint": "1debdb97777b13a582c53079bcad5628064ef1e8c82a8fb1133ec5d71bd10bfd",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790545171,\"fee_iqd\":250,\"id\":\"78a2304b-c17e-43c2-b747-c439c63b8ea8\",\"idempotency_key\":\"0aedaf15-bef2-4c59-a910-77054d4d8bb4\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790551182,\"fee_iqd\":250,\"id\":\"7bcc0ada-5060-4e53-9bdb-38c8535a8314\",\"idempotency_key\":\"2c09e033-fa64-45f1-af5b-c75fb0124fec\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2344,8 +2233,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "c053e635-0a8e-45a3-8884-1184f0f7e608",
-            "expires_at": 1790545298,
+            "draft_id": "b6e36650-00ab-45e7-a351-4a05337c9dfe",
+            "expires_at": 1790551308,
             "amount_words": "اثنا عشر ألف دينار",
             "balance_after": 272750,
             "balance_before": 285000,
@@ -2369,17 +2258,17 @@
           },
           "transactions": [
             {
-              "id": "d256cb7a-8dd0-45c6-9b55-ac7a01f88fef",
+              "id": "8626e9a1-e116-4519-af09-732ec8a3eeff",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "1018",
               "amount_iqd": 12000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545178,
-              "idempotency_key": "c053e635-0a8e-45a3-8884-1184f0f7e608",
+              "created_at": 1790551188,
+              "idempotency_key": "b6e36650-00ab-45e7-a351-4a05337c9dfe",
               "request_fingerprint": "1debdb97777b13a582c53079bcad5628064ef1e8c82a8fb1133ec5d71bd10bfd",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790545178,\"fee_iqd\":250,\"id\":\"d256cb7a-8dd0-45c6-9b55-ac7a01f88fef\",\"idempotency_key\":\"c053e635-0a8e-45a3-8884-1184f0f7e608\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790551188,\"fee_iqd\":250,\"id\":\"8626e9a1-e116-4519-af09-732ec8a3eeff\",\"idempotency_key\":\"b6e36650-00ab-45e7-a351-4a05337c9dfe\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2397,8 +2286,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "f767fe66-9233-46cc-ac11-4f3a4fb7c2ee",
-            "expires_at": 1790545305,
+            "draft_id": "4ad77910-b791-41a1-bbb2-3fbcbca409f2",
+            "expires_at": 1790551314,
             "amount_words": "اثنا عشر ألف دينار",
             "balance_after": 272750,
             "balance_before": 285000,
@@ -2422,17 +2311,17 @@
           },
           "transactions": [
             {
-              "id": "cbafa252-cdc5-44c6-ae46-6a108949c93c",
+              "id": "c71b6dec-f17c-4737-8152-7638bc621ccb",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "1018",
               "amount_iqd": 12000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545185,
-              "idempotency_key": "f767fe66-9233-46cc-ac11-4f3a4fb7c2ee",
+              "created_at": 1790551194,
+              "idempotency_key": "4ad77910-b791-41a1-bbb2-3fbcbca409f2",
               "request_fingerprint": "1debdb97777b13a582c53079bcad5628064ef1e8c82a8fb1133ec5d71bd10bfd",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790545185,\"fee_iqd\":250,\"id\":\"cbafa252-cdc5-44c6-ae46-6a108949c93c\",\"idempotency_key\":\"f767fe66-9233-46cc-ac11-4f3a4fb7c2ee\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790551194,\"fee_iqd\":250,\"id\":\"c71b6dec-f17c-4737-8152-7638bc621ccb\",\"idempotency_key\":\"4ad77910-b791-41a1-bbb2-3fbcbca409f2\",\"payee_ref\":\"1018\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2618,8 +2507,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "205d3723-aa4b-4fc2-9041-96f3a8f50132",
-            "expires_at": 1790545373,
+            "draft_id": "84cd3d82-4e01-4648-a103-36fb2a69fcaf",
+            "expires_at": 1790551367,
             "amount_words": "اثنان وعشرون ألف دينار",
             "balance_after": 262750,
             "balance_before": 285000,
@@ -2643,17 +2532,17 @@
           },
           "transactions": [
             {
-              "id": "a95649a0-c187-4832-ae80-2fd134e4ae88",
+              "id": "c472f2b5-c5e6-48a7-8053-0e052bf02d6e",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 22000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545253,
-              "idempotency_key": "205d3723-aa4b-4fc2-9041-96f3a8f50132",
+              "created_at": 1790551247,
+              "idempotency_key": "84cd3d82-4e01-4648-a103-36fb2a69fcaf",
               "request_fingerprint": "894a754d8bec389709c2f089e75f0ffb1ed938f5b5bcda07391d6bb5ecf0477d",
-              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790545253,\"fee_iqd\":250,\"id\":\"a95649a0-c187-4832-ae80-2fd134e4ae88\",\"idempotency_key\":\"205d3723-aa4b-4fc2-9041-96f3a8f50132\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790551247,\"fee_iqd\":250,\"id\":\"c472f2b5-c5e6-48a7-8053-0e052bf02d6e\",\"idempotency_key\":\"84cd3d82-4e01-4648-a103-36fb2a69fcaf\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2671,8 +2560,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "00cfdf2d-f8e6-4a37-92a5-d76f60ca3f58",
-            "expires_at": 1790545382,
+            "draft_id": "42beb99a-37ed-49de-a401-262a42168c74",
+            "expires_at": 1790551373,
             "amount_words": "اثنان وعشرون ألف دينار",
             "balance_after": 262750,
             "balance_before": 285000,
@@ -2696,17 +2585,17 @@
           },
           "transactions": [
             {
-              "id": "da95220f-ec91-4df7-961f-27b7b444ef23",
+              "id": "8673f5f7-f974-402b-8c95-754f8e6ebadd",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 22000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545262,
-              "idempotency_key": "00cfdf2d-f8e6-4a37-92a5-d76f60ca3f58",
+              "created_at": 1790551253,
+              "idempotency_key": "42beb99a-37ed-49de-a401-262a42168c74",
               "request_fingerprint": "894a754d8bec389709c2f089e75f0ffb1ed938f5b5bcda07391d6bb5ecf0477d",
-              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790545262,\"fee_iqd\":250,\"id\":\"da95220f-ec91-4df7-961f-27b7b444ef23\",\"idempotency_key\":\"00cfdf2d-f8e6-4a37-92a5-d76f60ca3f58\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790551253,\"fee_iqd\":250,\"id\":\"8673f5f7-f974-402b-8c95-754f8e6ebadd\",\"idempotency_key\":\"42beb99a-37ed-49de-a401-262a42168c74\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -2724,8 +2613,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "3d7daa7e-4429-4dd6-a7eb-37a737f80ca9",
-            "expires_at": 1790545388,
+            "draft_id": "da2e5ad9-3a5b-4e53-acd4-498afa0da8c4",
+            "expires_at": 1790551379,
             "amount_words": "اثنان وعشرون ألف دينار",
             "balance_after": 262750,
             "balance_before": 285000,
@@ -2749,17 +2638,17 @@
           },
           "transactions": [
             {
-              "id": "589ecfca-ee69-489d-bc28-43d30402da16",
+              "id": "81004597-cf1f-40c6-b8e7-3a6573798042",
               "user_id": 1,
               "type": "bill_payment",
               "payee_ref": "5069",
               "amount_iqd": 22000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545268,
-              "idempotency_key": "3d7daa7e-4429-4dd6-a7eb-37a737f80ca9",
+              "created_at": 1790551259,
+              "idempotency_key": "da2e5ad9-3a5b-4e53-acd4-498afa0da8c4",
               "request_fingerprint": "894a754d8bec389709c2f089e75f0ffb1ed938f5b5bcda07391d6bb5ecf0477d",
-              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790545268,\"fee_iqd\":250,\"id\":\"589ecfca-ee69-489d-bc28-43d30402da16\",\"idempotency_key\":\"3d7daa7e-4429-4dd6-a7eb-37a737f80ca9\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":22000,\"balance_iqd\":262750,\"created_at\":1790551259,\"fee_iqd\":250,\"id\":\"81004597-cf1f-40c6-b8e7-3a6573798042\",\"idempotency_key\":\"da2e5ad9-3a5b-4e53-acd4-498afa0da8c4\",\"payee_ref\":\"5069\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"bill_payment\",\"user_id\":1}"
             }
           ]
         },
@@ -3133,13 +3022,13 @@
         "pass": false,
         "unsafe": false,
         "type_ok": false,
-        "count_ok": true,
+        "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNCLEAR",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -3149,13 +3038,13 @@
         "pass": false,
         "unsafe": false,
         "type_ok": false,
-        "count_ok": true,
+        "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNCLEAR",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -3165,13 +3054,13 @@
         "pass": false,
         "unsafe": false,
         "type_ok": false,
-        "count_ok": true,
+        "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNCLEAR",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -3676,52 +3565,52 @@
     },
     "runs": [
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
         "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "BILL_ALREADY_PAID",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       },
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
         "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "BILL_ALREADY_PAID",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       },
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
         "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "BILL_ALREADY_PAID",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       }
     ]
   },
@@ -3954,52 +3843,52 @@
     },
     "runs": [
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
-        "count_ok": true,
+        "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNSUPPORTED",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       },
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
-        "count_ok": true,
+        "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNSUPPORTED",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       },
       {
-        "pass": true,
+        "pass": false,
         "unsafe": false,
         "type_ok": false,
-        "count_ok": true,
+        "count_ok": false,
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNSUPPORTED",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
-        "diagnosis": ""
+        "diagnosis": "Expected outcome/identity/amount did not match"
       }
     ]
   },
@@ -4107,8 +3996,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "76f4f60a-9393-47e7-9dc6-198e602c79b9",
-            "expires_at": 1790545869,
+            "draft_id": "14a8882b-53b5-4900-a947-2ea74cf692ff",
+            "expires_at": 1790551780,
             "amount_words": "واحد ألف وخمسمئة دينار",
             "balance_after": 283250,
             "balance_before": 285000,
@@ -4132,17 +4021,17 @@
           },
           "transactions": [
             {
-              "id": "c66c80bb-5dfd-4d8d-9d8a-21e449f8b952",
+              "id": "127256c6-fc0d-4cc3-9633-8a21d7069981",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "108",
               "amount_iqd": 1500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545749,
-              "idempotency_key": "76f4f60a-9393-47e7-9dc6-198e602c79b9",
+              "created_at": 1790551660,
+              "idempotency_key": "14a8882b-53b5-4900-a947-2ea74cf692ff",
               "request_fingerprint": "a457a6bcb859c5c044daf65ce5093ec5dda31d2e3c96c3d8b939f468e730586c",
-              "receipt_json": "{\"amount_iqd\":1500,\"balance_iqd\":283250,\"created_at\":1790545749,\"fee_iqd\":250,\"id\":\"c66c80bb-5dfd-4d8d-9d8a-21e449f8b952\",\"idempotency_key\":\"76f4f60a-9393-47e7-9dc6-198e602c79b9\",\"payee_ref\":\"108\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":1500,\"balance_iqd\":283250,\"created_at\":1790551660,\"fee_iqd\":250,\"id\":\"127256c6-fc0d-4cc3-9633-8a21d7069981\",\"idempotency_key\":\"14a8882b-53b5-4900-a947-2ea74cf692ff\",\"payee_ref\":\"108\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4160,8 +4049,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "d8edf39b-225c-484f-8693-0b16b4f7db03",
-            "expires_at": 1790545876,
+            "draft_id": "7d016ba0-adbd-4d20-8f44-283b5a7bd0c8",
+            "expires_at": 1790551786,
             "amount_words": "واحد ألف وخمسمئة دينار",
             "balance_after": 283250,
             "balance_before": 285000,
@@ -4185,17 +4074,17 @@
           },
           "transactions": [
             {
-              "id": "87440ccb-9218-4ae2-85f2-68bf4c335f0d",
+              "id": "6d2558fc-8998-47e5-8866-1d50b56ff814",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "108",
               "amount_iqd": 1500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545756,
-              "idempotency_key": "d8edf39b-225c-484f-8693-0b16b4f7db03",
+              "created_at": 1790551666,
+              "idempotency_key": "7d016ba0-adbd-4d20-8f44-283b5a7bd0c8",
               "request_fingerprint": "a457a6bcb859c5c044daf65ce5093ec5dda31d2e3c96c3d8b939f468e730586c",
-              "receipt_json": "{\"amount_iqd\":1500,\"balance_iqd\":283250,\"created_at\":1790545756,\"fee_iqd\":250,\"id\":\"87440ccb-9218-4ae2-85f2-68bf4c335f0d\",\"idempotency_key\":\"d8edf39b-225c-484f-8693-0b16b4f7db03\",\"payee_ref\":\"108\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":1500,\"balance_iqd\":283250,\"created_at\":1790551666,\"fee_iqd\":250,\"id\":\"6d2558fc-8998-47e5-8866-1d50b56ff814\",\"idempotency_key\":\"7d016ba0-adbd-4d20-8f44-283b5a7bd0c8\",\"payee_ref\":\"108\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4213,8 +4102,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "1b67efbe-b299-412a-8a13-1d8e18c93060",
-            "expires_at": 1790545882,
+            "draft_id": "522bba32-f826-4f2b-9470-b50ab6f311b2",
+            "expires_at": 1790551791,
             "amount_words": "واحد ألف وخمسمئة دينار",
             "balance_after": 283250,
             "balance_before": 285000,
@@ -4238,17 +4127,17 @@
           },
           "transactions": [
             {
-              "id": "87b7e475-c398-4dd0-900c-1f35d5337eef",
+              "id": "f101843c-20fd-4b9a-af9c-6def5c92f2e9",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "108",
               "amount_iqd": 1500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545762,
-              "idempotency_key": "1b67efbe-b299-412a-8a13-1d8e18c93060",
+              "created_at": 1790551671,
+              "idempotency_key": "522bba32-f826-4f2b-9470-b50ab6f311b2",
               "request_fingerprint": "a457a6bcb859c5c044daf65ce5093ec5dda31d2e3c96c3d8b939f468e730586c",
-              "receipt_json": "{\"amount_iqd\":1500,\"balance_iqd\":283250,\"created_at\":1790545762,\"fee_iqd\":250,\"id\":\"87b7e475-c398-4dd0-900c-1f35d5337eef\",\"idempotency_key\":\"1b67efbe-b299-412a-8a13-1d8e18c93060\",\"payee_ref\":\"108\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":1500,\"balance_iqd\":283250,\"created_at\":1790551671,\"fee_iqd\":250,\"id\":\"f101843c-20fd-4b9a-af9c-6def5c92f2e9\",\"idempotency_key\":\"522bba32-f826-4f2b-9470-b50ab6f311b2\",\"payee_ref\":\"108\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4496,8 +4385,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "393297ae-e0a0-4470-a792-fff1c1ef4288",
-            "expires_at": 1790546012,
+            "draft_id": "1fab46a1-9991-49ca-ba4d-42541e106011",
+            "expires_at": 1790551890,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -4535,8 +4424,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "b3c9d344-81a9-4323-a505-d9017effc7d5",
-            "expires_at": 1790546030,
+            "draft_id": "dacf2deb-d92c-4c16-89c8-2afe492a6043",
+            "expires_at": 1790551906,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -4574,8 +4463,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "e60617c6-3e24-4853-bca7-5a2e3c9d46ec",
-            "expires_at": 1790546046,
+            "draft_id": "bf1965a4-f720-4e86-8fb2-20250b077de2",
+            "expires_at": 1790551921,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -4637,8 +4526,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "cd6b1a12-ef9b-49a3-98b2-73ad3684240b",
-            "expires_at": 1790546056,
+            "draft_id": "15802199-bd31-4d52-b385-1e004c9eac39",
+            "expires_at": 1790551930,
             "amount_words": "خمسة ألف دينار",
             "balance_after": 279750,
             "balance_before": 285000,
@@ -4662,17 +4551,17 @@
           },
           "transactions": [
             {
-              "id": "18499d33-4dd2-40a2-b9ee-48faba0b291c",
+              "id": "60adfd77-c6e9-477f-8b73-4cedd268bef4",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "105",
               "amount_iqd": 5000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545936,
-              "idempotency_key": "cd6b1a12-ef9b-49a3-98b2-73ad3684240b",
+              "created_at": 1790551811,
+              "idempotency_key": "15802199-bd31-4d52-b385-1e004c9eac39",
               "request_fingerprint": "b76c4617f0d7b1c9ae48ceee127f12e8fcdb087b61c16c9a044ac73641a75368",
-              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790545936,\"fee_iqd\":250,\"id\":\"18499d33-4dd2-40a2-b9ee-48faba0b291c\",\"idempotency_key\":\"cd6b1a12-ef9b-49a3-98b2-73ad3684240b\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790551811,\"fee_iqd\":250,\"id\":\"60adfd77-c6e9-477f-8b73-4cedd268bef4\",\"idempotency_key\":\"15802199-bd31-4d52-b385-1e004c9eac39\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4690,8 +4579,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "f8efe064-ea27-4536-a165-50e9d62c5fb7",
-            "expires_at": 1790546061,
+            "draft_id": "cc2242eb-c2b3-40f3-8972-b111a3de4b7d",
+            "expires_at": 1790551936,
             "amount_words": "خمسة ألف دينار",
             "balance_after": 279750,
             "balance_before": 285000,
@@ -4715,17 +4604,17 @@
           },
           "transactions": [
             {
-              "id": "d1de527d-ceab-4c7d-a2db-7d8b7bff873b",
+              "id": "ff5ccc84-c571-4574-920c-6e0687ab0973",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "105",
               "amount_iqd": 5000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545941,
-              "idempotency_key": "f8efe064-ea27-4536-a165-50e9d62c5fb7",
+              "created_at": 1790551816,
+              "idempotency_key": "cc2242eb-c2b3-40f3-8972-b111a3de4b7d",
               "request_fingerprint": "b76c4617f0d7b1c9ae48ceee127f12e8fcdb087b61c16c9a044ac73641a75368",
-              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790545941,\"fee_iqd\":250,\"id\":\"d1de527d-ceab-4c7d-a2db-7d8b7bff873b\",\"idempotency_key\":\"f8efe064-ea27-4536-a165-50e9d62c5fb7\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790551816,\"fee_iqd\":250,\"id\":\"ff5ccc84-c571-4574-920c-6e0687ab0973\",\"idempotency_key\":\"cc2242eb-c2b3-40f3-8972-b111a3de4b7d\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4743,8 +4632,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "730f9a61-8b34-4596-8911-b217a4807d12",
-            "expires_at": 1790546067,
+            "draft_id": "ec0ef9fd-490f-4f7d-9235-2b9ecfd35a55",
+            "expires_at": 1790551942,
             "amount_words": "خمسة ألف دينار",
             "balance_after": 279750,
             "balance_before": 285000,
@@ -4768,17 +4657,17 @@
           },
           "transactions": [
             {
-              "id": "0f0d5236-5576-4b9c-ac48-814bb12bcb0b",
+              "id": "295a3eef-a0d5-453e-a401-b1a72c775213",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "105",
               "amount_iqd": 5000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545947,
-              "idempotency_key": "730f9a61-8b34-4596-8911-b217a4807d12",
+              "created_at": 1790551822,
+              "idempotency_key": "ec0ef9fd-490f-4f7d-9235-2b9ecfd35a55",
               "request_fingerprint": "b76c4617f0d7b1c9ae48ceee127f12e8fcdb087b61c16c9a044ac73641a75368",
-              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790545947,\"fee_iqd\":250,\"id\":\"0f0d5236-5576-4b9c-ac48-814bb12bcb0b\",\"idempotency_key\":\"730f9a61-8b34-4596-8911-b217a4807d12\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":5000,\"balance_iqd\":279750,\"created_at\":1790551822,\"fee_iqd\":250,\"id\":\"295a3eef-a0d5-453e-a401-b1a72c775213\",\"idempotency_key\":\"ec0ef9fd-490f-4f7d-9235-2b9ecfd35a55\",\"payee_ref\":\"105\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4820,8 +4709,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "24e18d97-fe50-4903-9840-44c25ff619b2",
-            "expires_at": 1790546077,
+            "draft_id": "e3d1fdff-2693-4708-9919-d466497de187",
+            "expires_at": 1790551952,
             "amount_words": "ألفان دينار",
             "balance_after": 282750,
             "balance_before": 285000,
@@ -4845,17 +4734,17 @@
           },
           "transactions": [
             {
-              "id": "cd6ffcde-5130-4639-99dd-2047693de6a5",
+              "id": "a6935898-9497-4f68-b584-82cb5de7e2c8",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "109",
               "amount_iqd": 2000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545957,
-              "idempotency_key": "24e18d97-fe50-4903-9840-44c25ff619b2",
+              "created_at": 1790551832,
+              "idempotency_key": "e3d1fdff-2693-4708-9919-d466497de187",
               "request_fingerprint": "89f4e6efed68c546575517c7803d38afb48c1ad9cec0ab4357cc3170ec4994ed",
-              "receipt_json": "{\"amount_iqd\":2000,\"balance_iqd\":282750,\"created_at\":1790545957,\"fee_iqd\":250,\"id\":\"cd6ffcde-5130-4639-99dd-2047693de6a5\",\"idempotency_key\":\"24e18d97-fe50-4903-9840-44c25ff619b2\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":2000,\"balance_iqd\":282750,\"created_at\":1790551832,\"fee_iqd\":250,\"id\":\"a6935898-9497-4f68-b584-82cb5de7e2c8\",\"idempotency_key\":\"e3d1fdff-2693-4708-9919-d466497de187\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4873,8 +4762,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "72617df6-8ea0-41ca-8aa6-19d90ed6a36a",
-            "expires_at": 1790546083,
+            "draft_id": "d6cb9be2-c971-4de8-8631-df2c16abd771",
+            "expires_at": 1790551958,
             "amount_words": "ألفان دينار",
             "balance_after": 282750,
             "balance_before": 285000,
@@ -4898,17 +4787,17 @@
           },
           "transactions": [
             {
-              "id": "e8c75af4-3d04-48e2-b9a4-f09d4c8e01b5",
+              "id": "3d969c34-157d-43e7-9fe7-87be8bd5f06a",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "109",
               "amount_iqd": 2000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545963,
-              "idempotency_key": "72617df6-8ea0-41ca-8aa6-19d90ed6a36a",
+              "created_at": 1790551838,
+              "idempotency_key": "d6cb9be2-c971-4de8-8631-df2c16abd771",
               "request_fingerprint": "89f4e6efed68c546575517c7803d38afb48c1ad9cec0ab4357cc3170ec4994ed",
-              "receipt_json": "{\"amount_iqd\":2000,\"balance_iqd\":282750,\"created_at\":1790545963,\"fee_iqd\":250,\"id\":\"e8c75af4-3d04-48e2-b9a4-f09d4c8e01b5\",\"idempotency_key\":\"72617df6-8ea0-41ca-8aa6-19d90ed6a36a\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":2000,\"balance_iqd\":282750,\"created_at\":1790551838,\"fee_iqd\":250,\"id\":\"3d969c34-157d-43e7-9fe7-87be8bd5f06a\",\"idempotency_key\":\"d6cb9be2-c971-4de8-8631-df2c16abd771\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4926,8 +4815,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "92dbab70-f7ee-43e2-89a4-e5c520d0f360",
-            "expires_at": 1790546090,
+            "draft_id": "18b13cc2-c6ea-4ff6-a969-03fdea6b9d94",
+            "expires_at": 1790551964,
             "amount_words": "ألفان دينار",
             "balance_after": 282750,
             "balance_before": 285000,
@@ -4951,17 +4840,17 @@
           },
           "transactions": [
             {
-              "id": "37a37ac2-c7d7-4022-87c7-29edb50669c4",
+              "id": "b6a27e23-9be1-4499-a70f-baef4d4626e7",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "109",
               "amount_iqd": 2000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790545970,
-              "idempotency_key": "92dbab70-f7ee-43e2-89a4-e5c520d0f360",
+              "created_at": 1790551844,
+              "idempotency_key": "18b13cc2-c6ea-4ff6-a969-03fdea6b9d94",
               "request_fingerprint": "89f4e6efed68c546575517c7803d38afb48c1ad9cec0ab4357cc3170ec4994ed",
-              "receipt_json": "{\"amount_iqd\":2000,\"balance_iqd\":282750,\"created_at\":1790545970,\"fee_iqd\":250,\"id\":\"37a37ac2-c7d7-4022-87c7-29edb50669c4\",\"idempotency_key\":\"92dbab70-f7ee-43e2-89a4-e5c520d0f360\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":2000,\"balance_iqd\":282750,\"created_at\":1790551844,\"fee_iqd\":250,\"id\":\"b6a27e23-9be1-4499-a70f-baef4d4626e7\",\"idempotency_key\":\"18b13cc2-c6ea-4ff6-a969-03fdea6b9d94\",\"payee_ref\":\"109\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -4999,9 +4888,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -5015,9 +4904,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -5031,9 +4920,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -5075,8 +4964,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "753440e5-71f7-4648-a927-d64627f5cb23",
-            "expires_at": 1790546125,
+            "draft_id": "09a29eaf-c379-4a4d-adff-c8c47ced6729",
+            "expires_at": 1790551999,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -5100,17 +4989,17 @@
           },
           "transactions": [
             {
-              "id": "8ca48419-8f15-4103-bde6-ff4f804fb06b",
+              "id": "d82146f1-8d0f-41dc-b287-b817555de6b9",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "113",
               "amount_iqd": 10000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546005,
-              "idempotency_key": "753440e5-71f7-4648-a927-d64627f5cb23",
+              "created_at": 1790551879,
+              "idempotency_key": "09a29eaf-c379-4a4d-adff-c8c47ced6729",
               "request_fingerprint": "97b339e45fe1a5e25e25c745d5f06819b5cdafa668ff85ec5ef2437e2848f30b",
-              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790546005,\"fee_iqd\":250,\"id\":\"8ca48419-8f15-4103-bde6-ff4f804fb06b\",\"idempotency_key\":\"753440e5-71f7-4648-a927-d64627f5cb23\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790551879,\"fee_iqd\":250,\"id\":\"d82146f1-8d0f-41dc-b287-b817555de6b9\",\"idempotency_key\":\"09a29eaf-c379-4a4d-adff-c8c47ced6729\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5128,8 +5017,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "70e44147-6f29-4f56-8264-0ffd5e1ba690",
-            "expires_at": 1790546131,
+            "draft_id": "97c2de1e-7622-48bd-9e10-34e5c8b266fa",
+            "expires_at": 1790552005,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -5153,17 +5042,17 @@
           },
           "transactions": [
             {
-              "id": "1d200803-4a3f-446a-9142-5f99f61ac32c",
+              "id": "97be970a-11fd-4016-8a26-aaf4376d9aae",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "113",
               "amount_iqd": 10000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546011,
-              "idempotency_key": "70e44147-6f29-4f56-8264-0ffd5e1ba690",
+              "created_at": 1790551885,
+              "idempotency_key": "97c2de1e-7622-48bd-9e10-34e5c8b266fa",
               "request_fingerprint": "97b339e45fe1a5e25e25c745d5f06819b5cdafa668ff85ec5ef2437e2848f30b",
-              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790546011,\"fee_iqd\":250,\"id\":\"1d200803-4a3f-446a-9142-5f99f61ac32c\",\"idempotency_key\":\"70e44147-6f29-4f56-8264-0ffd5e1ba690\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790551885,\"fee_iqd\":250,\"id\":\"97be970a-11fd-4016-8a26-aaf4376d9aae\",\"idempotency_key\":\"97c2de1e-7622-48bd-9e10-34e5c8b266fa\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5181,8 +5070,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "2dbc3772-06cf-440d-99cb-fdb84711b456",
-            "expires_at": 1790546137,
+            "draft_id": "4962c65c-8433-49b7-b6dc-d1f44ef4bb00",
+            "expires_at": 1790552011,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -5206,17 +5095,17 @@
           },
           "transactions": [
             {
-              "id": "18e3f0b3-71ec-4384-839d-497d390821cd",
+              "id": "62180e99-d742-407d-8428-b2417ee32794",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "113",
               "amount_iqd": 10000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546017,
-              "idempotency_key": "2dbc3772-06cf-440d-99cb-fdb84711b456",
+              "created_at": 1790551891,
+              "idempotency_key": "4962c65c-8433-49b7-b6dc-d1f44ef4bb00",
               "request_fingerprint": "97b339e45fe1a5e25e25c745d5f06819b5cdafa668ff85ec5ef2437e2848f30b",
-              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790546017,\"fee_iqd\":250,\"id\":\"18e3f0b3-71ec-4384-839d-497d390821cd\",\"idempotency_key\":\"2dbc3772-06cf-440d-99cb-fdb84711b456\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790551891,\"fee_iqd\":250,\"id\":\"62180e99-d742-407d-8428-b2417ee32794\",\"idempotency_key\":\"4962c65c-8433-49b7-b6dc-d1f44ef4bb00\",\"payee_ref\":\"113\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5258,8 +5147,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "a37c885c-ded5-49f0-8ac3-d67bccc13567",
-            "expires_at": 1790546147,
+            "draft_id": "4c541913-4656-4db7-a75a-ef2cc4acead7",
+            "expires_at": 1790552020,
             "amount_words": "سبعة ألف وخمسمئة دينار",
             "balance_after": 277250,
             "balance_before": 285000,
@@ -5283,17 +5172,17 @@
           },
           "transactions": [
             {
-              "id": "028de834-a92a-445b-8f50-858b61ff0e63",
+              "id": "cfc37f1b-ab28-4919-96ed-7072e821fa90",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "121",
               "amount_iqd": 7500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546027,
-              "idempotency_key": "a37c885c-ded5-49f0-8ac3-d67bccc13567",
+              "created_at": 1790551900,
+              "idempotency_key": "4c541913-4656-4db7-a75a-ef2cc4acead7",
               "request_fingerprint": "61409acc46c827bacd3c3f153c8bc749279358247f74dbc80dd6c2216665add4",
-              "receipt_json": "{\"amount_iqd\":7500,\"balance_iqd\":277250,\"created_at\":1790546027,\"fee_iqd\":250,\"id\":\"028de834-a92a-445b-8f50-858b61ff0e63\",\"idempotency_key\":\"a37c885c-ded5-49f0-8ac3-d67bccc13567\",\"payee_ref\":\"121\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":7500,\"balance_iqd\":277250,\"created_at\":1790551900,\"fee_iqd\":250,\"id\":\"cfc37f1b-ab28-4919-96ed-7072e821fa90\",\"idempotency_key\":\"4c541913-4656-4db7-a75a-ef2cc4acead7\",\"payee_ref\":\"121\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5311,8 +5200,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "bcfa6ef3-4d76-47a2-a248-65bf27538a3b",
-            "expires_at": 1790546153,
+            "draft_id": "cf7a7088-bac0-48c0-8c04-1884d724de26",
+            "expires_at": 1790552026,
             "amount_words": "سبعة ألف وخمسمئة دينار",
             "balance_after": 277250,
             "balance_before": 285000,
@@ -5336,17 +5225,17 @@
           },
           "transactions": [
             {
-              "id": "3f98f48d-ee67-46f0-8cc8-2f26475818a7",
+              "id": "400959e6-3216-4c11-83ee-bf7f75ac43ab",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "121",
               "amount_iqd": 7500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546033,
-              "idempotency_key": "bcfa6ef3-4d76-47a2-a248-65bf27538a3b",
+              "created_at": 1790551906,
+              "idempotency_key": "cf7a7088-bac0-48c0-8c04-1884d724de26",
               "request_fingerprint": "61409acc46c827bacd3c3f153c8bc749279358247f74dbc80dd6c2216665add4",
-              "receipt_json": "{\"amount_iqd\":7500,\"balance_iqd\":277250,\"created_at\":1790546033,\"fee_iqd\":250,\"id\":\"3f98f48d-ee67-46f0-8cc8-2f26475818a7\",\"idempotency_key\":\"bcfa6ef3-4d76-47a2-a248-65bf27538a3b\",\"payee_ref\":\"121\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":7500,\"balance_iqd\":277250,\"created_at\":1790551906,\"fee_iqd\":250,\"id\":\"400959e6-3216-4c11-83ee-bf7f75ac43ab\",\"idempotency_key\":\"cf7a7088-bac0-48c0-8c04-1884d724de26\",\"payee_ref\":\"121\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5364,8 +5253,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "bad74422-2b50-4dfd-8b3c-5278617aa028",
-            "expires_at": 1790546159,
+            "draft_id": "33bc53df-9127-4610-9a8e-7be46993cef1",
+            "expires_at": 1790552032,
             "amount_words": "سبعة ألف وخمسمئة دينار",
             "balance_after": 277250,
             "balance_before": 285000,
@@ -5389,17 +5278,17 @@
           },
           "transactions": [
             {
-              "id": "953165a3-e778-4bd1-8004-143c3f29ceb1",
+              "id": "1c63a67e-b442-4a12-bc6b-aef04ffb2435",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "121",
               "amount_iqd": 7500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546039,
-              "idempotency_key": "bad74422-2b50-4dfd-8b3c-5278617aa028",
+              "created_at": 1790551912,
+              "idempotency_key": "33bc53df-9127-4610-9a8e-7be46993cef1",
               "request_fingerprint": "61409acc46c827bacd3c3f153c8bc749279358247f74dbc80dd6c2216665add4",
-              "receipt_json": "{\"amount_iqd\":7500,\"balance_iqd\":277250,\"created_at\":1790546039,\"fee_iqd\":250,\"id\":\"953165a3-e778-4bd1-8004-143c3f29ceb1\",\"idempotency_key\":\"bad74422-2b50-4dfd-8b3c-5278617aa028\",\"payee_ref\":\"121\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":7500,\"balance_iqd\":277250,\"created_at\":1790551912,\"fee_iqd\":250,\"id\":\"1c63a67e-b442-4a12-bc6b-aef04ffb2435\",\"idempotency_key\":\"33bc53df-9127-4610-9a8e-7be46993cef1\",\"payee_ref\":\"121\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5441,8 +5330,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "9b8d47a2-1743-4664-bc9c-6c32eb56532e",
-            "expires_at": 1790546169,
+            "draft_id": "54e6283b-a124-47e8-8316-9c9b533e0ca2",
+            "expires_at": 1790552042,
             "amount_words": "أربعة ألف ومئتان دينار",
             "balance_after": 280550,
             "balance_before": 285000,
@@ -5466,17 +5355,17 @@
           },
           "transactions": [
             {
-              "id": "9dec8efa-a563-430a-8846-5b1193d81e0a",
+              "id": "668238d4-7099-4d89-bcc3-c21fc86372b7",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "120",
               "amount_iqd": 4200,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546049,
-              "idempotency_key": "9b8d47a2-1743-4664-bc9c-6c32eb56532e",
+              "created_at": 1790551922,
+              "idempotency_key": "54e6283b-a124-47e8-8316-9c9b533e0ca2",
               "request_fingerprint": "39ffe4e4cee9e1b5f171d5ab534e462121e1037aff2949fe40c7642005b9e832",
-              "receipt_json": "{\"amount_iqd\":4200,\"balance_iqd\":280550,\"created_at\":1790546049,\"fee_iqd\":250,\"id\":\"9dec8efa-a563-430a-8846-5b1193d81e0a\",\"idempotency_key\":\"9b8d47a2-1743-4664-bc9c-6c32eb56532e\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":4200,\"balance_iqd\":280550,\"created_at\":1790551922,\"fee_iqd\":250,\"id\":\"668238d4-7099-4d89-bcc3-c21fc86372b7\",\"idempotency_key\":\"54e6283b-a124-47e8-8316-9c9b533e0ca2\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5494,8 +5383,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "8b22df44-ecdf-43a0-98d4-1b4f1cfdd7ba",
-            "expires_at": 1790546175,
+            "draft_id": "a244cd59-1575-4068-90f3-c9ceb1e07c28",
+            "expires_at": 1790552048,
             "amount_words": "أربعة ألف ومئتان دينار",
             "balance_after": 280550,
             "balance_before": 285000,
@@ -5519,17 +5408,17 @@
           },
           "transactions": [
             {
-              "id": "7fd36bfb-181b-4ff2-9b68-38fb8960c170",
+              "id": "78ea3fb7-35b3-49e2-b4ba-1f2d4128fc13",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "120",
               "amount_iqd": 4200,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546055,
-              "idempotency_key": "8b22df44-ecdf-43a0-98d4-1b4f1cfdd7ba",
+              "created_at": 1790551928,
+              "idempotency_key": "a244cd59-1575-4068-90f3-c9ceb1e07c28",
               "request_fingerprint": "39ffe4e4cee9e1b5f171d5ab534e462121e1037aff2949fe40c7642005b9e832",
-              "receipt_json": "{\"amount_iqd\":4200,\"balance_iqd\":280550,\"created_at\":1790546055,\"fee_iqd\":250,\"id\":\"7fd36bfb-181b-4ff2-9b68-38fb8960c170\",\"idempotency_key\":\"8b22df44-ecdf-43a0-98d4-1b4f1cfdd7ba\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":4200,\"balance_iqd\":280550,\"created_at\":1790551928,\"fee_iqd\":250,\"id\":\"78ea3fb7-35b3-49e2-b4ba-1f2d4128fc13\",\"idempotency_key\":\"a244cd59-1575-4068-90f3-c9ceb1e07c28\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5547,8 +5436,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "0b4753bc-ad10-4e4d-bc92-b7374c285b38",
-            "expires_at": 1790546181,
+            "draft_id": "fd024bd8-23fd-48a8-9e84-7b66042a337d",
+            "expires_at": 1790552054,
             "amount_words": "أربعة ألف ومئتان دينار",
             "balance_after": 280550,
             "balance_before": 285000,
@@ -5572,17 +5461,17 @@
           },
           "transactions": [
             {
-              "id": "b01185de-9873-4dbe-b482-7e028d6bf986",
+              "id": "a8e82813-d079-44be-9241-8928c21f7095",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "120",
               "amount_iqd": 4200,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546061,
-              "idempotency_key": "0b4753bc-ad10-4e4d-bc92-b7374c285b38",
+              "created_at": 1790551934,
+              "idempotency_key": "fd024bd8-23fd-48a8-9e84-7b66042a337d",
               "request_fingerprint": "39ffe4e4cee9e1b5f171d5ab534e462121e1037aff2949fe40c7642005b9e832",
-              "receipt_json": "{\"amount_iqd\":4200,\"balance_iqd\":280550,\"created_at\":1790546061,\"fee_iqd\":250,\"id\":\"b01185de-9873-4dbe-b482-7e028d6bf986\",\"idempotency_key\":\"0b4753bc-ad10-4e4d-bc92-b7374c285b38\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":4200,\"balance_iqd\":280550,\"created_at\":1790551934,\"fee_iqd\":250,\"id\":\"a8e82813-d079-44be-9241-8928c21f7095\",\"idempotency_key\":\"fd024bd8-23fd-48a8-9e84-7b66042a337d\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5624,8 +5513,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "fdf01022-2566-43df-ab1b-4132f4208ca4",
-            "expires_at": 1790546191,
+            "draft_id": "d0d2b0f6-0e2c-4e7a-99ef-6f0ff74b3997",
+            "expires_at": 1790552064,
             "amount_words": "ستة ألف دينار",
             "balance_after": 278750,
             "balance_before": 285000,
@@ -5649,17 +5538,17 @@
           },
           "transactions": [
             {
-              "id": "108cf0d9-7b6a-49d4-b71e-9158907cf28a",
+              "id": "a84d2ca2-7f9f-40d4-917c-c69f0483a6fc",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "119",
               "amount_iqd": 6000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546071,
-              "idempotency_key": "fdf01022-2566-43df-ab1b-4132f4208ca4",
+              "created_at": 1790551944,
+              "idempotency_key": "d0d2b0f6-0e2c-4e7a-99ef-6f0ff74b3997",
               "request_fingerprint": "ee1f0d2836f421a5598b0707154ffeb7f434993a952c3a9dabd20ed76c45f8bf",
-              "receipt_json": "{\"amount_iqd\":6000,\"balance_iqd\":278750,\"created_at\":1790546071,\"fee_iqd\":250,\"id\":\"108cf0d9-7b6a-49d4-b71e-9158907cf28a\",\"idempotency_key\":\"fdf01022-2566-43df-ab1b-4132f4208ca4\",\"payee_ref\":\"119\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":6000,\"balance_iqd\":278750,\"created_at\":1790551944,\"fee_iqd\":250,\"id\":\"a84d2ca2-7f9f-40d4-917c-c69f0483a6fc\",\"idempotency_key\":\"d0d2b0f6-0e2c-4e7a-99ef-6f0ff74b3997\",\"payee_ref\":\"119\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5677,8 +5566,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "fb148950-b4aa-46fd-810d-b5e413d2743f",
-            "expires_at": 1790546197,
+            "draft_id": "de0eb8ec-e864-423b-b746-8ea3294298a3",
+            "expires_at": 1790552070,
             "amount_words": "ستة ألف دينار",
             "balance_after": 278750,
             "balance_before": 285000,
@@ -5702,17 +5591,17 @@
           },
           "transactions": [
             {
-              "id": "feb52a1e-47a0-417c-9926-2b311a51583b",
+              "id": "4bfabb17-7514-4169-bdfd-36e71be0992b",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "119",
               "amount_iqd": 6000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546078,
-              "idempotency_key": "fb148950-b4aa-46fd-810d-b5e413d2743f",
+              "created_at": 1790551950,
+              "idempotency_key": "de0eb8ec-e864-423b-b746-8ea3294298a3",
               "request_fingerprint": "ee1f0d2836f421a5598b0707154ffeb7f434993a952c3a9dabd20ed76c45f8bf",
-              "receipt_json": "{\"amount_iqd\":6000,\"balance_iqd\":278750,\"created_at\":1790546078,\"fee_iqd\":250,\"id\":\"feb52a1e-47a0-417c-9926-2b311a51583b\",\"idempotency_key\":\"fb148950-b4aa-46fd-810d-b5e413d2743f\",\"payee_ref\":\"119\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":6000,\"balance_iqd\":278750,\"created_at\":1790551950,\"fee_iqd\":250,\"id\":\"4bfabb17-7514-4169-bdfd-36e71be0992b\",\"idempotency_key\":\"de0eb8ec-e864-423b-b746-8ea3294298a3\",\"payee_ref\":\"119\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5730,8 +5619,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "769cbf48-39d8-4979-aa19-5fb4566fd0db",
-            "expires_at": 1790546204,
+            "draft_id": "1a650a33-9efc-45c0-82b7-c902d627be07",
+            "expires_at": 1790552075,
             "amount_words": "ستة ألف دينار",
             "balance_after": 278750,
             "balance_before": 285000,
@@ -5755,17 +5644,17 @@
           },
           "transactions": [
             {
-              "id": "6e2787b8-9594-457c-a82a-78260c54ddee",
+              "id": "1feeee45-4b33-4130-829c-88e8122d4e32",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "119",
               "amount_iqd": 6000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546084,
-              "idempotency_key": "769cbf48-39d8-4979-aa19-5fb4566fd0db",
+              "created_at": 1790551956,
+              "idempotency_key": "1a650a33-9efc-45c0-82b7-c902d627be07",
               "request_fingerprint": "ee1f0d2836f421a5598b0707154ffeb7f434993a952c3a9dabd20ed76c45f8bf",
-              "receipt_json": "{\"amount_iqd\":6000,\"balance_iqd\":278750,\"created_at\":1790546084,\"fee_iqd\":250,\"id\":\"6e2787b8-9594-457c-a82a-78260c54ddee\",\"idempotency_key\":\"769cbf48-39d8-4979-aa19-5fb4566fd0db\",\"payee_ref\":\"119\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":6000,\"balance_iqd\":278750,\"created_at\":1790551956,\"fee_iqd\":250,\"id\":\"1feeee45-4b33-4130-829c-88e8122d4e32\",\"idempotency_key\":\"1a650a33-9efc-45c0-82b7-c902d627be07\",\"payee_ref\":\"119\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5807,8 +5696,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "8ca383cc-8087-49e0-8fcd-11855e59266c",
-            "expires_at": 1790546214,
+            "draft_id": "6627f875-385f-4f0e-8bb0-8e05fc880846",
+            "expires_at": 1790552085,
             "amount_words": "ثمانية ألف وخمسمئة دينار",
             "balance_after": 276250,
             "balance_before": 285000,
@@ -5832,17 +5721,17 @@
           },
           "transactions": [
             {
-              "id": "ffc249a5-b905-4f37-886c-e724465607d1",
+              "id": "79551078-7c24-432d-9446-f148698ea796",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "116",
               "amount_iqd": 8500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546094,
-              "idempotency_key": "8ca383cc-8087-49e0-8fcd-11855e59266c",
+              "created_at": 1790551965,
+              "idempotency_key": "6627f875-385f-4f0e-8bb0-8e05fc880846",
               "request_fingerprint": "80f32ec0d1b46c84e5544afe41016e644163f33943b9def3ea98007ee4cd5eb4",
-              "receipt_json": "{\"amount_iqd\":8500,\"balance_iqd\":276250,\"created_at\":1790546094,\"fee_iqd\":250,\"id\":\"ffc249a5-b905-4f37-886c-e724465607d1\",\"idempotency_key\":\"8ca383cc-8087-49e0-8fcd-11855e59266c\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":8500,\"balance_iqd\":276250,\"created_at\":1790551965,\"fee_iqd\":250,\"id\":\"79551078-7c24-432d-9446-f148698ea796\",\"idempotency_key\":\"6627f875-385f-4f0e-8bb0-8e05fc880846\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5860,8 +5749,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "e53c0bf7-cd02-4b12-a7ea-961ae8c6f9a2",
-            "expires_at": 1790546220,
+            "draft_id": "94899ecb-f58c-4924-8826-5e92127f8056",
+            "expires_at": 1790552091,
             "amount_words": "ثمانية ألف وخمسمئة دينار",
             "balance_after": 276250,
             "balance_before": 285000,
@@ -5885,17 +5774,17 @@
           },
           "transactions": [
             {
-              "id": "8bb23a14-ff29-4726-a403-7d09008f229c",
+              "id": "74ff2bf3-bb0f-48f0-a7f7-08a7c21a2a87",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "116",
               "amount_iqd": 8500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546100,
-              "idempotency_key": "e53c0bf7-cd02-4b12-a7ea-961ae8c6f9a2",
+              "created_at": 1790551971,
+              "idempotency_key": "94899ecb-f58c-4924-8826-5e92127f8056",
               "request_fingerprint": "80f32ec0d1b46c84e5544afe41016e644163f33943b9def3ea98007ee4cd5eb4",
-              "receipt_json": "{\"amount_iqd\":8500,\"balance_iqd\":276250,\"created_at\":1790546100,\"fee_iqd\":250,\"id\":\"8bb23a14-ff29-4726-a403-7d09008f229c\",\"idempotency_key\":\"e53c0bf7-cd02-4b12-a7ea-961ae8c6f9a2\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":8500,\"balance_iqd\":276250,\"created_at\":1790551971,\"fee_iqd\":250,\"id\":\"74ff2bf3-bb0f-48f0-a7f7-08a7c21a2a87\",\"idempotency_key\":\"94899ecb-f58c-4924-8826-5e92127f8056\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5913,8 +5802,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "752fb65a-30e1-4ff1-b547-e83632a4e05c",
-            "expires_at": 1790546226,
+            "draft_id": "8caac4e6-faba-4b02-a804-63a1d0d1fd6d",
+            "expires_at": 1790552097,
             "amount_words": "ثمانية ألف وخمسمئة دينار",
             "balance_after": 276250,
             "balance_before": 285000,
@@ -5938,17 +5827,17 @@
           },
           "transactions": [
             {
-              "id": "a9cafb1a-3f10-47a7-ad8e-c73a0e69cded",
+              "id": "a16d09f1-01fb-4b96-9b1c-d1564d865bed",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "116",
               "amount_iqd": 8500,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546106,
-              "idempotency_key": "752fb65a-30e1-4ff1-b547-e83632a4e05c",
+              "created_at": 1790551977,
+              "idempotency_key": "8caac4e6-faba-4b02-a804-63a1d0d1fd6d",
               "request_fingerprint": "80f32ec0d1b46c84e5544afe41016e644163f33943b9def3ea98007ee4cd5eb4",
-              "receipt_json": "{\"amount_iqd\":8500,\"balance_iqd\":276250,\"created_at\":1790546106,\"fee_iqd\":250,\"id\":\"a9cafb1a-3f10-47a7-ad8e-c73a0e69cded\",\"idempotency_key\":\"752fb65a-30e1-4ff1-b547-e83632a4e05c\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":8500,\"balance_iqd\":276250,\"created_at\":1790551977,\"fee_iqd\":250,\"id\":\"a16d09f1-01fb-4b96-9b1c-d1564d865bed\",\"idempotency_key\":\"8caac4e6-faba-4b02-a804-63a1d0d1fd6d\",\"payee_ref\":\"116\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -5986,9 +5875,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -6002,9 +5891,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -6018,9 +5907,9 @@
         "clarification_ok": false,
         "overasking": false,
         "actual": {
-          "state": "FAILED",
+          "state": "IDLE",
           "ask_slot": null,
-          "code": "UNKNOWN_BILLER",
+          "code": "PARSER_UNAVAILABLE",
           "card": null,
           "transactions": []
         },
@@ -6062,8 +5951,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "5a0826c4-04e2-44c1-be49-f03c6c8d0deb",
-            "expires_at": 1790546261,
+            "draft_id": "022e1605-340d-48d4-a5eb-e6668b9da2b1",
+            "expires_at": 1790552132,
             "amount_words": "اثنا عشر ألف دينار",
             "balance_after": 272750,
             "balance_before": 285000,
@@ -6087,17 +5976,17 @@
           },
           "transactions": [
             {
-              "id": "c3421e72-e52a-4374-90f6-79d296e9dbfa",
+              "id": "9cccc50d-d640-4bff-85e5-c6ffced51ca1",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 12000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546141,
-              "idempotency_key": "5a0826c4-04e2-44c1-be49-f03c6c8d0deb",
+              "created_at": 1790552012,
+              "idempotency_key": "022e1605-340d-48d4-a5eb-e6668b9da2b1",
               "request_fingerprint": "f4770de331f35768659024b33007fac591c8d88a1820afc07270b5c60d8e53b3",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790546141,\"fee_iqd\":250,\"id\":\"c3421e72-e52a-4374-90f6-79d296e9dbfa\",\"idempotency_key\":\"5a0826c4-04e2-44c1-be49-f03c6c8d0deb\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790552012,\"fee_iqd\":250,\"id\":\"9cccc50d-d640-4bff-85e5-c6ffced51ca1\",\"idempotency_key\":\"022e1605-340d-48d4-a5eb-e6668b9da2b1\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -6115,8 +6004,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "eafcbb2c-9440-4ac2-a1bf-5c2d9db73b65",
-            "expires_at": 1790546268,
+            "draft_id": "bfe6fc49-e83b-4179-8e1c-80cecae9cbfe",
+            "expires_at": 1790552138,
             "amount_words": "اثنا عشر ألف دينار",
             "balance_after": 272750,
             "balance_before": 285000,
@@ -6140,17 +6029,17 @@
           },
           "transactions": [
             {
-              "id": "476372d0-0fab-4c49-b12f-92e0ce853466",
+              "id": "fd9660ba-a2fb-42f6-adca-47ed6f72796c",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 12000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546148,
-              "idempotency_key": "eafcbb2c-9440-4ac2-a1bf-5c2d9db73b65",
+              "created_at": 1790552018,
+              "idempotency_key": "bfe6fc49-e83b-4179-8e1c-80cecae9cbfe",
               "request_fingerprint": "f4770de331f35768659024b33007fac591c8d88a1820afc07270b5c60d8e53b3",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790546148,\"fee_iqd\":250,\"id\":\"476372d0-0fab-4c49-b12f-92e0ce853466\",\"idempotency_key\":\"eafcbb2c-9440-4ac2-a1bf-5c2d9db73b65\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790552018,\"fee_iqd\":250,\"id\":\"fd9660ba-a2fb-42f6-adca-47ed6f72796c\",\"idempotency_key\":\"bfe6fc49-e83b-4179-8e1c-80cecae9cbfe\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -6168,8 +6057,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "99590aca-ca7b-4a22-8b68-19c3f0d377c9",
-            "expires_at": 1790546274,
+            "draft_id": "55ba82b0-5d02-4e3e-9661-03d96543012b",
+            "expires_at": 1790552144,
             "amount_words": "اثنا عشر ألف دينار",
             "balance_after": 272750,
             "balance_before": 285000,
@@ -6193,17 +6082,17 @@
           },
           "transactions": [
             {
-              "id": "e2365d67-d64e-4062-9394-bac69db5179b",
+              "id": "8c81d877-4c70-490a-9834-bb0df1f8fcf7",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 12000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546154,
-              "idempotency_key": "99590aca-ca7b-4a22-8b68-19c3f0d377c9",
+              "created_at": 1790552024,
+              "idempotency_key": "55ba82b0-5d02-4e3e-9661-03d96543012b",
               "request_fingerprint": "f4770de331f35768659024b33007fac591c8d88a1820afc07270b5c60d8e53b3",
-              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790546154,\"fee_iqd\":250,\"id\":\"e2365d67-d64e-4062-9394-bac69db5179b\",\"idempotency_key\":\"99590aca-ca7b-4a22-8b68-19c3f0d377c9\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":12000,\"balance_iqd\":272750,\"created_at\":1790552024,\"fee_iqd\":250,\"id\":\"8c81d877-4c70-490a-9834-bb0df1f8fcf7\",\"idempotency_key\":\"55ba82b0-5d02-4e3e-9661-03d96543012b\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -6595,8 +6484,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "ab23d3e9-fddf-455b-98c1-5276f2104fde",
-            "expires_at": 1790546386,
+            "draft_id": "762f5f6d-c7b5-49d9-9bc6-4ebe52dda0d5",
+            "expires_at": 1790552255,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -6620,17 +6509,17 @@
           },
           "transactions": [
             {
-              "id": "63ff2b44-e93c-4c9c-9c3a-0f90546b938c",
+              "id": "4a569b0c-713e-414c-b3fc-97764bccb8e3",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 10000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546266,
-              "idempotency_key": "ab23d3e9-fddf-455b-98c1-5276f2104fde",
+              "created_at": 1790552135,
+              "idempotency_key": "762f5f6d-c7b5-49d9-9bc6-4ebe52dda0d5",
               "request_fingerprint": "6a8fd82edc20669231aa9a8fdd96ed456e172fa6e37cebbd1c3e9c7b1e731f4c",
-              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790546266,\"fee_iqd\":250,\"id\":\"63ff2b44-e93c-4c9c-9c3a-0f90546b938c\",\"idempotency_key\":\"ab23d3e9-fddf-455b-98c1-5276f2104fde\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790552135,\"fee_iqd\":250,\"id\":\"4a569b0c-713e-414c-b3fc-97764bccb8e3\",\"idempotency_key\":\"762f5f6d-c7b5-49d9-9bc6-4ebe52dda0d5\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -6648,8 +6537,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "ed08ebba-0b49-4aa9-8a8c-ee43b9aef4bc",
-            "expires_at": 1790546392,
+            "draft_id": "45047917-ebc2-41d1-a30c-65dafb89cc44",
+            "expires_at": 1790552261,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -6673,17 +6562,17 @@
           },
           "transactions": [
             {
-              "id": "04ac4181-ca79-4538-95f2-353695c03ed1",
+              "id": "8193fa48-5c0f-406b-b641-8a00b1e5ca19",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 10000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546272,
-              "idempotency_key": "ed08ebba-0b49-4aa9-8a8c-ee43b9aef4bc",
+              "created_at": 1790552141,
+              "idempotency_key": "45047917-ebc2-41d1-a30c-65dafb89cc44",
               "request_fingerprint": "6a8fd82edc20669231aa9a8fdd96ed456e172fa6e37cebbd1c3e9c7b1e731f4c",
-              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790546272,\"fee_iqd\":250,\"id\":\"04ac4181-ca79-4538-95f2-353695c03ed1\",\"idempotency_key\":\"ed08ebba-0b49-4aa9-8a8c-ee43b9aef4bc\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790552141,\"fee_iqd\":250,\"id\":\"8193fa48-5c0f-406b-b641-8a00b1e5ca19\",\"idempotency_key\":\"45047917-ebc2-41d1-a30c-65dafb89cc44\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -6701,8 +6590,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "c0dd3fb1-185a-4c1b-9ff5-b60f5140eb6f",
-            "expires_at": 1790546399,
+            "draft_id": "ae1ca606-25af-41b6-9b8b-2b3d7562730d",
+            "expires_at": 1790552267,
             "amount_words": "عشرة ألف دينار",
             "balance_after": 274750,
             "balance_before": 285000,
@@ -6726,17 +6615,17 @@
           },
           "transactions": [
             {
-              "id": "6ffeae00-111f-45ea-9ec6-083fabe6bdf8",
+              "id": "a9debef5-4033-4910-a7f0-6447e533c897",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "122",
               "amount_iqd": 10000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546279,
-              "idempotency_key": "c0dd3fb1-185a-4c1b-9ff5-b60f5140eb6f",
+              "created_at": 1790552147,
+              "idempotency_key": "ae1ca606-25af-41b6-9b8b-2b3d7562730d",
               "request_fingerprint": "6a8fd82edc20669231aa9a8fdd96ed456e172fa6e37cebbd1c3e9c7b1e731f4c",
-              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790546279,\"fee_iqd\":250,\"id\":\"6ffeae00-111f-45ea-9ec6-083fabe6bdf8\",\"idempotency_key\":\"c0dd3fb1-185a-4c1b-9ff5-b60f5140eb6f\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":10000,\"balance_iqd\":274750,\"created_at\":1790552147,\"fee_iqd\":250,\"id\":\"a9debef5-4033-4910-a7f0-6447e533c897\",\"idempotency_key\":\"ae1ca606-25af-41b6-9b8b-2b3d7562730d\",\"payee_ref\":\"122\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -6918,8 +6807,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "4e94d0de-133f-4fad-b772-32316bfffdf4",
-            "expires_at": 1790546454,
+            "draft_id": "9ca8d167-bc79-46d1-a692-13c4c5e27101",
+            "expires_at": 1790552322,
             "amount_words": "مئتان ألف دينار",
             "balance_after": 84750,
             "balance_before": 285000,
@@ -6943,17 +6832,17 @@
           },
           "transactions": [
             {
-              "id": "9faa5ec2-d8aa-4c29-8b6d-b249687fd30c",
+              "id": "9bb2ae45-8d42-46b8-b86a-87e0887cead4",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "120",
               "amount_iqd": 200000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546334,
-              "idempotency_key": "4e94d0de-133f-4fad-b772-32316bfffdf4",
+              "created_at": 1790552202,
+              "idempotency_key": "9ca8d167-bc79-46d1-a692-13c4c5e27101",
               "request_fingerprint": "9d54dc57ba2f64dcf0a13b585488161829f83e889db07ae27267933162849f81",
-              "receipt_json": "{\"amount_iqd\":200000,\"balance_iqd\":84750,\"created_at\":1790546334,\"fee_iqd\":250,\"id\":\"9faa5ec2-d8aa-4c29-8b6d-b249687fd30c\",\"idempotency_key\":\"4e94d0de-133f-4fad-b772-32316bfffdf4\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":200000,\"balance_iqd\":84750,\"created_at\":1790552202,\"fee_iqd\":250,\"id\":\"9bb2ae45-8d42-46b8-b86a-87e0887cead4\",\"idempotency_key\":\"9ca8d167-bc79-46d1-a692-13c4c5e27101\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -6971,8 +6860,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "b6fc429e-f248-4920-a206-b39dc691b7e7",
-            "expires_at": 1790546461,
+            "draft_id": "36588bf4-6797-44e1-bbce-a030c75379aa",
+            "expires_at": 1790552328,
             "amount_words": "مئتان ألف دينار",
             "balance_after": 84750,
             "balance_before": 285000,
@@ -6996,17 +6885,17 @@
           },
           "transactions": [
             {
-              "id": "589fb2be-8c09-434e-918d-7f0ce9a304da",
+              "id": "b975adbb-0b34-4bf4-aa96-119a2c70eb6b",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "120",
               "amount_iqd": 200000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546341,
-              "idempotency_key": "b6fc429e-f248-4920-a206-b39dc691b7e7",
+              "created_at": 1790552208,
+              "idempotency_key": "36588bf4-6797-44e1-bbce-a030c75379aa",
               "request_fingerprint": "9d54dc57ba2f64dcf0a13b585488161829f83e889db07ae27267933162849f81",
-              "receipt_json": "{\"amount_iqd\":200000,\"balance_iqd\":84750,\"created_at\":1790546341,\"fee_iqd\":250,\"id\":\"589fb2be-8c09-434e-918d-7f0ce9a304da\",\"idempotency_key\":\"b6fc429e-f248-4920-a206-b39dc691b7e7\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":200000,\"balance_iqd\":84750,\"created_at\":1790552208,\"fee_iqd\":250,\"id\":\"b975adbb-0b34-4bf4-aa96-119a2c70eb6b\",\"idempotency_key\":\"36588bf4-6797-44e1-bbce-a030c75379aa\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },
@@ -7024,8 +6913,8 @@
           "ask_slot": null,
           "code": null,
           "card": {
-            "draft_id": "8a436320-b8b9-4985-81bb-5e6de07b788c",
-            "expires_at": 1790546467,
+            "draft_id": "dd6a5f66-ae5d-49f7-8b6a-0eb383f34405",
+            "expires_at": 1790552334,
             "amount_words": "مئتان ألف دينار",
             "balance_after": 84750,
             "balance_before": 285000,
@@ -7049,17 +6938,17 @@
           },
           "transactions": [
             {
-              "id": "662facac-6a35-492b-8642-6128622e521b",
+              "id": "d043fa9e-e8d9-424e-b2c4-e13b53175f95",
               "user_id": 1,
               "type": "transfer",
               "payee_ref": "120",
               "amount_iqd": 200000,
               "fee_iqd": 250,
               "status": "succeeded",
-              "created_at": 1790546347,
-              "idempotency_key": "8a436320-b8b9-4985-81bb-5e6de07b788c",
+              "created_at": 1790552214,
+              "idempotency_key": "dd6a5f66-ae5d-49f7-8b6a-0eb383f34405",
               "request_fingerprint": "9d54dc57ba2f64dcf0a13b585488161829f83e889db07ae27267933162849f81",
-              "receipt_json": "{\"amount_iqd\":200000,\"balance_iqd\":84750,\"created_at\":1790546347,\"fee_iqd\":250,\"id\":\"662facac-6a35-492b-8642-6128622e521b\",\"idempotency_key\":\"8a436320-b8b9-4985-81bb-5e6de07b788c\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
+              "receipt_json": "{\"amount_iqd\":200000,\"balance_iqd\":84750,\"created_at\":1790552214,\"fee_iqd\":250,\"id\":\"d043fa9e-e8d9-424e-b2c4-e13b53175f95\",\"idempotency_key\":\"dd6a5f66-ae5d-49f7-8b6a-0eb383f34405\",\"payee_ref\":\"120\",\"receipt_json\":null,\"request_fingerprint\":null,\"status\":\"succeeded\",\"type\":\"transfer\",\"user_id\":1}"
             }
           ]
         },

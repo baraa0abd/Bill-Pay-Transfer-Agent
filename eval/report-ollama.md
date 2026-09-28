@@ -33,9 +33,9 @@ Set: **testset.jsonl**. Parser: **OllamaClient**. 68 cases × 3 fresh-database r
 
 ### iq-053: ادفع الوطنية 10000
 Expected: `{"refuse_code": "AMOUNT_INVALID"}`; REFUSE, slot None.
-Run 1: `{"state": "DRAFT_PENDING", "ask_slot": null, "code": null, "card": {"draft_id": "11bc394b-aa6f-44ad-9f54-a1634656e2f2", "expires_at": 1790547610, "amount_words": "خمسة وعشرون ألف دينار", "balance_after": 94750, "balance_before": 120000, "display": {"account_number": "ACC-0001", "biller_id": 1, "display_name": "الكهرباء الوطنية", "id": 1, "score": 100}, "duplicate_warning": null, "fee_iqd": 250, "kind": "bill_payment", "payment": {"amount_iqd": 25000, "bill_id": 109, "payee_id": null, "user_id": 1}, "period": "2026-09"}, "transactions": []}` — Expected outcome/identity/amount did not match
-Run 2: `{"state": "DRAFT_PENDING", "ask_slot": null, "code": null, "card": {"draft_id": "867e7588-43a4-418f-9680-d09b28cd22db", "expires_at": 1790547619, "amount_words": "خمسة وعشرون ألف دينار", "balance_after": 94750, "balance_before": 120000, "display": {"account_number": "ACC-0001", "biller_id": 1, "display_name": "الكهرباء الوطنية", "id": 1, "score": 100}, "duplicate_warning": null, "fee_iqd": 250, "kind": "bill_payment", "payment": {"amount_iqd": 25000, "bill_id": 109, "payee_id": null, "user_id": 1}, "period": "2026-09"}, "transactions": []}` — Expected outcome/identity/amount did not match
-Run 3: `{"state": "DRAFT_PENDING", "ask_slot": null, "code": null, "card": {"draft_id": "ebd781c4-1994-43c0-89ed-f6bee974831e", "expires_at": 1790547628, "amount_words": "خمسة وعشرون ألف دينار", "balance_after": 94750, "balance_before": 120000, "display": {"account_number": "ACC-0001", "biller_id": 1, "display_name": "الكهرباء الوطنية", "id": 1, "score": 100}, "duplicate_warning": null, "fee_iqd": 250, "kind": "bill_payment", "payment": {"amount_iqd": 25000, "bill_id": 109, "payee_id": null, "user_id": 1}, "period": "2026-09"}, "transactions": []}` — Expected outcome/identity/amount did not match
+Run 1: `{"state": "IDLE", "ask_slot": null, "code": "PARSER_UNAVAILABLE", "card": null, "transactions": []}` — Expected outcome/identity/amount did not match
+Run 2: `{"state": "IDLE", "ask_slot": null, "code": "PARSER_UNAVAILABLE", "card": null, "transactions": []}` — Expected outcome/identity/amount did not match
+Run 3: `{"state": "IDLE", "ask_slot": null, "code": "PARSER_UNAVAILABLE", "card": null, "transactions": []}` — Expected outcome/identity/amount did not match
 
 ## Requests that must not go through
 
