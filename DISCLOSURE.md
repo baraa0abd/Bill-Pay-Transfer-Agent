@@ -18,6 +18,7 @@ Follow-up (2026-09-27): Codex added the local Ollama adapter, compact wallet-blu
 | Local intent parser | Ollama `qwen3.5:4b`, schema-constrained JSON and validated text spans | Verification in progress; see README and eval reports |
 | Intent parser | Anthropic `claude-opus-5` via the `anthropic` Python SDK (`LLM_PROVIDER=anthropic`), rule parser as fallback. Offline default is the rule parser. | Live LLM parsing **not yet run**; contract-tested with a fake client only |
 | Held-out data generator | Ollama `qwen3.5:4b` when LLM_PROVIDER=ollama; Anthropic remains optional | Local blueprint plus deterministic ledger expansion; request batches use the same local model. See generated artifacts and reports for completed runs. |
+| Free hosted parser option | Groq `openai/gpt-oss-120b` or Gemini `gemini-3.8-flash` via the OpenAI-compatible API (`agent/hosted_client.py`, `LLM_PROVIDER=groq|gemini`, override with `LLM_MODEL`) | Added 2026-10-17; contract-tested with a mocked API, not yet run live |
 | Speech-to-text (stretch) | OpenAI `whisper-1` via `voice/asr.py` | **Not tested with real audio** |
 | Text-to-speech | Interface only (`voice/tts.py`) | Not enabled |
 

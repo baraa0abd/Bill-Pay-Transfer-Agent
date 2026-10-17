@@ -28,6 +28,9 @@ def ask(prompt, schema):
     if os.getenv('LLM_PROVIDER') == 'ollama':
         from agent.ollama_client import OllamaClient
         return OllamaClient().generate(prompt, schema, max_tokens=8192)
+    if os.getenv('LLM_PROVIDER') in ('groq', 'gemini'):
+        from agent.hosted_client import HostedClient
+        return HostedClient(os.environ['LLM_PROVIDER']).generate(prompt, schema, max_tokens=32000)
     # Large output: stream so the request can't hit an HTTP timeout.
     with anthropic.Anthropic().beta.messages.stream(
             model=MODEL, max_tokens=64000, messages=[{'role':'user','content':prompt}], output_format=schema,

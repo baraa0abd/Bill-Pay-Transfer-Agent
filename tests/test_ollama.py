@@ -69,3 +69,28 @@ def test_small_schema_answers_are_checked_against_wallet():
     bill = to_item(ExecBill, ExecBill(text='t', kind='bill_payment', biller_id=1, amount_iqd=5), wallet)
     assert bill['expected_final']['amount_iqd'] == 12000  # the recorded bill amount, not the model's guess
     assert to_item(ExecBill, ExecBill(text='t', kind='topup', biller_id=4, amount_iqd=5), wallet) is None  # nothing unpaid, even if the model says topup
+
+
+def test_hosted_contract_strict_schema_and_rate_limit_retry():
+    from agent.hosted_client import HostedClient
+    calls=[]
+    def handle(request):
+        calls.append(json.loads(request.content))
+        if len(calls)==1: return httpx.Response(429, headers={'retry-after':'0'})
+        content=json.dumps({'intents':[{'type':'transfer','payee_text':'خالو','amount_text':'1000','biller_text':None,'notes':None}]})
+        return httpx.Response(200, json={'choices':[{'finish_reason':'stop','message':{'content':content}}]})
+    waits=[]
+    c=HostedClient('groq', client=httpx.Client(transport=httpx.MockTransport(handle)), sleep=waits.append)
+    assert c.parse('دز 1000 لخالو')[0].payee_text=='خالو' and waits==[0.0] and c.source=='groq'
+    fmt=calls[-1]['response_format']['json_schema']
+    assert fmt['strict'] and 'tools' not in calls[-1]
+    item=fmt['schema']['$defs']['Intent']
+    assert item['additionalProperties'] is False and set(item['required'])==set(item['properties'])
+
+
+def test_hosted_rejects_invented_span():
+    from agent.hosted_client import HostedClient
+    content=json.dumps({'intents':[{'type':'transfer','payee_text':'علي','amount_text':None,'biller_text':None,'notes':None}]})
+    ok=lambda r: httpx.Response(200, json={'choices':[{'finish_reason':'stop','message':{'content':content}}]})
+    with pytest.raises(ValueError):
+        HostedClient('gemini', client=httpx.Client(transport=httpx.MockTransport(ok))).parse('دز لخالو')

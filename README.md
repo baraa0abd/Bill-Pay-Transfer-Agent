@@ -54,7 +54,8 @@ make heldout   # held-out test set
 make run       # http://localhost:8000
 ```
 
-- **Claude:** set `LLM_PROVIDER=anthropic` and `ANTHROPIC_API_KEY`. Without them the offline rule parser is used.
+- **Free hosted models:** `LLM_PROVIDER=groq` + `GROQ_API_KEY` (default `openai/gpt-oss-120b`), or `LLM_PROVIDER=gemini` + `GEMINI_API_KEY` (default `gemini-3.8-flash`; set `LLM_MODEL` to a Flash-Lite id for higher free volume). Keys come from your own free accounts, kept in `.env`.
+- **Local model:** `LLM_PROVIDER=ollama` (default `qwen3.5:4b`). **Claude:** `LLM_PROVIDER=anthropic` + `ANTHROPIC_API_KEY` (paid). Without any of these the offline rule parser is used.
 - **LLM-generated demo wallet:** set `DATABASE_URL=sqlite:///demo.db` and `SEED_PATH=data/heldout_seed.json`, then run `make seed` and `make run`.
 - **Demo faults:** `DEMO_MODE=true` shows the sidebar faults (lost response, crash before commit, provider down, delay). Fault headers are ignored otherwise.
 - Settings are documented in `.env.example`. Export them in your shell; `.env` is not loaded automatically. This is a localhost demo server; don't expose it.

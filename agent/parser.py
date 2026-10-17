@@ -161,5 +161,8 @@ def configured_parser(fallback=True):
         from .ollama_client import OllamaClient
         llm=OllamaClient()
     elif provider=='anthropic': llm=AnthropicClient(MODEL)
+    elif provider in ('groq','gemini'):
+        from .hosted_client import HostedClient
+        llm=HostedClient(provider)
     else: raise ValueError(f'Unknown LLM_PROVIDER: {provider}')
     return FallbackParser(llm) if fallback else llm
