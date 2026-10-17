@@ -1,0 +1,140 @@
+{
+  "users": [
+    {
+      "name": "علي محمد علي",
+      "balance_iqd": 210000
+    },
+    {
+      "name": "فاطمة عبد الرحمن",
+      "balance_iqd": 175000
+    },
+    {
+      "name": "سليم حسين علي",
+      "balance_iqd": 320000
+    },
+    {
+      "name": "نورا كاظم علي",
+      "balance_iqd": 260000
+    },
+    {
+      "name": "كريم عبد الله",
+      "balance_iqd": 395000
+    }
+  ],
+  "contacts": [
+    {
+      "name": "فراس علي علي",
+      "nickname": "خالو"
+    },
+    {
+      "name": "أحمد علي حسين",
+      "nickname": null
+    },
+    {
+      "name": "أحمد سعيد كمال",
+      "nickname": null
+    },
+    {
+      "name": "حسن عبد الله علي",
+      "nickname": null
+    },
+    {
+      "name": "حسين علي محمد",
+      "nickname": null
+    },
+    {
+      "name": "مريم عبد العزيز",
+      "nickname": null
+    },
+    {
+      "name": "علي حسن علي",
+      "nickname": null
+    },
+    {
+      "name": "سارة محمد علي",
+      "nickname": null
+    },
+    {
+      "name": "يوسف علي عبد",
+      "nickname": null
+    },
+    {
+      "name": "ليلى عبد الله",
+      "nickname": null
+    },
+    {
+      "name": "محمد علي صالح",
+      "nickname": null
+    },
+    {
+      "name": "زينب علي حسين",
+      "nickname": null
+    },
+    {
+      "name": "رائد كاظم علي",
+      "nickname": null
+    },
+    {
+      "name": "هدى عبد الرحمن",
+      "nickname": null
+    },
+    {
+      "name": "فهد علي علي",
+      "nickname": null
+    },
+    {
+      "name": "نادية كمال علي",
+      "nickname": null
+    },
+    {
+      "name": "طارق علي حسين",
+      "nickname": null
+    },
+    {
+      "name": "سلوى عبد الله",
+      "nickname": null
+    },
+    {
+      "name": "ماجد علي علي",
+      "nickname": null
+    },
+    {
+      "name": "نورة علي كاظم",
+      "nickname": null
+    },
+    {
+      "name": "عادل علي علي",
+      "nickname": null
+    },
+    {
+      "name": "سليم علي علي",
+      "nickname": null
+    },
+    {
+      "name": "جميلة عبد العزيز",
+      "nickname": null
+    },
+    {
+      "name": "سامي علي علي",
+      "nickname": null
+    }
+  ],
+  "biller_names": [
+    "الكهرباء الوطنية",
+    "مولد الحي",
+    "الإنترنت",
+    "المياه",
+    "زين موبايل",
+    "آسيا سيل موبايل",
+    "كورك موبايل"
+  ],
+  "bill_amounts": [
+    12000,
+    15000,
+    18000,
+    20000,
+    25000,
+    30000,
+    35000
+  ]
+}

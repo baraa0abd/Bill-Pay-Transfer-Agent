@@ -40,10 +40,10 @@ class HostedClient:
                                      {'name': schema.__name__, 'strict': True, 'schema': strict_schema(schema)}})
         for attempt in range(4):
             r = self.client.post(self.base + '/chat/completions', json=body, headers={'Authorization': f'Bearer {self.key}'})
-            if r.status_code != 429: break
-            # Free tiers rate-limit: wait as told (or back off) and retry.
+            # 429: free-tier rate limit. 400/5xx: strict-mode generations occasionally fail and succeed on retry.
+            if r.status_code not in (429, 400, 500, 502, 503): break
             self.sleep(float(r.headers.get('retry-after') or 2 ** attempt))
-        r.raise_for_status()
+        if r.status_code >= 400: raise ValueError(f'{self.source} {r.status_code}: {r.text[:300]}')
         choice = r.json()['choices'][0]
         if choice.get('finish_reason') not in (None, 'stop'): raise ValueError(f"generation incomplete: {choice.get('finish_reason')}")
         return schema.model_validate_json(choice['message']['content'])

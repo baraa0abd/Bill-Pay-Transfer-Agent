@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 1500 IQD لكريم علي",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول 2,000 دينار لعصام عبد الله",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "ابعت 5k للعم نادر حسين",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل 10000 للزميل جمال محمد",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي 2.5k للرفيق سعد علي",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "سدد 3000 للزقاقي باسم علي",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "ادفع 4k للعم صادق حسين",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "اشحن 5k للرفيق رامي علي",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز 7500 للزميل فؤاد عبد",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول ربع مليون للزميل ياسر علي",
+   "category": "unknown_contact",
+   "refuse_code": "UNKNOWN_PAYEE",
+   "intent": "transfer"
+  }
+ ]
+}

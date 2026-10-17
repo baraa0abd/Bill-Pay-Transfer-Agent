@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 15000 كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "حول ميت ألف كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ابعت 25k كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ارسل ربع مليون كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "سدد 5k كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ادفع 30k كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "اشحن 10k كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "انطي 25000 كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "دز 5k كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "حول خمسطعش ألف كهرباء",
+   "category": "ambiguous_biller",
+   "slot": "biller",
+   "intent": "bill_payment"
+  }
+ ]
+}

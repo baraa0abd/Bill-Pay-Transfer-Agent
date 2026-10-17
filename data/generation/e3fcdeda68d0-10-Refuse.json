@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 1500 للمياه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "حول ميت ألف على فاتورة المياه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ابعت ٢٠٠٠٠ للميه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ارسل 5k مية للمياه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "انطي 3000 للميه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "سدد ربع مليون على الميه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "ادفع خمسطعش ألف على فاتورة الميه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "اشحن 2k مية",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "دفع ١٠٠٠٠ للميه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  },
+  {
+   "text": "حول ٧٥٠٠ على فاتورة الميه",
+   "category": "already_paid",
+   "refuse_code": "BILL_ALREADY_PAID",
+   "intent": "bill_payment"
+  }
+ ]
+}

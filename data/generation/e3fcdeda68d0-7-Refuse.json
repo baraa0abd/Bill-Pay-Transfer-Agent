@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 250000 للخالو فراس",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول 300k ل مريم",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "ابعت 350000 لل علي",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل 400 الف لسارة",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي 450000 ليوسف",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "سدد 500k لليلى",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "ادفع 550k لمحمد",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "اشحن 600000 لزينب",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز 650k لرائد",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول 700000 لهدى",
+   "category": "insufficient_funds",
+   "refuse_code": "INSUFFICIENT_FUNDS",
+   "intent": "transfer"
+  }
+ ]
+}

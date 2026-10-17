@@ -50,11 +50,12 @@ class WalletBlueprint(BaseModel):
 
 
 WALLET_PROMPT = (
-    'Generate fictional Iraqi wallet data (no real people). Exactly 5 users with Iraqi names and balances between '
+    'Generate fictional Iraqi wallet data (no real people). Write EVERY name and biller name in Arabic script, never '
+    'English or transliteration. Exactly 5 users with Iraqi names and balances between '
     '150000 and 400000 IQD. 32 contacts with distinct full names as Iraqis in Baghdad, Basra or Najaf write them in '
     'Arabic script, mixing common Iraqi first names; include two contacts whose first name is أحمد, the similar pair '
     'حسن and حسين, and exactly one contact with the nickname خالو (other nicknames may be null). Seven Arabic biller '
-    'names as Iraqis would recognise them, IN THIS ORDER: national electricity, neighbourhood generator, internet, '
+    'names in Arabic as Iraqis would write them, IN THIS ORDER: national electricity, neighbourhood generator, internet, '
     'water, Zain mobile, Asiacell mobile, Korek mobile. Seven monthly bill amounts in the same order: integers in IQD '
     'between 5000 and 40000, multiples of 1000.')
 
@@ -66,7 +67,16 @@ def make_wallet(client):
     for c in bp.contacts:  # models repeat names; keep the first 24 distinct ones
         if normalize(c.name) not in seen: seen.add(normalize(c.name)); contacts.append(c)
     if len(contacts) < 24: raise ValueError(f'only {len(contacts)} distinct contact names')
-    bp.contacts = contacts[:24]
+    # Keep the contacts the held-out cases depend on, wherever the model put them in its list.
+    first = lambda c: normalize(c.name).split()[0]
+    khalo = [c for c in contacts if c.nickname == 'خالو'][:1]
+    for c in contacts:
+        if c.nickname == 'خالو' and c not in khalo: c.nickname = None
+    must = khalo + [c for c in contacts if first(c) == 'احمد'][:2] + [c for c in contacts if first(c) in ('حسن', 'حسين')][:2]
+    bp.contacts = (must + [c for c in contacts if c not in must])[:24]
+    arabic = lambda t: any('؀' <= ch <= 'ۿ' for ch in t)
+    if not all(arabic(n) for n in [u.name for u in bp.users] + [c.name for c in bp.contacts] + bp.biller_names):
+        raise ValueError('names must be in Arabic script')
     if sum(normalize(c.name).split()[0] == 'احمد' for c in bp.contacts) < 2: raise ValueError('need two أحمد contacts')
     if sum(c.nickname == 'خالو' for c in bp.contacts) != 1: raise ValueError('need exactly one خالو')
     # ponytail: clamp/round amounts the model chose instead of discarding a whole wallet over one number

@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز 12000 للكهربا الوطنية",
+   "kind": "bill_payment",
+   "biller_id": 1,
+   "amount_iqd": 12000
+  },
+  {
+   "text": "حول 15000 لمولد الحي",
+   "kind": "bill_payment",
+   "biller_id": 2,
+   "amount_iqd": 15000
+  },
+  {
+   "text": "سدد 18000 للإنترنت",
+   "kind": "bill_payment",
+   "biller_id": 3,
+   "amount_iqd": 18000
+  },
+  {
+   "text": "اشحن زين موبايل ميت ألف",
+   "kind": "topup",
+   "biller_id": 5,
+   "amount_iqd": 100000
+  },
+  {
+   "text": "ابعت 250k لآسيا سيل",
+   "kind": "topup",
+   "biller_id": 6,
+   "amount_iqd": 250000
+  },
+  {
+   "text": "دفع 12k للكهربا",
+   "kind": "bill_payment",
+   "biller_id": 1,
+   "amount_iqd": 12000
+  },
+  {
+   "text": "انطي خمسطعش ألف لمولد الحي",
+   "kind": "bill_payment",
+   "biller_id": 2,
+   "amount_iqd": 15000
+  },
+  {
+   "text": "سدد 18k للإنترنت",
+   "kind": "bill_payment",
+   "biller_id": 3,
+   "amount_iqd": 18000
+  },
+  {
+   "text": "اشحن زين 100k",
+   "kind": "topup",
+   "biller_id": 5,
+   "amount_iqd": 100000
+  },
+  {
+   "text": "ابعت ربع مليون لآسيا سيل",
+   "kind": "topup",
+   "biller_id": 6,
+   "amount_iqd": 250000
+  }
+ ]
+}

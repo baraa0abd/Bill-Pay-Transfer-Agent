@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز ميت ألف للـ أحمد",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول ربع مليون لحسن",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "ابعت 250000 لحسين",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل خمسطعش ألف للـاحمد",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي 300k لحسن",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "سدد 120000 لحسين",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "ادفع 200k للـ أحمد",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "اشحن 75k لحسن",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز 50000 لحسين",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول 100k للـاحمد",
+   "category": "ambiguous_contact",
+   "slot": "payee",
+   "intent": "transfer"
+  }
+ ]
+}

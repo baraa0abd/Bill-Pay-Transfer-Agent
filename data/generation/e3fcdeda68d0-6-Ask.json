@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دز خالو ورقة",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول مريم ٥٠٠",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "ابعت علي نص",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "ارسل سارة 200",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "انطي يوسف ٧٠٠",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "سدد ليلى ورقة",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "ادفع محمد 300",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "اشحن زينب نص",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "دز رائد 999",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  },
+  {
+   "text": "حول هدى 100",
+   "category": "ambiguous_amount",
+   "slot": "amount",
+   "intent": "transfer"
+  }
+ ]
+}

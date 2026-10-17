@@ -1,0 +1,74 @@
+{
+ "items": [
+  {
+   "text": "دز ربع مليون لمريم وبعدين ادفع خمسطعش ألف للـمولد الحي",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "ابعت ميت ألف للـعلي و سدد 18000 للإنترنت",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "ارسل 100000 للـسارة وبعدين ادفع 12000 للكهرباء الوطنية",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "انطي 75000 ليوسف و سدد 12000 للكهرباء الوطنية",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "دز 200000 للـليلى و سدد خمسطعش ألف للـمولد الحي",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "اشحن 300000 للـمحمد و ادفع 18000 للإنترنت",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "سدد 12000 للكهرباء الوطنية و دز 50000 للـزينب",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "دز ربع مليون للـرائد وبعدين ادفع 15000 للـمولد الحي",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "ارسل 110000 للـنادية و سدد 18000 للإنترنت",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  },
+  {
+   "text": "حول 130000 للـسليم وبعدين ادفع 12000 للكهرباء الوطنية",
+   "intents": [
+    "transfer",
+    "bill_payment"
+   ]
+  }
+ ]
+}

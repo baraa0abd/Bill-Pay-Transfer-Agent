@@ -1,0 +1,64 @@
+{
+ "items": [
+  {
+   "text": "دزلي قرض ميت ألف",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "اشحنلي 5k دولار",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "ابعتلي 25000$ للشراء",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "سددلي استثمار ربع مليون",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "انطيلي 1500 دولار",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "حوللي ذهب خمسطعش ألف",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "ادفعلي قرض 75 الف",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "دزلي 2000$ للغولد",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "ارسللي استثمار 10k",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  },
+  {
+   "text": "اشحنلي 3k دولار",
+   "category": "unsupported",
+   "refuse_code": "UNSUPPORTED",
+   "intent": "unsupported"
+  }
+ ]
+}
