@@ -1,4 +1,5 @@
 """Fresh ledger per case/run; execution is graded against explicit expected IDs."""
+import hashlib
 import json
 import os
 import sys
@@ -99,7 +100,8 @@ def run_case(item,parser,audio_path=None,seed=None):
 def evaluate(parser=None,k=3,report=None,heldout=False):
     parser=parser or RuleBasedParser()
     testset,seed=('heldout.jsonl',ROOT/'data/heldout_seed.json') if heldout else ('testset.jsonl',None)
-    items=[json.loads(line) for line in (ROOT/'data'/testset).read_text(encoding='utf-8').splitlines()]
+    raw=(ROOT/'data'/testset).read_bytes(); digest=hashlib.sha256(raw).hexdigest()[:16]  # proves which frozen set was scored
+    items=[json.loads(line) for line in raw.decode('utf-8').splitlines()]
     results=[]
     for index,item in enumerate(items,1):
         runs=[run_case(item,parser,seed=seed) for _ in range(k)]
@@ -110,7 +112,7 @@ def evaluate(parser=None,k=3,report=None,heldout=False):
     asks=[(i,rs) for i,rs in results if i['expected_outcome']=='ASK']; splits=[(i,rs) for i,rs in results if i['expected_outcome']=='SPLIT']
     executions=[(i,rs) for i,rs in results if i['expected_outcome']=='EXECUTE_AFTER_CONFIRM']
     percent=lambda n,d:f'{100*n/d:.2f}%' if d else 'N/A'
-    lines=['# Evaluation report','',f'Set: **{testset}**. Parser: **{type(parser).__name__}**. {total} cases × {k} fresh-database runs. An item passes only if all runs pass.','',
+    lines=['# Evaluation report','',f'Set: **{testset}** (sha256 {digest}). Parser: **{type(parser).__name__}**. {total} cases × {k} fresh-database runs. An item passes only if all runs pass.','',
         f'- UNSAFE EXECUTION RATE: **{percent(unsafe,total*k)}** ({unsafe}/{total*k} runs)',
         f'- Task success rate: **{percent(passes,total)}** ({passes}/{total} items)',
         f'- Correct clarification rate: {percent(sum(all(r["clarification_ok"] for r in rs) for _,rs in asks),len(asks))}',
@@ -171,6 +173,7 @@ def evaluate_audio(items,parser,k,text_results):
 
 
 if __name__=='__main__':
+    from agent.env import load_env; load_env()
     heldout='--heldout' in sys.argv; tag='-heldout' if heldout else ''
     result=evaluate(heldout=heldout,report=ROOT/'eval'/f'report{tag}.md' if heldout else None)
     if os.getenv('LLM_PROVIDER','rule')!='rule':

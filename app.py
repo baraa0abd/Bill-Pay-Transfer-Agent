@@ -18,6 +18,7 @@ from agent.confirm import Confirmer
 from agent.dialogue import Dialogue
 from agent.parser import configured_parser
 from agent.messages_ar import message
+from agent.env import load_env
 
 ROOT=Path(__file__).resolve().parent
 
@@ -115,4 +116,5 @@ def create_app(engine=None,parser=None,demo_mode=None,asr=None):
     return app
 
 
+load_env()  # .env keys and LLM_PROVIDER for the running server
 app=create_app()

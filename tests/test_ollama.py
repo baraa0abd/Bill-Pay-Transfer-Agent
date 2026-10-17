@@ -53,7 +53,7 @@ def test_generator_preserves_existing_data_before_api(monkeypatch, tmp_path):
     path.write_text('frozen')
     monkeypatch.setattr(gen, 'SEED', path)
     monkeypatch.setattr(gen, 'TESTSET', path)
-    monkeypatch.setattr(gen, 'ask', lambda *args: pytest.fail('must not call model'))
+    monkeypatch.setattr(gen, 'client', lambda *args: pytest.fail('must not call model'))
     for generate in [gen.generate_seed, gen.generate_testset]:
         with pytest.raises(SystemExit, match='exists'):
             generate()
@@ -61,7 +61,7 @@ def test_generator_preserves_existing_data_before_api(monkeypatch, tmp_path):
 
 
 def test_small_schema_answers_are_checked_against_wallet():
-    from data.ollama_data import to_item, ExecTransfer, ExecBill
+    from data.synthetic import to_item, ExecTransfer, ExecBill
     wallet = {'contacts': [{'id': 105, 'name': 'خالد', 'nickname': 'خالو'}],
               'billers': [{'biller_id': 1, 'category': 'electricity_national', 'unpaid_bills_iqd': [12000]},
                           {'biller_id': 4, 'category': 'water', 'unpaid_bills_iqd': []}]}

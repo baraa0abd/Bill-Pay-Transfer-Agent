@@ -66,4 +66,5 @@ def rehearse():
     print(json.dumps(report,ensure_ascii=False),flush=True)
 
 
-if __name__=='__main__': rehearse()
+if __name__=='__main__':
+    from agent.env import load_env; load_env(); rehearse()

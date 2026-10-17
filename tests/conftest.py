@@ -1,3 +1,5 @@
+import os
+os.environ["LLM_PROVIDER"] = "rule"  # tests never call a real model, whatever .env says
 import pytest
 from wallet_api.db import Base, make_engine
 import wallet_api.models

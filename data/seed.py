@@ -19,5 +19,6 @@ def load_seed(engine, path=None):
 
 
 if __name__ == '__main__':
+    from agent.env import load_env; load_env()
     # SEED_PATH=data/heldout_seed.json seeds the demo with the LLM-generated wallet.
     print('Seed loaded' if load_seed(make_engine(),os.getenv('SEED_PATH')) else 'Existing database preserved')
