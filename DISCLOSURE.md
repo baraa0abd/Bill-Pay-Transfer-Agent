@@ -32,7 +32,8 @@ All data is synthetic. No real customer records, phone numbers, accounts or tran
 |---|---|
 | `data/seed.json` (5 users, 24 contacts each, 7 billers, 4 months of bills) | Authored by Codex locally, **not** generated through a live LLM API. Kept as the development fixture because tests and the dev set reference its IDs; the LLM-generated wallet is the held-out one. |
 | `data/testset.jsonl` (68 requests) | Curated by Codex. **Development set, not held out**: the rule parser was developed against it. Not yet reviewed by a native speaker. |
-| `data/heldout_seed.json`, `data/heldout.jsonl` | Target provider: local Ollama `qwen3.5:4b` through `data/generate_mock_data.py`. Model-authored wallet fields are preserved in `heldout_seed.provenance.json`; identifiers and historical rows are deterministic expansion. Post-generation fixes by Claude Code (not human): the model's 32 contacts were deduplicated to the first 24 distinct names; invoice amount 8,500 was rounded to 8,000; the garbled biller name «زain موبايل» was corrected to «زين موبايل». No human editing is claimed yet. |
+| `data/heldout_v1_seed.json`, `data/heldout_v1.jsonl` (archived; used to find fixes, so no longer blind) | Local Ollama `qwen3.5:4b` through `data/generate_mock_data.py`. Model-authored wallet fields are preserved in `heldout_seed.provenance.json`; identifiers and historical rows are deterministic expansion. Post-generation fixes by Claude Code (not human): the model's 32 contacts were deduplicated to the first 24 distinct names; invoice amount 8,500 was rounded to 8,000; the garbled biller name «زain موبايل» was corrected to «زين موبايل». No human editing is claimed yet. |
+| `data/heldout_seed.json`, `data/heldout.jsonl` (fresh held-out) | **Not yet generated.** Planned: Groq `openai/gpt-oss-120b` via `data/synthetic.py`, native-speaker review, then frozen by commit. |
 | `data/schema.json` | JSON Schema for the mock wallet dataset |
 
 ## Libraries
