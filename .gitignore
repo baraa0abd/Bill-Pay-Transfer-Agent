@@ -10,3 +10,7 @@ __pycache__/
 .test-tmp/
 .pytest-tmp/
 .eval-tmp/
+
+# Personal documents: never commit
+*CV*.pdf
+*cv*.pdf
