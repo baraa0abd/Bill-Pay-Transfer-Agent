@@ -83,7 +83,7 @@ def test_hosted_contract_strict_schema_and_rate_limit_retry():
     c=HostedClient('groq', client=httpx.Client(transport=httpx.MockTransport(handle)), sleep=waits.append)
     assert c.parse('دز 1000 لخالو')[0].payee_text=='خالو' and waits==[0.0] and c.source=='groq'
     fmt=calls[-1]['response_format']['json_schema']
-    assert fmt['strict'] and 'tools' not in calls[-1]
+    assert fmt['strict'] and 'tools' not in calls[-1] and calls[-1]['reasoning_effort']=='low'
     item=fmt['schema']['$defs']['Intent']
     assert item['additionalProperties'] is False and set(item['required'])==set(item['properties'])
 
@@ -94,3 +94,12 @@ def test_hosted_rejects_invented_span():
     ok=lambda r: httpx.Response(200, json={'choices':[{'finish_reason':'stop','message':{'content':content}}]})
     with pytest.raises(ValueError):
         HostedClient('gemini', client=httpx.Client(transport=httpx.MockTransport(ok))).parse('دز لخالو')
+
+
+def test_interactive_budget_falls_back_instead_of_waiting():
+    from agent.hosted_client import HostedClient
+    from agent.parser import FallbackParser
+    busy=httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(429, headers={'retry-after':'30'})))
+    waits=[]
+    p=FallbackParser(HostedClient('groq', client=busy, sleep=waits.append, max_wait=3))
+    assert p.parse('دز 1000 لخالو')[0].type=='transfer' and p.last=='rules_fallback' and waits==[]  # never slept 30 s

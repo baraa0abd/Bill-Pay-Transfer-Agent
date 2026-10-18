@@ -153,7 +153,7 @@ class FallbackParser:
 MODEL=os.getenv('LLM_MODEL','claude-opus-5')
 
 
-def configured_parser(fallback=True):
+def configured_parser(fallback=True, max_wait=None):
     # Credentials: ANTHROPIC_API_KEY (or an `ant auth login` profile), resolved by the SDK.
     provider=os.getenv('LLM_PROVIDER','rule')
     if provider=='rule': return RuleBasedParser()
@@ -163,6 +163,6 @@ def configured_parser(fallback=True):
     elif provider=='anthropic': llm=AnthropicClient(MODEL)
     elif provider in ('groq','gemini'):
         from .hosted_client import HostedClient
-        llm=HostedClient(provider)
+        llm=HostedClient(provider, max_wait=max_wait)
     else: raise ValueError(f'Unknown LLM_PROVIDER: {provider}')
     return FallbackParser(llm) if fallback else llm

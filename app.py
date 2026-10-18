@@ -23,7 +23,7 @@ from agent.env import load_env
 ROOT=Path(__file__).resolve().parent
 
 
-def create_app(engine=None,parser=None,demo_mode=None,asr=None):
+def create_app(engine=None,parser=None,demo_mode=None,asr=None,llm_max_wait=None):
     engine=engine or make_engine()
     Base.metadata.create_all(engine)
     demo_mode=demo_mode if demo_mode is not None else os.getenv('DEMO_MODE','false').lower()=='true'
@@ -32,7 +32,7 @@ def create_app(engine=None,parser=None,demo_mode=None,asr=None):
     wallet_app=create_wallet(engine,demo_mode)
     transport=LocalWalletTransport(wallet_app)
     confirmer=Confirmer(engine,WalletClient(transport))
-    dialogue=Dialogue(engine,parser=parser or configured_parser(),confirmer=confirmer)
+    dialogue=Dialogue(engine,parser=parser or configured_parser(max_wait=llm_max_wait),confirmer=confirmer)
     asr_client=asr or WhisperClient()
     app.state.engine=engine; app.state.dialogue=dialogue; app.state.confirmer=confirmer
     app.mount('/wallet',wallet_app)
@@ -117,4 +117,5 @@ def create_app(engine=None,parser=None,demo_mode=None,asr=None):
 
 
 load_env()  # .env keys and LLM_PROVIDER for the running server
-app=create_app()
+# A person is waiting: if the model is busy for more than 3 s, the rule parser answers (the badge says so).
+app=create_app(llm_max_wait=float(os.getenv('LLM_MAX_WAIT','3')))
