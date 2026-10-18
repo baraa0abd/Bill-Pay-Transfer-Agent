@@ -46,19 +46,20 @@ Python 3.11+. On Windows use `./make.ps1 <target>`; elsewhere use `make <target>
 
 ```sh
 python -m venv .venv && .\.venv\Scripts\Activate.ps1   # or: source .venv/bin/activate
-python -m pip install -e ".[test]"
+python -m pip install -e ".[test,tools]"
 make seed      # load the mock wallet (keeps an existing database)
 make test      # offline test suite
 make eval      # dev test set
 make heldout   # held-out test set
-make run       # http://localhost:8000
+make review    # held-out review page, http://localhost:8010
+make run       # http://localhost:8000  (or ./run-local.ps1: fresh demo DB, generated wallet, faults on)
 ```
 
-- **Free hosted models:** `LLM_PROVIDER=groq` + `GROQ_API_KEY` (default `openai/gpt-oss-120b`), or `LLM_PROVIDER=gemini` + `GEMINI_API_KEY` (default `gemini-3.8-flash`; set `LLM_MODEL` to a Flash-Lite id for higher free volume). Keys come from your own free accounts, kept in `.env`.
+- **Free hosted models (default setup):** put `LLM_PROVIDER=groq` and your own free `GROQ_API_KEY` in `.env` (default model `openai/gpt-oss-120b`, about 0.8 s per request). `LLM_PROVIDER=gemini` + `GEMINI_API_KEY` also works. In the app a model gets 3 s (`LLM_MAX_WAIT`), then the rule parser answers.
 - **Local model:** `LLM_PROVIDER=ollama` (default `qwen3.5:4b`). **Claude:** `LLM_PROVIDER=anthropic` + `ANTHROPIC_API_KEY` (paid). Without any of these the offline rule parser is used.
-- **LLM-generated demo wallet:** set `DATABASE_URL=sqlite:///demo.db` and `SEED_PATH=data/heldout_seed.json`, then run `make seed` and `make run`.
+- **LLM-generated demo wallet:** `./run-local.ps1` (fresh database each run), or set `DATABASE_URL=sqlite:///demo.db` and `SEED_PATH=data/heldout_seed.json`, then `make seed` and `make run`.
 - **Demo faults:** `DEMO_MODE=true` shows the sidebar faults (lost response, crash before commit, provider down, delay). Fault headers are ignored otherwise.
-- Settings are documented in `.env.example`. Export them in your shell; `.env` is not loaded automatically. This is a localhost demo server; don't expose it.
+- Settings are documented in `.env.example`. The untracked `.env` is loaded automatically; shell variables win. Tests always run offline. This is a localhost demo server; don't expose it.
 
 ## Architecture
 

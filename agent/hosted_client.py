@@ -42,11 +42,11 @@ class HostedClient:
                                      {'name': schema.__name__, 'strict': True, 'schema': strict_schema(schema)}})
         if effort and 'gpt-oss' in self.model: body['reasoning_effort'] = effort
         start = time.monotonic()
-        for attempt in range(4):
+        for attempt in range(4 if self.max_wait is not None else 8):
             r = self.client.post(self.base + '/chat/completions', json=body, headers={'Authorization': f'Bearer {self.key}'})
             # 429: free-tier rate limit. 400/5xx: strict-mode generations occasionally fail and succeed on retry.
             if r.status_code not in (429, 400, 500, 502, 503): break
-            wait = float(r.headers.get('retry-after') or 2 ** attempt)
+            wait = min(60.0, float(r.headers.get('retry-after') or 2 ** attempt))
             if self.max_wait is not None and time.monotonic() - start + wait > self.max_wait:
                 raise ValueError(f'{self.source} busy ({r.status_code}); not making the user wait {wait:.0f}s')
             self.sleep(wait)

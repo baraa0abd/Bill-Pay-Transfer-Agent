@@ -19,6 +19,10 @@ from .simulated_user import SimulatedUser
 ROOT=Path(__file__).resolve().parents[1]
 
 
+PROVIDER_ERRORS = []
+FALLBACKS = []  # parses the rule parser answered because the model failed or was rejected
+
+
 class RecordingParser:
     """Grade the actual first parse used by the application, not a second model call."""
     def __init__(self, parser):
@@ -32,7 +36,13 @@ class RecordingParser:
     def parse(self, text):
         first_call = not self.called
         self.called = True
-        intents = self.parser.parse(text)
+        try:
+            intents = self.parser.parse(text)
+        except Exception as error:
+            # A request that never reached the model (rate limit, outage) is not a model mistake: count it apart.
+            if any(m in str(error) for m in (' 429', ' 5', 'busy', 'Connect', 'Timeout')): PROVIDER_ERRORS.append(str(error)[:120])
+            raise
+        if getattr(self.parser, 'last', None) == 'rules_fallback': FALLBACKS.append(text)
         if first_call:
             self.first = intents
         return intents
@@ -98,6 +108,7 @@ def run_case(item,parser,audio_path=None,seed=None):
 
 
 def evaluate(parser=None,k=3,report=None,heldout=False):
+    PROVIDER_ERRORS.clear(); FALLBACKS.clear()
     parser=parser or RuleBasedParser()
     testset,seed=('heldout.jsonl',ROOT/'data/heldout_seed.json') if heldout else ('testset.jsonl',None)
     raw=(ROOT/'data'/testset).read_bytes(); digest=hashlib.sha256(raw).hexdigest()[:16]  # proves which frozen set was scored
@@ -134,7 +145,7 @@ def evaluate(parser=None,k=3,report=None,heldout=False):
     lines+=['','## Requests that must not go through','', '| Request | Outcome | Executed runs |','|---|---|---|']
     for i,rs in results:
         if i['expected_outcome']!='EXECUTE_AFTER_CONFIRM': lines.append(f'| {i["text"]} | {i["expected_outcome"]} | {sum(bool(r["actual"]["transactions"]) for r in rs)} |')
-    lines+=['','## Scope and provenance','',
+    lines+=['',f'Provider errors (requests that never reached the model, not counted as model mistakes): **{len(PROVIDER_ERRORS)}**. Rule-parser fallbacks: **{len(FALLBACKS)}**.' + (' This report is NOT valid: rerun when the provider quota has reset.' if PROVIDER_ERRORS else ''),'','## Scope and provenance','',
         'Only EXECUTE_AFTER_CONFIRM cases are auto-confirmed. ASK and SPLIT cases stop safely; queue execution is separately tested in the HTTP and confirmation suites.',
         ('Held-out set: generated through data/generate_mock_data.py. See DISCLOSURE.md and per-item review_status/human_review for the actual provider and review provenance. Results do not certify human editing.' if heldout else
          'The set is authored and reviewed by the implementation agent. hand_edited denotes curated fixtures, not human or native-speaker approval. Per-item review notes distinguish AI review from pending human review.'),
@@ -147,8 +158,8 @@ def evaluate(parser=None,k=3,report=None,heldout=False):
     unsafe+=audio_unsafe
     path=Path(report or ROOT/'eval/report.md'); path.write_text('\n'.join(lines),encoding='utf-8')
     (ROOT/'eval/results.json' if report is None else path.with_suffix('.json')).write_text(json.dumps([{'item':i,'runs':rs} for i,rs in results],ensure_ascii=False,indent=2),encoding='utf-8')
-    print(f'{passes}/{total} passed; unsafe {unsafe}/{total*k}; report {path}',flush=True)
-    return {'passed':passes,'total':total,'unsafe':unsafe}
+    print(f'{passes}/{total} passed; unsafe {unsafe}/{total*k}; provider errors {len(PROVIDER_ERRORS)}; report {path}',flush=True)
+    return {'passed':passes,'total':total,'unsafe':unsafe,'provider_errors':len(PROVIDER_ERRORS)}
 
 
 def evaluate_audio(items,parser,k,text_results):
@@ -179,11 +190,11 @@ if __name__=='__main__':
     if os.getenv('LLM_PROVIDER','rule')!='rule':
         live=evaluate(configured_parser(fallback=False),  # measure the LLM alone, not masked by the rule fallback
                       report=ROOT/'eval'/f'report{tag}-{os.environ["LLM_PROVIDER"]}.md',heldout=heldout)
-        result['unsafe']+=live['unsafe']
+        result['unsafe']+=live['unsafe']; result['provider_errors']+=live['provider_errors']
         # What users actually get: the model plus span checks plus the rule fallback.
         system=evaluate(configured_parser(fallback=True),
                         report=ROOT/'eval'/f'report{tag}-{os.environ["LLM_PROVIDER"]}-system.md',heldout=heldout)
-        result['unsafe']+=system['unsafe']
+        result['unsafe']+=system['unsafe']; result['provider_errors']+=system['provider_errors']
     # Held-out misses are expected and reported honestly; only an unsafe execution fails the run there.
-    ok=result['unsafe']==0 and (heldout or result['passed']==result['total'])
+    ok=result['unsafe']==0 and (heldout or result['passed']==result['total']) and not result['provider_errors']
     raise SystemExit(0 if ok else 1)
