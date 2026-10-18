@@ -91,6 +91,8 @@ SYSTEM = ('Extract a list of Iraqi Arabic wallet intents. Never execute, resolve
           'Split only separate requests: one biller name such as الكهرباء الوطنية is ONE request. A person after '
           'ادفع/انطي/ارسل is a transfer; bill_payment is only for billers and services. unsupported means a service '
           'we do not offer (loans, dollars, investing); unclear means you cannot tell what the user wants. '
+          'Iraqi Arabizi: dizz/diz = دز (send money), hawwil = حول, idfa3 = ادفع, ishhan = اشحن. A request to send money '
+          'with no recipient or amount is still a transfer with those slots left null, never unclear. '
           'No tools are available. Return JSON matching the schema. Examples:\n' +
           '\n'.join(json.dumps({'text':t,'intents':xs},ensure_ascii=False) for t,xs in EXAMPLES))
 
