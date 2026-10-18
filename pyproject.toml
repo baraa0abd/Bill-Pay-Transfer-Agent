@@ -10,6 +10,8 @@ dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "sqlalchemy>=2,<3", "py
 
 [project.optional-dependencies]
 test = ["pytest>=8", "pytest-asyncio>=0.24", "jsonschema>=4"]
+# Review page/spreadsheet and the design-brief PDF builder.
+tools = ["openpyxl>=3.1", "reportlab>=4", "arabic-reshaper>=3", "python-bidi>=0.4", "pypdfium2>=4"]
 
 [tool.setuptools.packages.find]
 include = ["agent*", "wallet_api*", "voice*", "data*", "eval*"]

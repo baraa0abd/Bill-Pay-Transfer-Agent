@@ -57,7 +57,7 @@ State is persisted per conversation, so a restart resumes where the user was.
 | `agent/` | Understanding and dialogue. No direct database writes to money. | `parser.py` (rule parser, span checks, fallback, provider selection) · `hosted_client.py` (Groq/Gemini) · `ollama_client.py` (local) · `resolvers.py` · `amounts.py` · `dialogue.py` · `confirm.py` (the only path that executes) · `wallet_client.py` (retries, same key) · `messages_ar.py` |
 | `wallet_api/` | The mock wallet: ledger, balances, idempotency, fault injection for demos. | `routes.py` · `idempotency.py` · `faults.py` · `models.py` |
 | `app.py` | Composes agent + wallet over an in-process HTTP transport; serves the RTL UI. | `ui/index.html` |
-| `data/` | Synthetic data and test sets. | `synthetic.py` (generation pipeline) · `generate_mock_data.py` (CLI, never overwrites) · `models.py` (schemas, label checks) · `seed.json` + `testset.jsonl` (development) · `heldout*` (frozen) |
+| `data/` | Synthetic data and test sets. | `synthetic.py` (generation pipeline) · `generate_mock_data.py` (CLI, never overwrites) · `models.py` (schemas, label checks) · `review.py` / `review_web.py` (native-speaker review: spreadsheet or web page, both validate before writing) · `seed.json` + `testset.jsonl` (development) · `heldout*` (held-out) |
 | `eval/` | Evaluation and rehearsal. | `run_eval.py` · `rehearse.py` · `report*.md` |
 | `voice/` | Optional speech-to-text; transcript always shown. | `asr.py` |
 
@@ -72,6 +72,7 @@ State is persisted per conversation, so a restart resumes where the user was.
 | 5 | A stale or tampered card cannot execute | owner, pending state, 120 s expiry, SHA-256 of the payload | `tests/test_confirm.py::test_invalid_draft` |
 | 6 | Voice never confirms | spoken «أكد» is just text; only the button or a typed exact token confirms | `tests/test_voice.py` |
 | 7 | Tests never call a real model | `tests/conftest.py` pins `LLM_PROVIDER=rule` | the suite runs offline |
+| 8 | A busy model never makes the user wait | `HostedClient(max_wait=3)` in the app, rule fallback | `tests/test_ollama.py::test_interactive_budget_falls_back_instead_of_waiting` |
 
 ## Model layer
 
@@ -82,7 +83,9 @@ State is persisted per conversation, so a restart resumes where the user was.
 | Ollama `qwen3.5:4b` | offline, unlimited, private | `LLM_PROVIDER=ollama` |
 | Rule parser | fallback for every provider; offline default | `LLM_PROVIDER=rule` |
 
-All hosted providers go through one OpenAI-compatible client, so switching is a setting. Free-tier `429`s are retried with backoff. The UI badge shows which parser understood each request.
+All hosted providers go through one OpenAI-compatible client, so switching is a setting. The UI badge shows which parser understood each request.
+
+**Free-tier budget (measured).** Every Groq free model allows 8,000 tokens/min and 1,000 requests/day, so tokens per request is the lever, not the model. The parser asks for low reasoning effort (same answers; reasoning tokens 318 → 129; about 0.8 s per reply). In the app a model call gets **3 s** (`LLM_MAX_WAIT`); if it is rate-limited longer the rule parser answers immediately. Evaluation and data generation wait patiently instead. A two-model consensus (gpt-oss + qwen) was tried and dropped: it did not change any result it was meant to fix and doubled free-tier use.
 
 ## Data and evaluation pipeline
 
