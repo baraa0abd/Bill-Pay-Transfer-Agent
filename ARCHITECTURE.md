@@ -73,6 +73,7 @@ State is persisted per conversation, so a restart resumes where the user was.
 | 6 | Voice never confirms | spoken «أكد» is just text; only the button or a typed exact token confirms | `tests/test_voice.py` |
 | 7 | Tests never call a real model | `tests/conftest.py` pins `LLM_PROVIDER=rule` | the suite runs offline |
 | 8 | A busy model never makes the user wait | `HostedClient(max_wait=3)` in the app, rule fallback | `tests/test_ollama.py::test_interactive_budget_falls_back_instead_of_waiting` |
+| 9 | The wallet has no public door | the wallet API trusts `user_id`, so it is reached in-process only and never mounted on the web app (a mount found in review let one unauthenticated POST pay without a card; removed) | `tests/test_confirm.py::test_wallet_not_reachable_from_outside` |
 
 ## Model layer
 
@@ -85,7 +86,7 @@ State is persisted per conversation, so a restart resumes where the user was.
 
 All hosted providers go through one OpenAI-compatible client, so switching is a setting. The UI badge shows which parser understood each request.
 
-**Free-tier budget (measured).** Every Groq free model allows 8,000 tokens/min and 1,000 requests/day, so tokens per request is the lever, not the model. The parser asks for low reasoning effort (same answers; reasoning tokens 318 → 129; about 0.8 s per reply). In the app a model call gets **3 s** (`LLM_MAX_WAIT`); if it is rate-limited longer the rule parser answers immediately. Evaluation and data generation wait patiently instead. A two-model consensus (gpt-oss + qwen) was tried and dropped: it did not change any result it was meant to fix and doubled free-tier use.
+**Free-tier budget (measured).** Every Groq free model allows 8,000 tokens/min, 1,000 requests/day and **200,000 tokens/day**. One parse is about 1,500 tokens (mostly the fixed prompt), so the real ceiling is about 130 parses a day: tokens per request is the lever, not the model. The parser asks for low reasoning effort (same answers; reasoning tokens 318 → 129; about 0.8 s per reply). In the app a model call gets **3 s** (`LLM_MAX_WAIT`); if it is rate-limited longer the rule parser answers immediately. Evaluation and data generation wait patiently instead. Evaluation calls the model once per distinct text (temperature 0) and keeps every raw answer in `eval/llm-cache/`, so the k=3 runs and the LLM-alone/full-system reports share one call, and a run cut off by the daily quota resumes the next day. An outage is typed (`ProviderError`), counted apart from model mistakes, and makes the report invalid instead of silently measuring the rule fallback. A two-model consensus (gpt-oss + qwen) was tried and dropped: it did not change any result it was meant to fix and doubled free-tier use.
 
 ## Data and evaluation pipeline
 

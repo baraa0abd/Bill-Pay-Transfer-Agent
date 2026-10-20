@@ -23,6 +23,43 @@ PROVIDER_ERRORS = []
 FALLBACKS = []  # parses the rule parser answered because the model failed or was rejected
 
 
+def is_provider_error(error):
+    import httpx
+    from agent.hosted_client import ProviderError
+    return isinstance(error, (ProviderError, httpx.HTTPError))
+
+
+class CachedModel:
+    """One model call per distinct text (temperature 0), shared by the k runs and the LLM-alone/system reports.
+    The free tier allows ~200K tokens/day (~135 parses); answers are kept on disk so a run cut off by the
+    daily quota resumes the next day instead of starting over. Provider outages are never cached."""
+    def __init__(self, llm):
+        from agent.parser import SYSTEM
+        self.llm, self.source, self.model = llm, getattr(llm, 'source', None), getattr(llm, 'model', type(llm).__name__)
+        key = hashlib.sha256((self.model + SYSTEM).encode()).hexdigest()[:12]  # a prompt change invalidates the cache
+        self.path = ROOT/'eval'/'llm-cache'/f'{key}.jsonl'
+        self.cache = {}
+        if self.path.exists():
+            for line in self.path.read_text(encoding='utf-8').splitlines():
+                entry = json.loads(line); self.cache[entry['text']] = entry
+        self.down = None  # first outage: stop calling (each call would burn minutes of retries)
+
+    def parse(self, text):
+        from wallet_api.schemas import Intent
+        if text not in self.cache:
+            if self.down: raise self.down
+            try: entry = {'text': text, 'intents': [i.model_dump() for i in self.llm.parse(text)]}
+            except Exception as error:
+                if is_provider_error(error): self.down = error; raise
+                entry = {'text': text, 'error': str(error)[:300]}
+            self.cache[text] = entry
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            with self.path.open('a', encoding='utf-8') as f: f.write(json.dumps(entry | {'model': self.model}, ensure_ascii=False) + '\n')
+        entry = self.cache[text]
+        if 'error' in entry: raise ValueError(entry['error'])
+        return [Intent(**i) for i in entry['intents']]
+
+
 class RecordingParser:
     """Grade the actual first parse used by the application, not a second model call."""
     def __init__(self, parser):
@@ -40,9 +77,12 @@ class RecordingParser:
             intents = self.parser.parse(text)
         except Exception as error:
             # A request that never reached the model (rate limit, outage) is not a model mistake: count it apart.
-            if any(m in str(error) for m in (' 429', ' 5', 'busy', 'Connect', 'Timeout')): PROVIDER_ERRORS.append(str(error)[:120])
+            if is_provider_error(error): PROVIDER_ERRORS.append(str(error)[:120])
             raise
-        if getattr(self.parser, 'last', None) == 'rules_fallback': FALLBACKS.append(text)
+        if getattr(self.parser, 'last', None) == 'rules_fallback':
+            FALLBACKS.append(text)
+            # The rule parser hid an outage: the report would silently measure rules, not the model.
+            if is_provider_error(getattr(self.parser, 'error', None)): PROVIDER_ERRORS.append(str(self.parser.error)[:120])
         if first_call:
             self.first = intents
         return intents
@@ -152,6 +192,8 @@ def evaluate(parser=None,k=3,report=None,heldout=False):
         ('This report measures the offline rule parser only; it provides no evidence of live Claude accuracy.' if isinstance(parser,RuleBasedParser) else
          'This report measures the full system as deployed: the model, span checks, and the rule parser when the model fails or its output is rejected.' if isinstance(parser,FallbackParser) else
          f'This report measures the live parser without rule fallback. Configured model: {getattr(parser,"model","unknown")}. Provider failures count as misses; mocked tests are not live accuracy evidence.'),
+        *(['The model is called once per distinct text at temperature 0; the k runs replay that answer against fresh wallets (free-tier token budget). Raw answers: eval/llm-cache/'+cached.path.name+'.']
+          if isinstance(cached:=getattr(parser,'primary',parser),CachedModel) else []),
         'LLM_PROVIDER=ollama writes a separate -ollama report; LLM_PROVIDER=anthropic uses Anthropic credentials and writes -anthropic. The default report always evaluates the offline parser.','']
     audio_lines,audio_unsafe=([],0) if heldout else evaluate_audio(items,parser,k,results)
     lines+=audio_lines
@@ -188,11 +230,12 @@ if __name__=='__main__':
     heldout='--heldout' in sys.argv; tag='-heldout' if heldout else ''
     result=evaluate(heldout=heldout,report=ROOT/'eval'/f'report{tag}.md' if heldout else None)
     if os.getenv('LLM_PROVIDER','rule')!='rule':
-        live=evaluate(configured_parser(fallback=False),  # measure the LLM alone, not masked by the rule fallback
+        model=CachedModel(configured_parser(fallback=False))
+        live=evaluate(model,  # measure the LLM alone, not masked by the rule fallback
                       report=ROOT/'eval'/f'report{tag}-{os.environ["LLM_PROVIDER"]}.md',heldout=heldout)
         result['unsafe']+=live['unsafe']; result['provider_errors']+=live['provider_errors']
-        # What users actually get: the model plus span checks plus the rule fallback.
-        system=evaluate(configured_parser(fallback=True),
+        # What users actually get: the same model answers plus span checks plus the rule fallback.
+        system=evaluate(FallbackParser(model),
                         report=ROOT/'eval'/f'report{tag}-{os.environ["LLM_PROVIDER"]}-system.md',heldout=heldout)
         result['unsafe']+=system['unsafe']; result['provider_errors']+=system['provider_errors']
     # Held-out misses are expected and reported honestly; only an unsafe execution fails the run there.

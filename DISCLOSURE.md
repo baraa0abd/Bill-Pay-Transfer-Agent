@@ -7,7 +7,7 @@ Everything used to build this project. Update this file whenever something is ad
 | Tool | Used for |
 |---|---|
 | OpenAI Codex (agent) | Wrote the initial codebase, tests, seed data and test set in phases 0–11 (commits authored `Codex`, 2026-09-25). Models recorded in the local Codex session logs (`~/.codex/sessions`): 2026-09-25 `gpt-5.6-sol` and `gpt-6-astra`, with `codex-auto-review` as the reviewer; 2026-09-27 the same three. |
-| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, `ARCHITECTURE.md`, design brief, parser-outage test, Claude SDK parser, rule fallback, free Groq/Gemini client, latency budget, provider-agnostic synthetic-data pipeline, held-out generation and label checks, review page and spreadsheet, eval mode and freeze hashing, parser badge, recovered-payment receipt, running the generation and evaluations |
+| Claude Code (Claude Opus 5.5) | Gap analysis against the topic brief, this file, `FAILURE_MODES.md`, `ARCHITECTURE.md`, design brief, parser-outage test, Claude SDK parser, rule fallback, free Groq/Gemini client, latency budget, provider-agnostic synthetic-data pipeline, held-out generation and label checks, review page and spreadsheet, eval mode and freeze hashing, parser badge, recovered-payment receipt, evaluation answer cache and typed provider errors, code review fixes (unmounted the wallet API, whole-word biller keywords, stale top-up drafts), running the generation and evaluations |
 
 Follow-up (2026-09-27): Codex added the local Ollama adapter, compact wallet-blueprint generation, per-case AI review notes, report provenance fixes and a fresh-database local demo launcher. These are AI edits, not human or native-speaker review.
 
@@ -15,7 +15,7 @@ Follow-up (2026-09-27): Codex added the local Ollama adapter, compact wallet-blu
 
 | Component | Model | Status |
 |---|---|---|
-| Intent parser (default) | Groq `openai/gpt-oss-120b`, free tier, strict JSON schema, low reasoning effort, 3 s budget in the app; rule parser as fallback | Run live since 2026-10-17; dev results in `eval/report-groq*.md` |
+| Intent parser (default) | Groq `openai/gpt-oss-120b`, free tier, strict JSON schema, low reasoning effort, 3 s budget in the app; rule parser as fallback | Run live since 2026-10-17; dev set 68/68 alone and as full system (`eval/report-groq*.md`, raw answers in `eval/llm-cache/`) |
 | Local intent parser | Ollama `qwen3.5:4b`, schema-constrained JSON and validated text spans | Offline option; results in `eval/report-ollama*.md` and `eval/report-heldout-v1*` |
 | Paid option | Anthropic `claude-opus-5` via the `anthropic` SDK (`LLM_PROVIDER=anthropic`) | Not run live (no free tier); contract-tested with a fake client |
 | Held-out data generator | Groq `openai/gpt-oss-120b` (fresh set, 2026-10-17); Ollama `qwen3.5:4b` for v1 | Wallet blueprint + deterministic expansion; requests per outcome; raw batches kept in `data/generation/` |

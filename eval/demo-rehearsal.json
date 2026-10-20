@@ -1,8 +1,8 @@
 {
-  "provider": "ollama",
-  "model": "qwen3.5:4b",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
   "seed": "data\\heldout_seed.json",
-  "seconds": 36.95,
+  "seconds": 4.33,
   "steps": [
     "Electricity: asked which supplier; no debit before confirmation; confirmed exactly one payment.",
     "Ahmed: asked which contact; cancellation left balance unchanged.",

@@ -49,3 +49,26 @@ def test_generated_labels_are_checked():
     with pytest.raises(ValueError): check_references([TestItem(**ok|{'expected_final':{'type':'transfer','payee_id':9999,'amount_iqd':50000}})],seed)
     with pytest.raises(ValidationError): TestItem(**ok|{'expected_outcome':'ASK'})  # ASK without a slot
     with pytest.raises(ValidationError): TestItem(**ok|{'expected_outcome':'REFUSE'})  # REFUSE without a code
+
+
+def test_model_answers_cached_and_outages_counted(tmp_path, monkeypatch):
+    import eval.run_eval as ev
+    from agent.hosted_client import ProviderError
+    from agent.parser import FallbackParser
+    monkeypatch.setattr(ev, 'ROOT', tmp_path)
+    class Model:
+        model, calls, down = 'fake', 0, False
+        def parse(self, text):
+            self.calls += 1
+            if self.down: raise ProviderError('groq 429: daily tokens')
+            return RuleBasedParser().parse(text)
+    llm = Model(); cached = ev.CachedModel(llm)
+    assert cached.parse('دز 1000 لخالو') == cached.parse('دز 1000 لخالو') and llm.calls == 1  # k runs share one call
+    assert ev.CachedModel(llm).parse('دز 1000 لخالو') and llm.calls == 1  # a rerun resumes from disk
+    llm.down = True
+    with pytest.raises(ProviderError): cached.parse('شكد رصيدي')
+    with pytest.raises(ProviderError): cached.parse('سدد المولدة')
+    assert llm.calls == 2  # stops calling after the first outage; outages are not cached
+    ev.PROVIDER_ERRORS.clear()
+    ev.RecordingParser(FallbackParser(cached)).parse('شكد رصيدي')  # rules answered, but the outage is still counted
+    assert len(ev.PROVIDER_ERRORS) == 1

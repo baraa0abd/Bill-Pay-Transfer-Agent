@@ -25,6 +25,10 @@ def strict_schema(model):
     return schema
 
 
+class ProviderError(ValueError):
+    """No model answer at all (rate limit, daily quota, outage). Not a model mistake; evaluation counts it apart."""
+
+
 class HostedClient:
     def __init__(self, provider, model=None, client=None, sleep=time.sleep, max_wait=None):
         # max_wait: seconds a user may wait (the app passes 3); None = patient, for evaluation and data generation.
@@ -43,14 +47,17 @@ class HostedClient:
         if effort and 'gpt-oss' in self.model: body['reasoning_effort'] = effort
         start = time.monotonic()
         for attempt in range(4 if self.max_wait is not None else 8):
-            r = self.client.post(self.base + '/chat/completions', json=body, headers={'Authorization': f'Bearer {self.key}'})
+            try: r = self.client.post(self.base + '/chat/completions', json=body, headers={'Authorization': f'Bearer {self.key}'})
+            except httpx.TransportError as error: raise ProviderError(f'{self.source} unreachable: {error}') from error
             # 429: free-tier rate limit. 400/5xx: strict-mode generations occasionally fail and succeed on retry.
             if r.status_code not in (429, 400, 500, 502, 503): break
             wait = min(60.0, float(r.headers.get('retry-after') or 2 ** attempt))
             if self.max_wait is not None and time.monotonic() - start + wait > self.max_wait:
-                raise ValueError(f'{self.source} busy ({r.status_code}); not making the user wait {wait:.0f}s')
+                raise ProviderError(f'{self.source} busy ({r.status_code}); not making the user wait {wait:.0f}s')
             self.sleep(wait)
-        if r.status_code >= 400: raise ValueError(f'{self.source} {r.status_code}: {r.text[:300]}')
+        # A final 400 is the model failing the strict schema (its mistake); anything else is the provider.
+        if r.status_code >= 400:
+            raise (ValueError if r.status_code == 400 else ProviderError)(f'{self.source} {r.status_code}: {r.text[:300]}')
         choice = r.json()['choices'][0]
         if choice.get('finish_reason') not in (None, 'stop'): raise ValueError(f"generation incomplete: {choice.get('finish_reason')}")
         return schema.model_validate_json(choice['message']['content'])

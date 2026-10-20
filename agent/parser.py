@@ -30,7 +30,7 @@ class RuleBasedParser:
         if s.startswith(('dizz ', 'diz ')):
             m = re.fullmatch(r'dizz? l (ahmad|khalo) (\d+ alf)', s)
             if m: return [Intent(type='transfer', payee_text='احمد' if m[1]=='ahmad' else 'خالو', amount_text=m[2].replace('alf','الف'))]
-            return [Intent(type='unclear')]
+            return [Intent(type='transfer')]  # dizz = send money; unknown details are asked, never guessed
         parts = re.split(r'\s*(?:وبعدين\s*|بعدين\s*|و\s*)(?='+VERBS+r'(?:\s|ل))', s)
         if len(parts)>1:
             return [intent for part in parts if part for intent in self.parse(part)]
@@ -145,10 +145,10 @@ class AnthropicClient:
 class FallbackParser:
     """LLM first. If the provider is down or its output is rejected, use the conservative rule parser."""
     # ponytail: `last` is per-instance, so concurrent requests can mislabel each other; fine for a single-user demo.
-    def __init__(self, primary): self.primary,self.fallback,self.last=primary,RuleBasedParser(),None
+    def __init__(self, primary): self.primary,self.fallback,self.last,self.error=primary,RuleBasedParser(),None,None
     def parse(self,text):
-        try: result,self.last=self.primary.parse(text),getattr(self.primary,'source','claude')
-        except Exception: result,self.last=self.fallback.parse(text),'rules_fallback'
+        try: result,self.last,self.error=self.primary.parse(text),getattr(self.primary,'source','claude'),None
+        except Exception as error: result,self.last,self.error=self.fallback.parse(text),'rules_fallback',error
         return result
 
 

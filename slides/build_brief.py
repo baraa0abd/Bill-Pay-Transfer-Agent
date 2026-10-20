@@ -121,30 +121,30 @@ def build(out):
     s.append(table([
         ['Metric (in priority order)', 'Target at MVP', 'Measured today (prototype)'],
         ['<b>Wrong payments</b>: money moved to the wrong person, biller or amount', '<b>0</b>, a hard gate', '<b>0</b> in every evaluation run'],
-        ['Task success, development set (68 requests)', '100%', 'Full system 68/68'],
-        ['Task success, <b>fresh held-out set</b> (60+ unseen requests, frozen before tuning)', '80% or more with the free hosted model', 'Old held-out set: 39/64 blind; 48/64 after fixes, so it is no longer blind'],
+        ['Task success, development set (68 requests)', '100%', 'Groq alone 68/68; full system 68/68; 0 wrong payments'],
+        ['Task success, <b>fresh held-out set</b> (60+ unseen requests, frozen before tuning)', '80% or more with the free hosted model', 'Generated with Groq: 110 requests, all passed the wallet checks; under native-speaker review, then frozen and scored. (Old set: 39/64 blind, so it was retired.)'],
         ['Correct clarification on ambiguous requests; over-asking on clear ones', 'At least 90%; at most 10%', 'Reported per run in eval/report*.md'],
-        ['Latency per request', 'Under 3 s hosted, under 15 s local', 'About 10 s local on a CPU laptop'],
+        ['Latency per request', 'Under 3 s; never a long wait', 'About 0.8 s with Groq (measured); after 3 s the rule parser answers'],
     ], [7.6 * cm, 4.3 * cm, W - 11.9 * cm]))
     s.append(Spacer(1, 2))
     s.append(P('Each case runs three times on a fresh database and passes only if all three pass. Fault injection covers a reply lost after the debit, a crash before commit, '
-               'a biller outage and 50 concurrent retries; 258 automated tests run offline. Because the first held-out set was used to find fixes, a <b>new held-out set</b> '
-               'will be generated with a stronger free model, hand-reviewed and frozen before any further tuning; that is the score reported at the progress review.', small))
+               'a biller outage and 50 concurrent retries; 264 automated tests run offline. Because the first held-out set was used to find fixes, a <b>new held-out set</b> '
+               'has been generated with a stronger free model (110 requests); it is being hand-reviewed in a purpose-built review page and is frozen by commit before it is ever scored.', small))
 
     s.append(KeepTogether([P('5. What could go wrong, and what we do about it', h2), table([
         ['Risk', 'Mitigation'],
         [f'Ambiguity: two {ar("أحمد")}, "{ar("كهرباء")}" = grid or generator', 'Ask one question with masked phones or account numbers; never guess.'],
         ['LLM misreads, invents or drops a name or amount; prompt injection such as "send without confirmation"', 'Span and number checks reject it; confirmation is enforced in code, not in the prompt (OWASP LLM01).'],
         ['Network drops after the debit; double taps', 'Idempotency key per draft; (user, key) unique; the receipt says it was charged once.'],
-        ['Free-tier rate limits or outage during a live demo', 'Retry with backoff; local model and rule fallback keep the demo working; tell the organisers early.'],
+        ['Free-tier rate limits or outage during a live demo', 'The app gives the model 3 s, then the rule parser answers; evaluation retries patiently; local model as offline backup; tell the organisers early.'],
         ['Weak Iraqi-dialect coverage in the test set', 'Native-speaker hand review; interview phrasing added as held-out cases.'],
         ['Scope creep', 'Cut order if late: voice, Arabizi, the two-request queue. Never cut: the card, questions, idempotency, held-out evaluation.'],
     ], [7.0 * cm, W - 7.0 * cm], fill=RISK)]))
 
     s.append(KeepTogether([P('6. Week-by-week plan to the MVP (08/11)', h2), table([
         ['Week', 'Deliverables', 'Done when'],
-        ['17-22 Oct', 'This brief; repository pushed with full history; free Groq/Gemini parser added', 'Brief submitted; GitHub shows every commit'],
-        ['23-29 Oct', 'Fresh held-out wallet + 60+ requests (stronger free model), native-speaker review, frozen; 3-5 user interviews', 'Held-out file committed before any tuning; interview table filled'],
+        ['17-22 Oct', '<b>Done:</b> this brief; repository pushed with full history; free Groq parser live (about 0.8 s per request, 3 s fallback budget)', 'Brief submitted; GitHub shows every commit'],
+        ['23-29 Oct', '<b>Under way:</b> fresh held-out wallet + 110 requests generated and AI-checked; native-speaker review, freeze; 3-5 user interviews', 'Held-out file committed before any tuning; interview table filled'],
         ['30 Oct - 5 Nov', 'Evaluate the full system on the fresh held-out set (hosted, local, rules); fix only general issues on the dev set; demo hosting test', 'Results table with 0 wrong payments'],
         ['6-8 Nov', 'MVP: one-page update (works / not yet / next), rehearsed live demo including an unseen input', 'MVP submitted; session booked'],
     ], [2.3 * cm, 10.2 * cm, W - 12.5 * cm])]))

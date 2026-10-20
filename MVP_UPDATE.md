@@ -8,21 +8,22 @@ Topic 04 · Repository: https://github.com/baraa0abd/Bill-Pay-Transfer-Agent · 
 - Model layer: free Groq or Gemini, local Ollama, or the rule parser; model output is span-checked and falls back to rules; a UI badge shows which one answered.
 - Safety: nothing executes without confirmation; retries reuse one idempotency key, so a lost reply never pays twice (fault-injection demo); stale or tampered cards are rejected.
 - Synthetic data pipeline: LLM-generated wallet and labelled requests, checked against the wallet, cached and resumable.
-- Evidence: 259 automated offline tests; each eval case runs 3× on a fresh database; reports name the test set and its sha256.
+- Evidence: 264 automated offline tests; each eval case runs 3× on a fresh database; reports name the test set and its sha256.
 
 ## First results
 
 | Test set | Rule parser | LLM alone | Full system | Wrong payments |
 |---|---|---|---|---|
-| Development (68) | 68/68 | 67/68 (local qwen3.5:4b) | 68/68 | 0 |
+| Development (68), free Groq gpt-oss-120b | 68/68 | 68/68 | 68/68 | 0 |
+| Development (68), local qwen3.5:4b (before one relabel) | 68/68 | 67/68 | 68/68 | 0 |
 | Held-out v1 (64), first blind run | 20/64 | 39/64 | — | 0 |
 | Held-out v1 after fixes (no longer blind) | 49/64 | 46/64 | 48/64 | 0 |
-| **Fresh held-out (frozen before tuning)** | *to be measured* | *to be measured (Groq)* | *to be measured* | — |
+| **Fresh held-out (110, generated with Groq)** | *under native-speaker review; frozen, then scored once* | | | — |
 
 ## What does not work yet
 
 - The local 4B model is slow on a CPU laptop (about 10 s per request) and misreads some phrasing, such as «ادفع لـ» followed by a person.
-- Hosted-model accuracy is not yet measured live (no key until week 2).
+- The free Groq tier allows about 130 parses a day (200K tokens), so a held-out run is spread over a day and resumes from saved answers; in the app a busy model hands over to the rule parser after 3 s.
 - No native-speaker review of the test sets and no user interviews yet.
 - Voice input has not been tested with real Iraqi audio.
 
