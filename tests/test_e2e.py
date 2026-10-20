@@ -57,3 +57,9 @@ def test_page_and_reload(web):
     r=chat(web,'دز 10000 لخالو')
     recovered=web.get('/conversations/'+r['conversation_id']).json()
     assert recovered['card']['draft_id']==r['card']['draft_id']
+
+
+def test_account_names_who_was_paid(web):
+    r=chat(web,'دز 10000 لخالو'); confirm(web,r)
+    latest=web.get('/account').json()['transactions'][0]
+    assert latest['name'] and latest['type']=='transfer' and latest['amount_iqd']==10000

@@ -8,7 +8,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from wallet_api.db import make_engine, Base
-from wallet_api.models import User, Conversation, Draft
+from wallet_api.models import User, Conversation, Draft, Contact, Bill, UserBiller, Biller
 from wallet_api.schemas import ChatRequest, DraftRequest
 from wallet_api.errors import WalletError, install_errors
 from wallet_api.routes import create_wallet, record
@@ -53,7 +53,14 @@ def create_app(engine=None,parser=None,demo_mode=None,asr=None,llm_max_wait=None
     def account(x_user_id:int=Header()):
         balance=transport.get(f'/users/{x_user_id}/balance')
         if balance.status_code!=200: raise WalletError('UNKNOWN_USER')
-        return {'balance':balance.json(),'transactions':transport.get(f'/users/{x_user_id}/transactions').json()}
+        txs=transport.get(f'/users/{x_user_id}/transactions').json()
+        with Session(engine) as s:  # a wallet shows who was paid, not a reference number
+            for t in txs:
+                if t['type']=='transfer': t['name']=getattr(s.get(Contact,int(t['payee_ref'])),'display_name',None)
+                else:
+                    bill=s.get(Bill,int(t['payee_ref'])); link=bill and s.get(UserBiller,bill.user_biller_id)
+                    t['name']=link and s.get(Biller,link.biller_id).name_ar
+        return {'balance':balance.json(),'transactions':txs}
 
     @app.post('/chat')
     def chat(body:ChatRequest,x_user_id:int=Header()):

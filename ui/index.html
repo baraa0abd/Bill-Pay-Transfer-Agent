@@ -1,48 +1,319 @@
 <!doctype html>
 <html lang="ar-IQ" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>بكلمة — دفع وتحويل</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f4c45">
+<title>بكلمة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#173e3b;--muted:#647572;--bg:#f4f3ec;--paper:#fffef9;--line:#dfe5dc;--green:#174f43;--lime:#d7ecaa;--orange:#edac65}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Segoe UI",Tahoma,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 20px;background:var(--green);color:white}button:hover{filter:brightness(1.1)}button:disabled{opacity:.45;cursor:not-allowed}header{height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid var(--line);background:var(--paper)}.brand{font-size:29px;font-weight:800;letter-spacing:-1px;display:flex;align-items:center;gap:13px}.logo{display:grid;place-items:center;width:43px;height:43px;background:var(--green);color:var(--lime);border-radius:14px;font-size:28px}.tag{color:var(--muted);font-size:13px;font-weight:400;letter-spacing:0}.badge{font-size:12px;border:1px solid var(--line);padding:6px 12px;border-radius:30px}main{max-width:1300px;margin:auto;padding:36px 5%;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:30px}.chat{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;min-height:720px}.intro{padding:30px 32px 20px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--muted);font-size:12px;letter-spacing:1px}h1{font-size:30px;margin:6px 0 8px;line-height:1.5}p{margin:6px 0}.intro p{color:var(--muted);font-size:14px}.chatlog{padding:24px 30px;flex:1;max-height:650px;overflow:auto}.bubble{padding:14px 18px;margin:0 0 14px;border-radius:16px;background:#f0f3eb;white-space:pre-wrap;overflow-wrap:anywhere}.bubble.user{background:var(--green);color:white;margin-right:15%;border-bottom-left-radius:3px}.bubble.bot{margin-left:7%;border-bottom-right-radius:3px}.examples{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.examples button,.choice{background:white;border:1px solid var(--line);color:var(--ink);font-size:14px}.choice{display:block;margin:7px 0;width:100%;text-align:right}.composer{padding:20px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center}.composer input{min-width:0;flex:1;border:1px solid var(--line);background:white;border-radius:12px;padding:12px}.composer button{padding:12px 20px}.footnote{text-align:center;color:var(--muted);font-size:11px;padding-bottom:12px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:18px}.balance{background:var(--green);color:white}.balance label{font-size:13px;color:#d7e2da}.balance select{display:block;width:100%;color:white;background:#ffffff13;border:1px solid #ffffff40;border-radius:9px;padding:8px;margin:8px 0 20px}.balance option{color:var(--ink);background:white}.money{font-size:34px;font-weight:700;letter-spacing:-1px}.unit{font-size:15px;font-weight:400}.balance small{color:var(--lime)}h2{font-size:17px;margin:0 0 12px}.transaction{font-size:13px;padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}.transaction small{display:block;color:var(--muted)}.safety{font-size:13px;color:var(--muted)}.safety strong{display:block;color:var(--ink);margin-bottom:5px}.confirm-card{background:#fff;border:2px solid #7d9c62;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 8px 26px #173e3b0a}.confirm-card h3{margin:0;font-size:17px}.confirm-card .money{margin:12px 0 0;font-size:37px}.words{color:var(--muted);font-size:14px;margin-bottom:18px}.detail{display:flex;justify-content:space-between;gap:16px;font-size:14px;padding:7px 0;border-bottom:1px solid #edf0e8}.detail b{text-align:left}.actions{display:flex;gap:10px;margin-top:20px}.actions button{flex:1;font-weight:600}.secondary{background:#eef1e9;color:var(--ink)}.warning{padding:10px;background:#fff1d7;color:#744a0c;border-radius:10px;font-size:13px;margin-top:10px}.countdown{font-size:12px;color:var(--muted);margin-top:12px}.status{font-size:12px;color:var(--muted)}#fault-panel{display:none}#fault{width:100%;padding:8px;border:1px solid var(--line);border-radius:8px}.note{font-size:12px;color:var(--muted)}@media(max-width:850px){main{grid-template-columns:1fr;padding:20px}aside{display:grid;grid-template-columns:1fr 1fr;gap:12px;grid-row:1}.panel{margin:0}.chat{min-height:600px}.transactions-panel{display:none}header{padding:0 20px}.tag{display:none}.intro{padding:24px}.chatlog{padding:20px}.safety{font-size:12px}.money{font-size:28px}}@media(max-width:480px){aside{grid-template-columns:1fr}.safety{display:none}.composer{padding:12px}.composer button{padding:12px}.badge{font-size:10px}h1{font-size:25px}}
-</style></head>
-<body><header><div class="brand"><span class="logo">↗</span> بكلمة <span class="tag">دفع وتحويل، على راحتك</span></div><span><span class="badge" id="parser-badge" hidden></span> <span class="badge">● محفظة تجريبية — فلوس مو حقيقية</span></span></header>
-<main><section class="chat" aria-label="المحادثة"><div class="intro"><div class="eyebrow">أهلاً بيك بمحفظتك</div><h1>شنو تريد نسوي اليوم؟</h1><p>اكتب طلبك باللهجة العراقية. نرتّب التفاصيل، وإنت تأكّدها.</p></div><div class="chatlog" id="chatlog" aria-live="polite"><div class="bubble bot">هلا بيك! أگدر أساعدك تدفع فاتورة أو تدز فلوس. ما ينخصم أي مبلغ بدون تأكيدك.</div><div class="examples"><button data-example="دز خمسين ألف لأحمد">دز خمسين ألف لأحمد ↗</button><button data-example="ادفع الكهرباء">ادفع الكهرباء ↗</button><button data-example="شكد رصيدي">شكد رصيدي؟</button></div></div><form id="composer" class="composer"><input id="text" aria-label="اكتب طلبك" placeholder="مثلاً: دز عشرين ألف لخالو" autocomplete="off" maxlength="4000" required><button type="button" id="record" class="secondary" disabled aria-label="تسجيل صوتي" title="الصوت يحتاج تفعيل خدمة التسجيل">🎙</button><button type="submit" id="send">إرسال ↑</button></form><div class="footnote" id="connection">كل دفعة إلها مراجعة وتأكيد منفصل</div></section>
-<aside><section class="panel balance"><label for="user">حسابك التجريبي</label><select id="user" aria-label="اختيار الحساب"></select><label>الرصيد المتوفر</label><div class="money"><span id="balance">—</span> <span class="unit">د.ع</span></div><small>محفظتك جاهزة</small></section><section class="panel safety"><strong>إنت صاحب القرار</strong>إذا الاسم أو المبلغ مو واضح، نسألك. وإذا انقطع الاتصال، نتحقق من نفس الطلب حتى ما ينخصم مرتين.</section><section class="panel transactions-panel"><h2>آخر الحركات</h2><div id="transactions"></div></section><section class="panel" id="fault-panel"><h2>جرّب أمان الدفع</h2><select id="fault"><option value="">اتصال طبيعي</option><option value="DROP_RESPONSE_AFTER_COMMIT">انقطاع الرد بعد الدفع</option><option value="CRASH_BEFORE_COMMIT">توقف قبل إكمال الدفع</option><option value="BILLER_DOWN">المزوّد متوقف</option><option value="DELAY_MS=1000">تأخير بالرد</option></select><p class="note">للعرض التجريبي فقط. إعادة المحاولة تستخدم نفس رقم الطلب.</p></section></aside></main>
+:root{--brand:#0f4c45;--brand2:#16675d;--lime:#c9ec74;--bg:#f2f4f1;--card:#fff;--ink:#11302b;--muted:#6a7b77;--line:#e3e8e3;--red:#b42318;--redbg:#fdecea;--amber:#8a5300;--amberbg:#fff4dc;--r:20px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:#dfe5df;color:var(--ink);font:15px/1.6 "IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;padding:0}
+button:disabled{opacity:.45;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.ic{display:inline-grid;place-items:center;line-height:0}.ic svg{width:22px;height:22px}
+.app{position:relative;max-width:440px;margin:0 auto;height:100dvh;background:var(--bg);display:flex;flex-direction:column;overflow:clip}
+@media(min-width:600px){body{padding:24px 0}.app{height:calc(100dvh - 48px);max-height:900px;border-radius:36px;box-shadow:0 30px 80px #0f4c4533,0 0 0 10px #11302b}}
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 8px}
+.who{display:flex;align-items:center;gap:12px}
+.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:var(--lime);font-weight:700;font-size:17px;flex:none}
+.who small{display:block;color:var(--muted);font-size:12px;line-height:1.2}.who b{font-size:17px}
+.pill{font-size:11px;color:var(--amber);background:var(--amberbg);padding:4px 10px;border-radius:99px;white-space:nowrap}
+/* views */
+.view,#log,.sheet,.result{scrollbar-width:none}.view{flex:1;overflow-y:auto;overscroll-behavior:contain}
+#chat{display:none;flex-direction:column}
+body.chatting #home,body.chatting .top{display:none}body.chatting #chat{display:flex}
+/* home */
+.balance{margin:10px 20px 0;padding:22px;border-radius:26px;color:#fff;background:radial-gradient(120% 140% at 0% 0%,#1f8a7a 0%,var(--brand) 55%,#0b3a35 100%);position:relative;overflow:hidden}
+.balance:after{content:"";position:absolute;inset:auto -40px -60px auto;width:180px;height:180px;border-radius:50%;background:#c9ec7422}
+.balance .lbl{font-size:13px;color:#cfe3dd;display:flex;align-items:center;gap:8px}
+.eye{color:#cfe3dd}.eye svg{width:18px;height:18px}
+.amount{font-size:36px;font-weight:700;letter-spacing:-.5px;margin:6px 0 2px;direction:ltr;text-align:right}.amount span{font-size:15px;font-weight:500;color:#cfe3dd;margin-left:6px}
+.balance .sub{font-size:12px;color:var(--lime)}
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 20px 6px}
+.act{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px;font-weight:500}
+.act .ic{width:56px;height:56px;border-radius:18px;background:var(--card);color:var(--brand);box-shadow:0 1px 0 var(--line)}
+.act:active .ic{transform:scale(.94)}
+.ask{margin:16px 20px 0;padding:16px 18px;border-radius:var(--r);background:#e6f3d0;display:flex;gap:12px;align-items:center;text-align:right;width:calc(100% - 40px)}
+.ask .ic{width:40px;height:40px;border-radius:12px;background:var(--brand);color:var(--lime);flex:none}
+.ask b{display:block;font-size:14.5px}.ask small{color:#46604f;font-size:12.5px}
+.section{margin:22px 20px 0;display:flex;justify-content:space-between;align-items:baseline}.section h2{font-size:16px;margin:0}
+.list{margin:10px 20px 110px;background:var(--card);border-radius:var(--r);padding:4px 16px}
+.tx{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.tx:last-child{border:0}
+.tx .ic{width:40px;height:40px;border-radius:12px;background:var(--bg);color:var(--brand);flex:none}.tx .ic svg{width:19px}
+.tx div{flex:1;min-width:0}.tx b{display:block;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tx small{color:var(--muted);font-size:12px}
+.tx .amt{font-weight:600;direction:ltr;white-space:nowrap}
+.empty{color:var(--muted);text-align:center;padding:18px 0;margin:0}
+/* chat */
+.chathead{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;background:var(--card);border-bottom:1px solid var(--line)}
+.back{width:40px;height:40px;border-radius:12px;display:grid;place-items:center}.back:hover{background:var(--bg)}
+.chathead .avatar{width:38px;height:38px;font-size:15px}.chathead b{display:block;line-height:1.3}.chathead small{color:var(--muted);font-size:12px}
+#log{flex:1;overflow-y:auto;padding:18px 16px 120px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:84%;padding:10px 14px;border-radius:18px;white-space:pre-wrap;overflow-wrap:anywhere;animation:in .18s ease-out}
+.msg.bot{background:var(--card);align-self:flex-start;border-bottom-right-radius:6px}
+.msg.user{background:var(--brand);color:#fff;align-self:flex-end;border-bottom-left-radius:6px}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+.typing{display:flex;gap:4px;padding:14px}.typing i{width:7px;height:7px;border-radius:50%;background:#9db0aa;animation:dot 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{50%{opacity:.3;transform:translateY(-3px)}}
+.choices{align-self:stretch;background:var(--card);border-radius:18px;padding:4px 12px}
+.choice{display:flex;align-items:center;gap:12px;width:100%;padding:11px 2px;border-bottom:1px solid var(--line);text-align:right}.choice:last-child{border:0}
+.choice .avatar{width:38px;height:38px;font-size:15px;background:#e6f3d0;color:var(--brand)}
+.choice div{flex:1}.choice small{display:block;color:var(--muted);font-size:12px;direction:ltr;text-align:right}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-self:flex-start}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 14px;font-size:13.5px}
+/* composer */
+.composer{position:absolute;inset:auto 0 0 0;padding:12px 14px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 30%);display:flex;gap:8px;align-items:center}
+.composer input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:13px 18px;box-shadow:0 4px 16px #0f4c4514}
+.round{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;flex:none}
+.round.go{background:var(--brand);color:var(--lime)}.round.mic{background:var(--card);color:var(--brand);border:1px solid var(--line)}
+.round.mic.rec{background:var(--red);color:#fff;border-color:var(--red);animation:pulse 1s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px #b4231822}}
+/* bottom sheet */
+.scrim{position:absolute;inset:0;background:#0b2a2666;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .2s;z-index:5}
+.scrim.open{opacity:1;pointer-events:auto}
+.sheet{width:100%;background:var(--card);border-radius:28px 28px 0 0;padding:10px 22px calc(22px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .25s cubic-bezier(.2,.8,.2,1);max-height:92%;overflow-y:auto}
+.scrim.open .sheet{transform:none}
+.grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 14px}
+.sheet h3{margin:0 0 14px;font-size:15px;color:var(--muted);font-weight:500;text-align:center}
+.payee{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.payee .avatar{width:58px;height:58px;font-size:22px;background:#e6f3d0;color:var(--brand)}
+.payee b{font-size:17px}.payee small{color:var(--muted);direction:ltr}
+.big{font-size:40px;font-weight:700;text-align:center;margin:12px 0 0;direction:ltr;letter-spacing:-.5px}.big span{font-size:16px;font-weight:500;color:var(--muted);margin-left:6px}
+.words{text-align:center;color:var(--muted);font-size:13px;margin-bottom:14px}
+.rows{background:var(--bg);border-radius:16px;padding:4px 14px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.row:last-child{border:0}
+.row span{color:var(--muted)}.row b{font-weight:600;text-align:left}
+.warn{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--amberbg);color:var(--amber);font-size:13px}
+.timer{height:4px;border-radius:9px;background:var(--line);margin:16px 0 6px;overflow:hidden}.timer i{display:block;height:100%;background:var(--brand2);transition:width 1s linear}
+.timertext{font-size:12px;color:var(--muted);text-align:center}
+.btn{display:block;width:100%;padding:15px;border-radius:16px;font-weight:600;font-size:16px;text-align:center}
+.btn.primary{background:var(--brand);color:#fff;margin-top:14px}.btn.ghost{color:var(--ink);margin-top:6px}
+.safe{display:flex;gap:6px;justify-content:center;align-items:center;color:var(--muted);font-size:12px;margin-top:8px}.safe svg{width:14px;height:14px}
+/* result screen */
+.result{position:absolute;inset:0;background:var(--card);z-index:6;display:none;flex-direction:column;align-items:center;padding:56px 26px 26px;text-align:center;overflow-y:auto}
+.result.open{display:flex;animation:in .2s ease-out}
+.badge{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px}.badge svg{width:42px;height:42px}
+.badge.ok{background:#e6f3d0;color:var(--brand)}.badge.bad{background:var(--redbg);color:var(--red)}.badge.wait{background:var(--amberbg);color:var(--amber)}
+.badge.ok svg{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .5s .1s forwards}@keyframes draw{to{stroke-dashoffset:0}}
+.spin{width:38px;height:38px;border-radius:50%;border:4px solid #f0d9a8;border-top-color:var(--amber);animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.result h2{margin:0;font-size:21px}.result p{color:var(--muted);margin:8px 0 0;max-width:330px}
+.result .rows{width:100%;margin-top:22px;text-align:right}
+.result .grow{flex:1;min-height:20px}
+/* demo drawer (presenters only) */
+.tools{display:flex;align-items:center;gap:8px}.gear{width:34px;height:34px;border-radius:50%;background:var(--card);display:none;place-items:center;color:var(--muted)}.gear svg{width:18px}
+body.demo .gear{display:grid}
+.demo label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.demo select{width:100%;padding:11px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.demo p{font-size:12px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <div class="who"><div class="avatar" id="initial">؟</div><div><small>هلا بيك</small><b id="username">…</b></div></div>
+    <span class="tools"><span class="pill" title="هذي نسخة تجريبية بمحفظة وهمية">محفظة تجريبية</span><button class="gear" id="gear" type="button" aria-label="أدوات العرض"></button></span>
+  </header>
+
+  <main class="view" id="home">
+    <section class="balance" aria-label="الرصيد">
+      <div class="lbl">رصيدك المتوفر <button class="eye" id="eye" aria-label="إخفاء أو إظهار الرصيد"></button></div>
+      <div class="amount"><bdi id="balance">—</bdi><span>د.ع</span></div>
+      <div class="sub" id="limit">&nbsp;</div>
+    </section>
+    <nav class="actions" aria-label="خدمات سريعة">
+      <button class="act" data-start="transfer"><span class="ic" data-icon="send"></span>تحويل</button>
+      <button class="act" data-start="bill"><span class="ic" data-icon="bill"></span>فواتير</button>
+      <button class="act" data-start="topup"><span class="ic" data-icon="phone"></span>شحن رصيد</button>
+      <button class="act" data-start="history"><span class="ic" data-icon="list"></span>الحركات</button>
+    </nav>
+    <button class="ask" id="ask"><span class="ic" data-icon="spark"></span><span><b>اطلب بكلمة وحدة</b><small>«ادفع الكهرباء» أو «دز خمسين ألف لخالو» — نسألك إذا شي مو واضح، وما ينخصم شي بدون تأكيدك.</small></span></button>
+    <div class="section" id="txhead"><h2>آخر الحركات</h2></div>
+    <div class="list" id="transactions"><p class="empty">…</p></div>
+  </main>
+
+  <section class="view" id="chat" aria-label="المساعد">
+    <div class="chathead">
+      <button class="back" id="back" aria-label="رجوع"><span class="ic" data-icon="back"></span></button>
+      <div class="avatar">ب</div><div><b>مساعد بكلمة</b><small>يفهم اللهجة العراقية</small></div>
+    </div>
+    <div id="log" aria-live="polite"></div>
+  </section>
+
+  <form class="composer" id="composer">
+    <input id="text" aria-label="اكتب طلبك" placeholder="اكتب طلبك… مثلاً: دز 20 ألف لخالو" autocomplete="off" maxlength="4000" required>
+    <button type="button" class="round mic" id="record" aria-label="تسجيل صوتي" hidden><span class="ic" data-icon="mic"></span></button>
+    <button type="submit" class="round go" id="send" aria-label="إرسال"><span class="ic" data-icon="arrow"></span></button>
+  </form>
+
+  <div class="scrim" id="scrim"><div class="sheet confirm-card" id="sheet" role="dialog" aria-modal="true" aria-label="تأكيد الدفع"></div></div>
+  <div class="scrim" id="demoscrim"><div class="sheet demo" role="dialog" aria-label="أدوات العرض">
+    <div class="grab"></div><h3>أدوات العرض (للتقديم فقط، المستخدم ما يشوفها)</h3>
+    <label for="user">الحساب</label><select id="user"></select>
+    <label for="fault">محاكاة عطل عند الدفع القادم</label>
+    <select id="fault"><option value="">اتصال طبيعي</option><option value="DROP_RESPONSE_AFTER_COMMIT">انقطاع الرد بعد الخصم</option><option value="CRASH_BEFORE_COMMIT">توقف قبل إكمال الدفع</option><option value="BILLER_DOWN">المزوّد متوقف</option><option value="DELAY_MS=1000">تأخير بالرد</option></select>
+    <p>إعادة المحاولة تستخدم نفس رقم الطلب، فما ينخصم مرتين.</p>
+    <label>آخر طلب فهمه</label><p id="parser-info">—</p>
+    <button class="btn primary" type="button" id="democlose">تم</button>
+  </div></div>
+  <section class="result" id="result" role="dialog" aria-modal="true" aria-live="assertive"></section>
+</div>
 <script>
-const $=id=>document.getElementById(id),fmt=n=>new Intl.NumberFormat('en-US').format(n);let user=1,cid=null,busy=false,poll=null,epoch=0;
-function el(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e}
-function bubble(text,role='bot'){const e=el('div',text,'bubble '+role);$('chatlog').append(e);e.scrollIntoView({block:'nearest'});return e}
+const ICONS={
+ send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>',
+ bill:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/></svg>',
+ phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>',
+ list:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>',
+ spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg>',
+ fwd:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+ back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+ arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>',
+ mic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
+ stop:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="7" width="10" height="10" rx="2"/></svg>',
+ eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+ eyeoff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l18 18M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 5.4-1.6"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+ x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7 7 17"/></svg>',
+ lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+ gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>'};
+const $=id=>document.getElementById(id),fmt=n=>new Intl.NumberFormat('en-US').format(n);
+let user=null,users=[],cid=null,busy=false,poll=null,epoch=0,pendingCard=null,sheetTimer=null,hideBalance=false,lastBalance=null;
+try{hideBalance=localStorage.getItem('hide-balance')==='1'}catch{}
+function el(tag,text,cls){const e=document.createElement(tag);if(text!==undefined&&text!==null)e.textContent=text;if(cls)e.className=cls;return e}
+// Icons come only from the constant table above; user and model text always goes through textContent.
+function icon(name,cls){const s=el('span',undefined,'ic '+(cls||''));s.innerHTML=ICONS[name];return s}
+function paintIcons(root=document){root.querySelectorAll('[data-icon]').forEach(e=>{e.innerHTML=ICONS[e.dataset.icon]})}
+const initial=name=>(name||'؟').trim().replace(/^ال(?=..)/,'').charAt(0);
+const store=(k,v)=>{try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch{}},load=k=>{try{return localStorage.getItem(k)}catch{return null}};
+
 async function api(path,body,extra={}){const r=await fetch(path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json','X-User-ID':String(user),...extra},body:body?JSON.stringify(body):undefined});if(!r.ok)throw Error('request');return r.json()}
-async function refresh(){const token=epoch;const a=await api('/account');if(token!==epoch)return;$('balance').textContent=fmt(a.balance.balance_iqd);$('transactions').replaceChildren();for(const t of a.transactions.slice(0,5)){const row=el('div',undefined,'transaction'),label=el('div',t.type==='transfer'?'تحويل':'دفع فاتورة');label.append(el('small',new Date(t.created_at*1000).toLocaleDateString('ar-IQ')));row.append(label,el('b','− '+fmt(t.amount_iqd+t.fee_iqd)+' د.ع'));$('transactions').append(row)}}
-function disableCards(){document.querySelectorAll('.confirm-card button,.choice').forEach(b=>b.disabled=true)}
-const PARSERS={claude:'فهم الطلب: Claude',ollama:'فهم الطلب: Ollama محلي',groq:'فهم الطلب: Groq',gemini:'فهم الطلب: Gemini',rules:'فهم الطلب: قواعد ثابتة',rules_fallback:'فهم الطلب: قواعد ثابتة (النموذج ما رد)'};
-function render(r){if(r.parser){const b=$('parser-badge');b.textContent=PARSERS[r.parser]||r.parser;b.hidden=false}if(r.conversation_id){cid=r.conversation_id;localStorage.setItem('conversation-'+user,cid)}for(const text of r.messages||[])bubble(text);if(r.options?.length){const box=el('div');r.options.forEach((o,i)=>{const b=el('button',`${i+1}) ${o.display_name} — ${o.masked_phone||o.account_number||''}`,'choice');b.onclick=()=>send(String(i+1));box.append(b)});$('chatlog').append(box)}if(r.card)card(r.card);if(r.result?.code==='STATUS_UNKNOWN'||r.state==='EXECUTING'){const id=r.draft_id||r.card?.draft_id;startPoll(id);if(id){const retry=el('button','تحقق من نفس الطلب مرة ثانية','choice');retry.onclick=()=>act('/confirm',id);$('chatlog').append(retry)}}$('chatlog').scrollTop=$('chatlog').scrollHeight}
-function card(c){const box=el('section',undefined,'confirm-card');box.setAttribute('aria-label','بطاقة تأكيد الدفع');box.append(el('h3','راجع طلبك قبل التأكيد'),el('div',fmt(c.payment.amount_iqd)+' د.ع','money'),el('div',c.amount_words,'words'));for(const [k,v] of [['العملية',c.kind==='transfer'?'تحويل فلوس':'دفع فاتورة'],['إلى',c.display.display_name],['الحساب',c.display.masked_phone||c.display.account_number],...(c.period?[['الفترة',c.period]]:[]),['العمولة',fmt(c.fee_iqd)+' د.ع'],['رصيدك قبل',fmt(c.balance_before)+' د.ع'],['رصيدك بعد',fmt(c.balance_after)+' د.ع']]){const row=el('div',undefined,'detail');row.append(el('span',k),el('b',v));box.append(row)}if(c.duplicate_warning)box.append(el('div',c.duplicate_warning,'warning'));const actions=el('div',undefined,'actions'),yes=el('button','أكّد'),no=el('button','إلغاء','secondary');yes.type=no.type='button';yes.onclick=()=>act('/confirm',c.draft_id);no.onclick=()=>act('/cancel',c.draft_id);actions.append(yes,no);box.append(actions);const timer=el('div','','countdown');box.append(timer);const tick=()=>{const left=Math.max(0,c.expires_at-Math.floor(Date.now()/1000));timer.textContent=left?`باقي ${left} ثانية للتأكيد`:'انتهت المهلة. اكتب طلبك من جديد حتى تراجعه.';if(!left){yes.disabled=true;clearInterval(interval)}};const interval=setInterval(tick,1000);tick();$('chatlog').append(box)}
-async function send(text){if(busy)return;busy=true;const token=epoch;disableCards();bubble(text,'user');$('text').value='';$('send').disabled=true;try{const r=await api('/chat',{user_id:user,conversation_id:cid,text});if(token===epoch){render(r);await refresh()}}catch{if(token===epoch)bubble('ما وصلنا رد. إذا كنت تأكّد دفعة، لا تكتب طلب جديد؛ راجع نفس البطاقة أو حدّث الصفحة حتى نتحقق.')}finally{busy=false;$('send').disabled=false}}
-async function act(path,id){if(busy)return;busy=true;const token=epoch;disableCards();try{const r=await api(path,{draft_id:id},path==='/confirm'?{'X-Fault':$('fault').value}:{});if(token===epoch){render(r);await refresh()}}catch{if(token===epoch){bubble('الرد ما وصل، بعدنا ما نعرف النتيجة. دا نتحقق من نفس الطلب.');startPoll(id)}}finally{busy=false}}
-function startPoll(id){if(!id||poll)return;const token=epoch;poll=setInterval(async()=>{try{const r=await api('/drafts/'+id+'/status');if(token!==epoch)return;if(r.result?.code!=='STATUS_UNKNOWN'){clearInterval(poll);poll=null;render(r);await refresh()}}catch{}},2500)}
+
+function showBalance(){$('balance').textContent=lastBalance==null?'—':hideBalance?'••••••':fmt(lastBalance);$('eye').replaceChildren(icon(hideBalance?'eyeoff':'eye'))}
+async function refresh(){const token=epoch;const a=await api('/account');if(token!==epoch)return;
+ lastBalance=a.balance.balance_iqd;showBalance();$('limit').textContent='الحد اليومي '+fmt(a.balance.daily_limit_iqd)+' د.ع';
+ const list=$('transactions');list.replaceChildren();
+ if(!a.transactions.length)list.append(el('p','ما عندك حركات بعد.','empty'));
+ for(const t of a.transactions.slice(0,8)){const row=el('div',undefined,'tx'),mid=el('div'),transfer=t.type==='transfer';
+  mid.append(el('b',t.name||(transfer?'تحويل':'دفع فاتورة')),el('small',(transfer?'تحويل':'فاتورة')+' · '+new Date(t.created_at*1000).toLocaleDateString('ar-IQ-u-nu-latn',{day:'numeric',month:'short'})));
+  row.append(icon(transfer?'send':'bill'),mid,el('span','− '+fmt(t.amount_iqd+t.fee_iqd),'amt'));list.append(row)}}
+
+function openChat(){document.body.classList.add('chatting')}
+function closeChat(){document.body.classList.remove('chatting');refresh().catch(()=>{})}
+function scrollLog(){const l=$('log');l.scrollTop=l.scrollHeight}
+function bubble(text,role='bot'){const e=el('div',text,'msg '+role);$('log').append(e);scrollLog();return e}
+function typing(){const t=el('div',undefined,'msg bot typing');t.append(el('i'),el('i'),el('i'));$('log').append(t);scrollLog();return t}
+function greet(){$('log').replaceChildren();bubble('هلا '+(users.find(u=>u.id===user)?.name.split(' ')[0]||'')+'! أگدر أدفع فواتيرك أو أدز فلوس لجهات اتصالك. اكتب طلبك بكلمة وحدة، وما ينخصم أي مبلغ بدون تأكيدك.');chips(['ادفع الكهرباء','دز خمسين ألف لأحمد','شكد رصيدي'])}
+function chips(list){const box=el('div',undefined,'chips');for(const t of list){const b=el('button',t,'chip');b.type='button';b.onclick=()=>send(t);box.append(b)}$('log').append(box);scrollLog()}
+function disableChoices(){document.querySelectorAll('.choice,.chip').forEach(b=>b.disabled=true)}
+
+function options(list){const box=el('div',undefined,'choices');list.forEach((o,i)=>{const b=el('button',undefined,'choice'),mid=el('div');b.type='button';
+ mid.append(el('b',o.display_name),el('small',o.masked_phone||o.account_number||''));b.append(el('span',initial(o.display_name),'avatar'),mid,icon('fwd'));
+ b.onclick=()=>send(String(i+1),o.display_name);box.append(b)});$('log').append(box);scrollLog()}
+
+function row(k,v){const r=el('div',undefined,'row');r.append(el('span',k),el('b',v));return r}
+function closeSheet(){clearInterval(sheetTimer);$('scrim').classList.remove('open')}
+function openSheet(c){clearInterval(sheetTimer);const s=$('sheet');s.replaceChildren();const transfer=c.kind==='transfer',amount=c.payment.amount_iqd;
+ const payee=el('div',undefined,'payee');payee.append(el('div',initial(c.display.display_name),'avatar'),el('b',c.display.display_name),el('small',c.display.masked_phone||c.display.account_number||''));
+ const big=el('div',undefined,'big');big.append(el('bdi',fmt(amount)),el('span','د.ع'));
+ const rows=el('div',undefined,'rows');rows.append(row('العملية',transfer?'تحويل فلوس':c.period==='شحن رصيد'?'شحن رصيد':'دفع فاتورة'));
+ if(c.period&&c.period!=='شحن رصيد')rows.append(row('الفترة',c.period));
+ rows.append(row('العمولة',fmt(c.fee_iqd)+' د.ع'),row('المجموع',fmt(amount+c.fee_iqd)+' د.ع'),row('رصيدك بعد الدفع',fmt(c.balance_after)+' د.ع'));
+ s.append(el('div',undefined,'grab'),el('h3',transfer?'راجع التحويل قبل التأكيد':'راجع الدفع قبل التأكيد'),payee,big,el('div',c.amount_words,'words'),rows);
+ if(c.duplicate_warning)s.append(el('div',c.duplicate_warning,'warn'));
+ const bar=el('div',undefined,'timer'),fill=el('i'),left=el('div','','timertext');bar.append(fill);
+ const pay=el('button','ادفع '+fmt(amount+c.fee_iqd)+' د.ع','btn primary'),cancel=el('button','إلغاء','btn ghost');pay.type=cancel.type='button';
+ pay.onclick=()=>{pay.disabled=cancel.disabled=true;pay.textContent='جاري الدفع…';act('/confirm',c.draft_id)};
+ cancel.onclick=()=>{pay.disabled=cancel.disabled=true;act('/cancel',c.draft_id)};
+ const safe=el('div',undefined,'safe');safe.append(icon('lock'),el('span','ما ينخصم شي قبل ما تضغط ادفع'));
+ s.append(bar,left,pay,cancel,safe);
+ const tick=()=>{const secs=Math.max(0,c.expires_at-Math.floor(Date.now()/1000));fill.style.width=(secs/120*100)+'%';
+  left.textContent=secs?`البطاقة صالحة ${secs} ثانية`:'انتهت المهلة. اكتب طلبك من جديد حتى تراجعه.';if(!secs){pay.disabled=true;clearInterval(sheetTimer)}};
+ tick();sheetTimer=setInterval(tick,1000);$('scrim').classList.add('open');pay.focus({preventScroll:true})}
+
+function showResult(result,text,draftId){const box=$('result');box.replaceChildren();const ok=result.status==='succeeded',waiting=result.code==='STATUS_UNKNOWN';
+ const badge=el('div',undefined,'badge '+(ok?'ok':waiting?'wait':'bad'));badge.append(waiting?el('div',undefined,'spin'):icon(ok?'check':'x'));box.append(badge);
+ if(ok){const transfer=result.type==='transfer';box.append(el('h2',transfer?'تم التحويل':'تم الدفع'));
+  const big=el('div',undefined,'big');big.append(el('bdi',fmt(result.amount_iqd)),el('span','د.ع'));box.append(big,el('p','إلى '+(result.payee_name||'')));
+  const rows=el('div',undefined,'rows');rows.append(row('العمولة',fmt(result.fee_iqd)+' د.ع'),row('رصيدك الحالي',fmt(result.balance_iqd)+' د.ع'),
+   row('الوقت',new Date(result.created_at*1000).toLocaleString('ar-IQ-u-nu-latn',{dateStyle:'medium',timeStyle:'short'})),row('رقم الوصل',result.id.slice(0,8).toUpperCase()));box.append(rows);
+  if(result.recovered)box.append(el('div','انقطع الرد أول مرة، فتحققنا بنفس رقم الطلب. انخصم مرة وحدة بس.','warn'))}
+ else if(waiting){box.append(el('h2','دا نتحقق من الدفع'),el('p',text||'بعدنا ما متأكدين من النتيجة. لا تعيد الطلب؛ نتابعه بنفس الرقم حتى ما ينخصم مرتين.'))}
+ else box.append(el('h2','ما تمت العملية'),el('p',text||'ما انخصم شي.'));
+ box.append(el('div',undefined,'grow'));
+ if(waiting&&draftId){const again=el('button','تحقق مرة ثانية','btn primary');again.type='button';again.onclick=()=>act('/confirm',draftId);box.append(again)}
+ const done=el('button',waiting?'رجوع للرئيسية':'تم','btn '+(waiting?'ghost':'primary'));done.type='button';done.onclick=closeResult;box.append(done);
+ box.classList.add('open');done.focus({preventScroll:true})}
+function closeResult(){$('result').classList.remove('open');if(pendingCard){const c=pendingCard;pendingCard=null;openSheet(c)}else if(!$('scrim').classList.contains('open'))closeChat()}
+
+const PARSERS={claude:'Claude',ollama:'Ollama محلي',groq:'Groq (gpt-oss-120b)',gemini:'Gemini',rules:'قواعد ثابتة',rules_fallback:'قواعد ثابتة (النموذج ما رد)'};
+function render(r){if(r.parser)$('parser-info').textContent=PARSERS[r.parser]||r.parser;
+ if(r.conversation_id){cid=r.conversation_id;store('conversation-'+user,cid)}
+ // The server spells options out for text-only clients; here they are tappable rows, so keep just the question.
+ for(const text of r.messages||[])bubble(r.options?.length?text.split(' 1) ')[0]:text);
+ if(r.options?.length)options(r.options);
+ const id=r.draft_id||r.card?.draft_id,unknown=r.result?.code==='STATUS_UNKNOWN'||r.state==='EXECUTING';
+ if(r.result&&r.result.code!=='CANCELLED')showResult(r.result,r.messages?.[0],id);
+ else if(unknown)showResult({code:'STATUS_UNKNOWN'},r.messages?.[0],id);
+ if(r.card){if($('result').classList.contains('open'))pendingCard=r.card;else openSheet(r.card)}
+ if(unknown)startPoll(id)}
+
+async function send(text,shown){text=text.trim();if(busy||!text)return;busy=true;const token=epoch;openChat();disableChoices();bubble(shown||text,'user');$('text').value='';$('send').disabled=true;const dots=typing();
+ try{const r=await api('/chat',{user_id:user,conversation_id:cid,text});dots.remove();if(token===epoch){render(r);await refresh()}}
+ catch{dots.remove();if(token===epoch)bubble('ما وصلنا رد. إذا كنت تأكّد دفعة، لا تكتب طلب جديد؛ حدّث الصفحة حتى نتحقق من نفس الطلب.')}
+ finally{busy=false;$('send').disabled=false}}
+async function act(path,id){if(busy)return;busy=true;const token=epoch;
+ try{const r=await api(path,{draft_id:id},path==='/confirm'?{'X-Fault':$('fault').value}:{});if(token!==epoch)return;closeSheet();$('result').classList.remove('open');render(r);await refresh()}
+ catch{if(token===epoch){closeSheet();showResult({code:'STATUS_UNKNOWN'},'الرد ما وصل، فبعدنا ما نعرف النتيجة. دا نتحقق من نفس الطلب.',id);startPoll(id)}}
+ finally{busy=false}}
+function startPoll(id){if(!id||poll)return;const token=epoch;poll=setInterval(async()=>{try{const r=await api('/drafts/'+id+'/status');if(token!==epoch)return;
+ if(r.result?.code!=='STATUS_UNKNOWN'){clearInterval(poll);poll=null;$('result').classList.remove('open');render(r);await refresh()}}catch{}},2500)}
+
+// Quick actions start the conversation the way a person would say it.
+const STARTS={transfer:['دز ','لمن تريد تدز وشكد؟ مثلاً: دز 25 ألف لخالو'],bill:['ادفع ','أي فاتورة؟ مثلاً: ادفع الكهرباء، ادفع المولدة، ادفع الانترنت'],topup:['اشحن ','أي شبكة وشكد؟ مثلاً: اشحن زين 10 آلاف']};
+document.querySelectorAll('[data-start]').forEach(b=>b.onclick=()=>{const k=b.dataset.start;if(k==='history'){$('txhead').scrollIntoView({behavior:'smooth'});return}
+ openChat();bubble(STARTS[k][1]);$('text').value=STARTS[k][0];$('text').focus()});
+$('ask').onclick=()=>{openChat();$('text').focus()};
+$('text').onfocus=openChat;
+$('back').onclick=closeChat;
+$('eye').onclick=()=>{hideBalance=!hideBalance;store('hide-balance',hideBalance?'1':null);showBalance()};
+$('composer').onsubmit=e=>{e.preventDefault();send($('text').value)};
+$('gear').append(icon('gear'));$('gear').onclick=()=>$('demoscrim').classList.add('open');$('democlose').onclick=()=>$('demoscrim').classList.remove('open');
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('demoscrim').classList.remove('open');if($('result').classList.contains('open'))closeResult()}});
+
 let recorder=null,stream=null,recordTimer=null;
 $('record').onclick=async()=>{
  if(recorder?.state==='recording'){recorder.stop();return}
- if(busy)return;
- busy=true;
- try{
-  stream=await navigator.mediaDevices.getUserMedia({audio:true});
+ if(busy)return;busy=true;openChat();
+ try{stream=await navigator.mediaDevices.getUserMedia({audio:true});
   const chunks=[],token=epoch,recordUser=user,recordCid=cid;
   recorder=new MediaRecorder(stream,{mimeType:'audio/webm'});
   recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
-  recorder.onstop=async()=>{
-   clearTimeout(recordTimer);stream.getTracks().forEach(t=>t.stop());$('record').textContent='🎙';
+  recorder.onstop=async()=>{clearTimeout(recordTimer);stream.getTracks().forEach(t=>t.stop());$('record').classList.remove('rec');$('record').replaceChildren(icon('mic'));
    if(token!==epoch){busy=false;return}
-   busy=true;disableCards();
+   disableChoices();const dots=typing();
    const body=new FormData();body.append('audio',new Blob(chunks,{type:'audio/webm'}),'recording.webm');body.append('user_id',String(recordUser));if(recordCid)body.append('conversation_id',recordCid);
-   try{const response=await fetch('/voice',{method:'POST',headers:{'X-User-ID':String(recordUser)},body});const r=await response.json();if(token===epoch){render(r);await refresh()}}
-   catch{if(token===epoch)bubble('ما كدرنا نرسل التسجيل. اكتب طلبك؛ راجع حالته إذا عندك دفع سابق.')}
-   finally{busy=false}
-  };
-  recorder.start();$('record').textContent='إيقاف ■';recordTimer=setTimeout(()=>{if(recorder.state==='recording')recorder.stop()},30000);
- }catch{busy=false;stream?.getTracks().forEach(t=>t.stop());bubble('المايك مو متوفر أو ما سمحت باستخدامه. تكدر تكتب طلبك.')}
-};
-$('composer').onsubmit=e=>{e.preventDefault();send($('text').value)};document.querySelectorAll('[data-example]').forEach(b=>b.onclick=()=>send(b.dataset.example));
-$('user').onchange=async()=>{epoch++;user=Number($('user').value);cid=localStorage.getItem('conversation-'+user);clearInterval(poll);poll=null;disableCards();$('chatlog').replaceChildren();bubble('هلا بيك، هذا حسابك التجريبي. ما ينخصم أي مبلغ بدون تأكيدك.');const examples=el('div',undefined,'examples');for(const text of ['دز خمسين ألف لأحمد','ادفع الكهرباء','شكد رصيدي']){const b=el('button',text+' ↗');b.onclick=()=>send(text);examples.append(b)}$('chatlog').append(examples);await refresh();if(cid){try{render(await api('/conversations/'+cid))}catch{cid=null}}};
-(async()=>{try{const users=await api('/users');for(const u of users){const o=el('option',u.name);o.value=u.id;$('user').append(o)}if(!users.length){bubble('ماكو حسابات بعد. حمّل بيانات التجربة وبعدين حدّث الصفحة.');return}user=users[0].id;const config=await api('/config');if(config.demo_mode)$('fault-panel').style.display='block';$('record').disabled=!config.voice_enabled||!navigator.mediaDevices||!window.MediaRecorder;await $('user').onchange()}catch{bubble('ما كدرنا نتصل بالمحفظة. جرّب تحدّث الصفحة.')}})();
-</script></body></html>
+   try{const response=await fetch('/voice',{method:'POST',headers:{'X-User-ID':String(recordUser)},body});const r=await response.json();dots.remove();if(token===epoch){render(r);await refresh()}}
+   catch{dots.remove();if(token===epoch)bubble('ما كدرنا نرسل التسجيل. اكتب طلبك.')}
+   finally{busy=false}};
+  recorder.start();$('record').classList.add('rec');$('record').replaceChildren(icon('stop'));recordTimer=setTimeout(()=>{if(recorder.state==='recording')recorder.stop()},30000);
+ }catch{busy=false;stream?.getTracks().forEach(t=>t.stop());bubble('المايك مو متوفر أو ما سمحت باستخدامه. تكدر تكتب طلبك.')}};
+
+$('user').onchange=async()=>{epoch++;user=Number($('user').value);store('demo-user',String(user));cid=load('conversation-'+user);clearInterval(poll);poll=null;closeSheet();$('result').classList.remove('open');pendingCard=null;
+ const me=users.find(u=>u.id===user);$('username').textContent=me?.name||'';$('initial').textContent=initial(me?.name);greet();
+ await refresh();if(cid){try{const r=await api('/conversations/'+cid);if(r.card||r.state==='EXECUTING'||r.ask_slot){openChat();bubble('كمّلنا من وين وقفت.');render(r)}}catch{cid=null}}};
+paintIcons();showBalance();
+(async()=>{try{users=await api('/users');for(const u of users){const o=el('option',u.name);o.value=u.id;$('user').append(o)}
+ if(!users.length){$('username').textContent='—';openChat();bubble('ماكو حسابات بعد. حمّل بيانات التجربة وبعدين حدّث الصفحة.');return}
+ const saved=Number(load('demo-user'));user=users.some(u=>u.id===saved)?saved:users[0].id;$('user').value=String(user);
+ const config=await api('/config');if(config.demo_mode||new URLSearchParams(location.search).has('demo'))document.body.classList.add('demo');
+ $('record').hidden=!config.voice_enabled||!navigator.mediaDevices||!window.MediaRecorder;await $('user').onchange()}
+ catch{openChat();bubble('ما كدرنا نتصل بالمحفظة. جرّب تحدّث الصفحة.')}})();
+</script>
+</body>
+</html>

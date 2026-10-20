@@ -20,7 +20,7 @@ Not done yet: native-speaker hand editing of the held-out requests ([AI review n
 
 ## 60-second demo
 
-Start with `./make.ps1 run` (demo faults: set `$env:DEMO_MODE='true'` first) and open http://localhost:8000.
+Start with `./make.ps1 run` (demo faults: set `$env:DEMO_MODE='true'` first) and open http://localhost:8000. The UI is the end-user phone app (home, assistant chat, confirmation sheet, receipt); presenter tools (switch account, simulate a fault, which parser answered) sit behind the ⚙ button, which appears only in demo mode or with `?demo`.
 
 | # | Type | What to point at |
 |---|---|---|
