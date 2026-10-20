@@ -16,6 +16,9 @@ from .amounts import parse_amount
 from .resolvers import resolve_contact, resolve_biller
 from .drafts import create_draft
 
+TOPUP_PERIOD='شحن رصيد'
+KIND_AR={'transfer':'تحويل','bill_payment':'دفع فاتورة','topup':'شحن رصيد','balance_inquiry':'الرصيد','history_inquiry':'الحركات'}
+
 
 class Dialogue:
     def __init__(self, engine, parser=None, confirmer=None):
@@ -95,7 +98,7 @@ class Dialogue:
                     out={'messages':['ما كدرت أفهم الطلب هسه. اكتب طلبك مرة ثانية، ما انخصم شي.'],'state':'IDLE','code':'PARSER_UNAVAILABLE'}
                 else:
                     st={'state':'COLLECTING','queue':[i.model_dump() for i in intents]}
-                    if len(intents)>1: messages.append(f'فهمت {len(intents)} طلبات: '+ '، '.join('تحويل' if i.type=='transfer' else 'دفع فاتورة' for i in intents)+' — نبدي بالأول، وكل طلب يحتاج تأكيد وحده.')
+                    if len(intents)>1: messages.append(f'فهمت {len(intents)} طلبات: '+ '، '.join(KIND_AR.get(i.type,'طلب غير واضح') for i in intents)+' — نبدي بالأول، وكل طلب يحتاج تأكيد وحده.')
                     out=self.next(s,user_id,st)
                 out['parser']=getattr(self.parser,'last',None) or 'rules'
             convo.state_json=canonical(st); convo.updated_at=now()
@@ -196,7 +199,8 @@ class Dialogue:
             if s.get(Biller,link.biller_id).category!='mobile_topup':
                 return self.refuse(st,'UNKNOWN_BILLER','الشحن متوفر لآسياسيل وزين وكورك. ما انخصم شي؛ اختار شبكة الموبايل.')
         if kind=='bill_payment':
-            bills=list(s.scalars(select(Bill).where(Bill.user_biller_id==st['biller']['id'],Bill.status=='unpaid').order_by(Bill.period)))
+            # TOPUP_PERIOD rows are top-up drafts (possibly cancelled), never bills the user owes.
+            bills=list(s.scalars(select(Bill).where(Bill.user_biller_id==st['biller']['id'],Bill.status=='unpaid',Bill.period!=TOPUP_PERIOD).order_by(Bill.period)))
             if not bills: return self.refuse(st,'BILL_ALREADY_PAID','هالفاتورة مدفوعة، ما انخصم شي مرة ثانية.')
             if len(bills)>1 and 'bill' not in st:
                 return self.question(st,'bill',[{'id':b.id,'display_name':b.period,'account_number':f'{b.amount_iqd:,} د.ع'} for b in bills])
@@ -218,7 +222,7 @@ class Dialogue:
         if spent+total>user.daily_limit_iqd:
             return self.refuse(st,'LIMIT_EXCEEDED',f'تحتاج {total:,} د.ع والباقي من حدك اليومي {max(0,user.daily_limit_iqd-spent):,} د.ع. ما انخصم شي؛ جرّب مبلغ أقل أو باچر.')
         if kind=='topup':
-            bill=Bill(user_biller_id=st['biller']['id'],period='شحن رصيد',amount_iqd=amount,due_date='',status='unpaid')
+            bill=Bill(user_biller_id=st['biller']['id'],period=TOPUP_PERIOD,amount_iqd=amount,due_date='',status='unpaid')
             s.add(bill); s.flush(); st['bill_id']=bill.id
         payload={'kind':'transfer' if kind=='transfer' else 'bill_payment','payment':{'user_id':user_id,'amount_iqd':amount,
                     'payee_id':st['payee']['id'] if kind=='transfer' else None,'bill_id':st.get('bill_id')},

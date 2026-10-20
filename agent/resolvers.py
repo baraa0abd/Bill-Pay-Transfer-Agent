@@ -1,3 +1,4 @@
+import re
 from rapidfuzz.fuzz import ratio, token_set_ratio
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -36,13 +37,15 @@ def resolve_contact(engine, user_id, text):
 
 def resolve_biller(engine, user_id, text):
     q = normalize(text)
+    # Short keywords match whole words only: «بنت» is not «نت» and «مايا» is not «ماي».
+    words={re.sub(r'^(?:لل|ال|ل)','',w) for w in q.split()}
     categories=[]
     provider=None
     if 'وطني' in q: categories=['electricity_national']
     elif 'مولد' in q: categories=['generator']
     elif 'كهرب' in q: categories=['electricity_national','generator']
-    elif any(w in q for w in ['انترنت','النت','نت','إنترنت']): categories=['internet']
-    elif any(w in q for w in ['ماء','ماي']): categories=['water']
+    elif 'انترنت' in q or 'نت' in words: categories=['internet']
+    elif words & {'ماء','ماي','مي'}: categories=['water']
     elif any(w in q for w in ['رصيد','شحن','اسيا','زين','كورك']):
         categories=['mobile_topup']
         provider=next((p for w,p in [('اسيا','asiacell'),('زين','zain'),('كورك','korek')] if w in q),None)

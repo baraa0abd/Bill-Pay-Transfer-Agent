@@ -77,3 +77,13 @@ def test_only_confirm_can_execute():
     assert calls==['confirm.py']
     tree=ast.parse(Path('agent/parser.py').read_text(encoding='utf-8-sig'))
     assert not any(isinstance(n,ast.ImportFrom) and n.module and ('confirm' in n.module or 'wallet_client' in n.module) for n in ast.walk(tree))
+
+
+def test_wallet_not_reachable_from_outside(engine):
+    # The public app must offer no way to pay except /confirm on a card the user saw.
+    from app import create_app
+    load_seed(engine)
+    client=TestClient(create_app(engine))
+    r=client.post('/wallet/transfers',headers={'Idempotency-Key':'x1'},json={'user_id':1,'payee_id':8,'amount_iqd':100000})
+    assert r.status_code==404 and client.get('/wallet/users/2/balance').status_code==404
+    with Session(engine) as s: assert s.scalar(select(func.count()).select_from(Transaction).where(~Transaction.idempotency_key.like('history-%')))==0

@@ -78,3 +78,17 @@ def test_confirmed_crash_recovery(flow,engine):
     result=c.confirm(1,key)
     assert result['status']=='succeeded'
     assert c.confirm(1,key)['id']==result['id']
+
+
+def test_short_biller_keywords_match_whole_words_only(web):
+    # «بنت» contains «نت» and «مايا» contains «ماي»: unknown people must not turn into internet/water bills.
+    for text in ['دز 5000 لبنت خالتي','دز 5000 لمايا']:
+        assert chat(web,text)['code']=='UNKNOWN_PAYEE'
+    assert chat(web,'ادفع النت').get('card') or chat(web,'ادفع النت').get('code')!='UNKNOWN_BILLER'
+
+
+def test_cancelled_topup_is_not_offered_as_a_bill(web):
+    r=chat(web,'اشحن زين 5000'); web.post('/cancel',json={'draft_id':r['card']['draft_id']})
+    r=chat(web,'ادفع زين')
+    # Only the real bill is offered, never the 5,000 top-up draft the user cancelled.
+    assert not r.get('options') and r['card']['period']!='شحن رصيد' and r['card']['payment']['amount_iqd']!=5000

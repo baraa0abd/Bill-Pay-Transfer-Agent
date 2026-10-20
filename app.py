@@ -35,7 +35,8 @@ def create_app(engine=None,parser=None,demo_mode=None,asr=None,llm_max_wait=None
     dialogue=Dialogue(engine,parser=parser or configured_parser(max_wait=llm_max_wait),confirmer=confirmer)
     asr_client=asr or WhisperClient()
     app.state.engine=engine; app.state.dialogue=dialogue; app.state.confirmer=confirmer
-    app.mount('/wallet',wallet_app)
+    # The wallet is reached in-process only. Never mount it: its routes trust user_id, so exposing them
+    # would let anyone pay without a confirmation card.
 
     @app.get('/')
     def index(): return FileResponse(ROOT/'ui'/'index.html')
